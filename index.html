@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecosistema Digital PET/CT & Medicina Nuclear | Galaria · SERGAS</title>
+  <meta name="description" content="Portal Maestro Oficial del Ecosistema Digital PET/CT de Galaria y Servizo Galego de Saúde (SERGAS). Prescripción médica, triaje clínico algorítmico, preparación interactiva del paciente y consola de enfermería.">
+
+  <!-- Tipografía Oficial Galaria / SERGAS: Open Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       VARIABLES Y SISTEMA DE DISEÑO INSTITUCIONAL GALARIA · SERGAS
+       ========================================================================== */
+    :root {
+      /* Identidad Corporativa Oficial */
+      --sergas-blue: #007eb4;             /* Azul principal Galaria / Sergas */
+      --sergas-blue-hover: #00638e;       /* Azul interacción hover */
+      --sergas-navy: #004868;             /* Azul mariño institucional para títulos */
+      --sergas-dark-blue: #003248;        /* Azul mariño profundo */
+      --sergas-soft-blue: #e6f4fa;        /* Fondo suave de destaque */
+      --sergas-light-border: #bae6fd;     /* Borde suave azul */
+
+      --bg-page: #f4f7f9;                /* Fondo limpo sanitario */
+      --bg-card: #ffffff;                /* Tarxetas e paneis brancos */
+      --bg-card-subtle: #f8fafc;
+      --border-subtle: #d0e4ee;
+      --border-focus: #007eb4;
+
+      --text-main: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --text-light: #ffffff;
+
+      /* Sombras Oficiales Galaria */
+      --shadow-sm: 0 2px 6px rgba(0, 72, 104, 0.05);
+      --shadow-md: 0 4px 16px rgba(0, 72, 104, 0.08);
+      --shadow-lg: 0 12px 32px rgba(0, 72, 104, 0.12);
+      --shadow-hover: 0 16px 36px rgba(0, 126, 180, 0.18);
+
+      /* Estados Clínicos */
+      --p1-red: #dc2626;
+      --p1-bg: #fef2f2;
+      --p1-border: #fca5a5;
+
+      --p2-amber: #d97706;
+      --p2-bg: #fffbeb;
+      --p2-border: #fde68a;
+
+      --p3-green: #059669;
+      --p3-bg: #ecfdf5;
+      --p3-border: #6ee7b7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.55;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ==========================================================================
+       1. BARRA SUPERIOR INSTITUCIONAL XUNTA DE GALICIA / SERGAS
+       ========================================================================== */
+    .sergas-top-bar {
+      width: 100%;
+      background-color: var(--sergas-navy);
+      color: #ffffff;
+      font-size: 0.8rem;
+      padding: 0.5rem 1.5rem;
+      border-bottom: 2px solid var(--sergas-blue);
+    }
+
+    .sergas-top-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .sergas-gov-text {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .xunta-pill {
+      background: var(--sergas-blue);
+      color: #ffffff;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    .sergas-sub {
+      color: #e0f2fe;
+      font-size: 0.78rem;
+    }
+
+    .sergas-portal-id {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.78rem;
+      color: #bae6fd;
+    }
+
+    .lang-pill {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 0.72rem;
+    }
+
+    /* ==========================================================================
+       2. CONTENEDOR PRINCIPAL
+       ========================================================================== */
+    .main-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* ==========================================================================
+       3. CABECERA CON LOGO OFICIAL DE GALARIA Y STATUS EN VIVO
+       ========================================================================== */
+    .header-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1.25rem 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .galaria-logo-img {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #ffffff;
+      padding: 2px;
+    }
+
+    .header-title-group h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--sergas-navy);
+      line-height: 1.2;
+    }
+
+    .header-title-group p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .header-badges {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .live-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: #065f46;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulseGreen 2s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .badge-secondary {
+      background: var(--sergas-soft-blue);
+      border: 1px solid var(--sergas-light-border);
+      color: var(--sergas-navy);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+    }
+
+    /* ==========================================================================
+       4. HERO BANNER INSTITUCIONAL GALARIA
+       ========================================================================== */
+    .hero-banner {
+      background: linear-gradient(135deg, var(--sergas-navy) 0%, #006089 60%, var(--sergas-blue) 100%);
+      color: #ffffff;
+      border-radius: 18px;
+      padding: 2.25rem 2.5rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      right: -40px;
+      bottom: -60px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge-tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-banner h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-banner p {
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      color: #f0f9ff;
+      max-width: 900px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    /* ==========================================================================
+       5. PARRILLA DE LOS 4 PROGRAMAS INTERCONECTADOS
+       ========================================================================== */
+    .programs-section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--sergas-navy);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: -0.5rem;
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .program-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .program-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--module-accent, var(--sergas-blue));
+    }
+
+    .program-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--module-accent, var(--sergas-blue));
+    }
+
+    .card-header-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .module-num-pill {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--sergas-soft-blue);
+      color: var(--sergas-navy);
+    }
+
+    .target-role-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      color: var(--text-secondary);
+    }
+
+    .program-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--sergas-soft-blue);
+      border: 1px solid var(--sergas-light-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--sergas-blue);
+    }
+
+    .program-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--sergas-navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .program-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+
+    .program-features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+      border-top: 1px dashed #e2e8f0;
+      padding-top: 1rem;
+    }
+
+    .program-features li {
+      font-size: 0.82rem;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 0.45rem;
+    }
+
+    .program-features li::before {
+      content: '✓';
+      color: var(--module-accent, var(--sergas-blue));
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+
+    .card-action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 0.75rem 1.25rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      background: var(--module-accent, var(--sergas-blue));
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.2s ease;
+    }
+
+    .program-card:hover .card-action-btn {
+      filter: brightness(0.92);
+    }
+
+    /* Colores por módulo */
+    .card-mod-1 { --module-accent: #007eb4; } /* Azul Sergas Prescrición */
+    .card-mod-2 { --module-accent: #6366f1; } /* Índigo Triaxe */
+    .card-mod-3 { --module-accent: #059669; } /* Esmeralda Audioguía Paciente */
+    .card-mod-4 { --module-accent: #e11d48; } /* Vermello Clínico Enfermaría */
+    .card-mod-5 { --module-accent: #0284c7; } /* Azul Océano Protocolización Médica */
+
+    /* ==========================================================================
+       6. SELECTOR RÁPIDO DOS 10 TRAZADORES PET
+       ========================================================================== */
+    .tracers-section {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tracers-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .tracers-header h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      color: var(--sergas-navy);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tracers-header p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .tracers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .tracer-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.65rem 0.9rem;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .tracer-btn:hover {
+      background: var(--sergas-soft-blue);
+      border-color: var(--sergas-blue);
+      color: var(--sergas-navy);
+      transform: translateX(3px);
+    }
+
+    .tracer-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      background: #e2e8f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #334155;
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       7. ESQUEMA DE FLUXO CLÍNICO INTEGRADO
+       ========================================================================== */
+    .flow-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .flow-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--sergas-navy);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .flow-steps-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .flow-box {
+      background: var(--sergas-soft-blue);
+      border: 1px solid var(--sergas-light-border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      position: relative;
+    }
+
+    .flow-step-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--sergas-navy);
+      background: #ffffff;
+      border: 1px solid var(--sergas-light-border);
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .flow-box h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--sergas-dark-blue);
+      margin-bottom: 0.35rem;
+    }
+
+    .flow-box p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    /* ==========================================================================
+       8. PÉ DE PÁXINA INSTITUCIONAL
+       ========================================================================== */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .footer-links a {
+      color: var(--sergas-blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .sergas-top-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .header-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .main-wrapper {
+        padding: 1rem 1rem 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. BARRA SUPERIOR INSTITUCIONAL XUNTA / SERGAS -->
+  <div class="sergas-top-bar">
+    <div class="sergas-top-container">
+      <div class="sergas-gov-text">
+        <span class="xunta-pill">XUNTA DE GALICIA</span>
+        <span class="sergas-sub">CONSELLERÍA DE SANIDADE · SERGAS</span>
+      </div>
+      <div class="sergas-portal-id">
+        <span>Galaria · Empresa Pública de Servizos Sanitarios</span>
+        <span class="lang-pill">GAL | ES</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-wrapper">
+    <!-- 2. CABECERA CON LOGO OFICIAL DE GALARIA -->
+    <header class="header-card">
+      <div class="header-brand">
+        <img src="galaria_logo.jpg" alt="Galaria - Empresa Pública de Servizos Sanitarios" class="galaria-logo-img">
+        <div class="header-title-group">
+          <h1>Ecosistema Dixital PET/CT & Medicina Nuclear</h1>
+          <p>Plataforma Clínica Integral de Prescrición, Triaxe, Protocolización Médica, Preparación e Enfermaría</p>
+        </div>
+      </div>
+      <div class="header-badges">
+        <div class="live-status-pill">
+          <span class="live-dot"></span>
+          ENLACE PERMANENTE ACTIVO
+        </div>
+        <div class="badge-secondary">Galaria · SERGAS (Vigo / Santiago / A Coruña)</div>
+      </div>
+    </header>
+
+    <!-- 3. HERO BANNER INSTITUCIONAL -->
+    <section class="hero-banner">
+      <div class="hero-badge-tag">Innovación Asistencial en Medicina Nuclear</div>
+      <h2>Xestión Inteligente e Seguridade no Proceso PET/CT</h2>
+      <p>
+        Interconexión en tempo real entre o facultativo prescriptor, o servizo de Medicina Nuclear, o paciente citado e a consola de enfermaría para garantir a máxima calidade asistencial e o 100% de aproveitamento dos radiofármacos.
+      </p>
+    </section>
+
+    <!-- 4. TÍTULO DE MÓDULOS -->
+    <div class="programs-section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      Módulos Asistenciais Interconectados
+    </div>
+
+    <!-- 5. PARRILLA DOS 4 PROGRAMAS -->
+    <main class="programs-grid">
+      <!-- MÓDULO 1: PRESCRICIÓN MÉDICA -->
+      <a href="pet_peticion_medica/index.html" class="program-card card-mod-1">
+        <div>
+          <div class="card-header-meta">
+            <span class="module-num-pill">MÓDULO 1</span>
+            <span class="target-role-badge">Para Facultativos</span>
+          </div>
+          <div class="program-icon-box">🩺</div>
+          <h3>Prescrición Médica</h3>
+          <p>Portal asistencial para médicos solicitantes (Oncoloxía, Neuroloxía, Uroloxía, Cirurxía) con validación dosimétrica e cálculo instantáneo de prioridade.</p>
+          <ul class="program-features">
+            <li>10 protocolos oficiais estandarizados</li>
+            <li>Cálculo algorítmico P1 / P2 / P3</li>
+            <li>Filtros de seguridade e glicemia</li>
+            <li>Historial persoal "Mis Peticiones"</li>
+          </ul>
+        </div>
+        <div class="card-action-btn">Entrar na Prescrición →</div>
+      </a>
+
+      <!-- MÓDULO 2: TRIAXE E AXENDAMENTO PET/CT -->
+      <a href="pet_ct_triage/web_app/index.html" class="program-card card-mod-2">
+        <div>
+          <div class="card-header-meta">
+            <span class="module-num-pill">MÓDULO 2</span>
+            <span class="target-role-badge">Medicina Nuclear</span>
+          </div>
+          <div class="program-icon-box">📊</div>
+          <h3>Triaxe e Axendamento</h3>
+          <p>Motor algorítmico segundo criterios EANM/SERGAS con parrilla semanal por radiofármaco, control de vida media e xeración automática de citacións.</p>
+          <ul class="program-features">
+            <li>Matriz semanal por isótopo (^18F / ^68Ga)</li>
+            <li>Bloqueo preventivo de QT/RT (&lt;21 días)</li>
+            <li>Xeración automática de enlace por SMS</li>
+            <li>Xestión de peonadas e cupos</li>
+          </ul>
+        </div>
+        <div class="card-action-btn">Abrir Suite de Triaxe →</div>
+      </a>
+
+      <!-- MÓDULO 3: AUDIOGUÍAS DO PACIENTE -->
+      <a href="pet_prep_page/indexFDG.html" class="program-card card-mod-3">
+        <div>
+          <div class="card-header-meta">
+            <span class="module-num-pill">MÓDULO 3</span>
+            <span class="target-role-badge">Paciente e Familia</span>
+          </div>
+          <div class="program-icon-box">🎧</div>
+          <h3>Audioguías Paciente</h3>
+          <p>Portal interactivo adaptado ao móbil con instrucións de voz natural, cronómetro de xaxún sen hidratos e asistente virtual de dúbidas 24/7.</p>
+          <ul class="program-features">
+            <li>Audioguía oficial con voz sintetizada</li>
+            <li>Cronómetro de xaxún metabólico</li>
+            <li>Chatbot de resolución inmediata</li>
+            <li>Cancelación e adiamento online</li>
+          </ul>
+        </div>
+        <div class="card-action-btn">Ver Audioguía Paciente →</div>
+      </a>
+
+      <!-- MÓDULO 4: CONSOLA DE ENFERMARÍA -->
+      <a href="pet_prep_page/enfermeria.html" class="program-card card-mod-4">
+        <div>
+          <div class="card-header-meta">
+            <span class="module-num-pill">MÓDULO 4</span>
+            <span class="target-role-badge">Persoal de Enfermaría</span>
+          </div>
+          <div class="program-icon-box">🏥</div>
+          <h3>Consola de Enfermaría</h3>
+          <p>Monitorización pre-analítica en tempo real: vixilancia de glicemias capilares elevadas, bandexa de chamadas a pacientes e recuperación de doses.</p>
+          <ul class="program-features">
+            <li>Alertas de urxencias (Glicemia ≥ 200 mg/dL)</li>
+            <li>Bandexa de dúbidas e contacto telefónico</li>
+            <li>Reaproveitamento de ocos liberados</li>
+            <li>Cero absentismo ("No-Shows" &lt; 1.5%)</li>
+          </ul>
+        </div>
+        <div class="card-action-btn">Abrir Consola Enfermaría →</div>
+      </a>
+
+      <!-- MÓDULO 5: CONSOLA MÉDICA & PROTOCOLIZACIÓN -->
+      <a href="pet_consola_medica/index.html" class="program-card card-mod-5">
+        <div>
+          <div class="card-header-meta">
+            <span class="module-num-pill" style="background:#e0f2fe; color:#0369a1;">MÓDULO 5</span>
+            <span class="target-role-badge" style="background:#e0f2fe; color:#0284c7;">Médicos Especialistas</span>
+          </div>
+          <div class="program-icon-box" style="background:#e0f2fe; color:#0284c7;">👨‍⚕️</div>
+          <h3>Protocolización Médica</h3>
+          <p>Consola para facultativos de Medicina Nuclear: axenda de pacientes citados, visor de volante oficial e instrucións de adquisición a máquina.</p>
+          <ul class="program-features">
+            <li>Axenda de citados con filtrado por data e isótopo</li>
+            <li>Visor e descarga do volante de petición oficial</li>
+            <li>Pauta técnica: brazos arriba/abaixo e tempos máquina</li>
+            <li>Control de hidratación, diurético (Seguril) e contraste</li>
+          </ul>
+        </div>
+        <div class="card-action-btn" style="background:#0284c7;">Abrir Consola Médica →</div>
+      </a>
+    </main>
+
+    <!-- 6. ACCESO DIRECTO AOS 10 TRAZADORES PET OFICIAIS -->
+    <section class="tracers-section">
+      <div class="tracers-header">
+        <div>
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            Catálogo Oficial de 10 Protocolos de Audioguía PET/CT
+          </h3>
+          <p>Acceso directo ás guías oficiais de preparación segundo o radiofármaco prescrito</p>
+        </div>
+      </div>
+      <div class="tracers-grid">
+        <a href="pet_prep_page/indexFDG.html" class="tracer-btn">
+          <span class="tracer-badge">01</span>
+          <span>18F-FDG Oncolóxico / Inflamatorio</span>
+        </a>
+        <a href="pet_prep_page/indexFDG_Contraste.html" class="tracer-btn">
+          <span class="tracer-badge">02</span>
+          <span>18F-FDG con Contraste Iodado</span>
+        </a>
+        <a href="pet_prep_page/indexFDG_Endocarditis_HEP.html" class="tracer-btn">
+          <span class="tracer-badge">03</span>
+          <span>18F-FDG Endocardite + Protocolo HEP</span>
+        </a>
+        <a href="pet_prep_page/indexga68PSMA.html" class="tracer-btn">
+          <span class="tracer-badge">04</span>
+          <span>68Ga-PSMA (Cancro de Próstata)</span>
+        </a>
+        <a href="pet_prep_page/indexga68DOTATOC.html" class="tracer-btn">
+          <span class="tracer-badge">05</span>
+          <span>68Ga-DOTATOC (Tumores Neuroendócrinos)</span>
+        </a>
+        <a href="pet_prep_page/indexf18Colina.html" class="tracer-btn">
+          <span class="tracer-badge">06</span>
+          <span>18F-Colina (Recidiva Bioquímica)</span>
+        </a>
+        <a href="pet_prep_page/indexf18Paratiroides.html" class="tracer-btn">
+          <span class="tracer-badge">07</span>
+          <span>18F-Paratiroides (Hiperparatiroidismo)</span>
+        </a>
+        <a href="pet_prep_page/indexFDG_Neurologico.html" class="tracer-btn">
+          <span class="tracer-badge">08</span>
+          <span>18F-FDG Neurolóxico (Demencias)</span>
+        </a>
+        <a href="pet_prep_page/indexFDG_Neurofisioneurologia.html" class="tracer-btn">
+          <span class="tracer-badge">09</span>
+          <span>18F-FDG + Neurofisioneuroloxía</span>
+        </a>
+        <a href="pet_prep_page/indexf18PSMA.html" class="tracer-btn">
+          <span class="tracer-badge">10</span>
+          <span>18F-PSMA (Fluor-PSMA Próstata)</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 7. ESQUEMA DE FLUXO CLÍNICO INTEGRADO -->
+    <section class="flow-card">
+      <div class="flow-title">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        Arquitectura do Fluxo Asistencial Galaria · SERGAS
+      </div>
+      <div class="flow-steps-row">
+        <div class="flow-box">
+          <span class="flow-step-tag">FASE 1</span>
+          <h4>Prescrición</h4>
+          <p>O médico rexistra a solicitude con parámetros dosimétricos (peso/talla) e sospeita oncolóxica.</p>
+        </div>
+        <div class="flow-box">
+          <span class="flow-step-tag">FASE 2</span>
+          <h4>Triaxe Matricial</h4>
+          <p>O algoritmo asigna prioridade P1/P2/P3 e reserva oco no día axeitado para a vida media do isótopo.</p>
+        </div>
+        <div class="flow-box">
+          <span class="flow-step-tag">FASE 3</span>
+          <h4>Citación e Audioguía</h4>
+          <p>O paciente recibe un SMS coa data/hora e o enlace permanente á audioguía oficial da súa proba.</p>
+        </div>
+        <div class="flow-box">
+          <span class="flow-step-tag">FASE 4</span>
+          <h4>Control Pre-Analítico</h4>
+          <p>Enfermaría vixía glicemias e dúbidas para garantir citas 100% preparadas e cero doses perdidas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. PÉ DE PÁXINA INSTITUCIONAL -->
+    <footer>
+      <div class="footer-brand">
+        <strong>Galaria · Empresa Pública de Servizos Sanitarios</strong>
+        <span>|</span>
+        <span>SERGAS (Servizo Galego de Saúde)</span>
+      </div>
+      <div class="footer-links">
+        <a href="Presentacion_Sistemas_PET/DOCUMENTO_ECOSISTEMA_PET_CT.html" target="_blank">📖 Documento Técnico e Memoria</a>
+        <a href="pet_prep_page/index.html">📋 Protocolos Clínicos</a>
+      </div>
+    </footer>
+  </div>
+
+</body>
+</html>

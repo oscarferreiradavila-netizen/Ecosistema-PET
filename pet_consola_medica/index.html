@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consola Médica & Protocolización PET/CT | Galaria · SERGAS</title>
+  <meta name="description" content="Consola Médica Oficial de Galaria y SERGAS para la visualización de pacientes citados en PET/CT, consulta de volantes de petición e indicación de protocolos de adquisición médica (tiempos a máquina, posición de brazos, hidratación, diuréticos y contrastes).">
+
+  <!-- Google Fonts: Open Sans, Outfit y JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css?v=20261019_5">
+</head>
+<body>
+
+  <!-- 1. BARRA SUPERIOR INSTITUCIONAL XUNTA / SERGAS -->
+  <header class="sergas-top-bar">
+    <div class="sergas-top-container">
+      <div class="sergas-gov-text">
+        <span class="xunta-pill">XUNTA DE GALICIA</span>
+        <span class="sergas-sub">CONSELLERÍA DE SANIDADE · SERGAS</span>
+      </div>
+      <div class="sergas-portal-id">
+        <span>Galaria · Empresa Pública de Servizos Sanitarios</span>
+        <a href="../index.html">← Portal Maestro</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. CABECERA PRINCIPAL Y PERFIL DEL FACULTATIVO -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="brand-section">
+        <img src="galaria_logo.jpg" alt="Galaria - Empresa Pública de Servizos Sanitarios" class="galaria-logo">
+        <div class="header-titles">
+          <h1>
+            Consola Médica & Protocolización PET/CT
+            <span class="badge-mod">Módulo 5</span>
+          </h1>
+          <p>Servizo de Medicina Nuclear · Axenda de Pacientes Citados e Instrucións de Adquisición</p>
+        </div>
+      </div>
+
+      <div class="doctor-profile-card">
+        <div class="doctor-avatar">👨‍⚕️</div>
+        <div class="doctor-info">
+          <span class="doctor-name" id="currentDoctorDisplay">Dr. Manuel Gómez Feijóo</span>
+          <span class="doctor-role">FEA Medicina Nuclear & PET/CT · Col. 36/08421</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. CONTENEDOR CENTRAL -->
+  <main class="app-container">
+
+    <!-- 4. KPIS Y MÉTRICAS DE LA JORNADA -->
+    <section class="stats-banner" aria-label="Resumen asistencial del día">
+      <div class="stat-card">
+        <div class="stat-icon">📅</div>
+        <div class="stat-content">
+          <span class="stat-label">Pacientes Citados</span>
+          <span class="stat-value" id="kpiTotalCitados">0</span>
+          <span class="stat-sub" id="kpiFechaSub">Fecha seleccionada</span>
+        </div>
+      </div>
+
+      <div class="stat-card stat-pending">
+        <div class="stat-icon">⏳</div>
+        <div class="stat-content">
+          <span class="stat-label">Pendientes de Protocolizar</span>
+          <span class="stat-value" id="kpiPendientes">0</span>
+          <span class="stat-sub">Requieren pauta médica</span>
+        </div>
+      </div>
+
+      <div class="stat-card stat-ready">
+        <div class="stat-icon">✅</div>
+        <div class="stat-content">
+          <span class="stat-label">Protocolizados</span>
+          <span class="stat-value" id="kpiProtocolizados">0</span>
+          <span class="stat-sub">Listos para adquisición</span>
+        </div>
+      </div>
+
+      <div class="stat-card stat-urgent">
+        <div class="stat-icon">⚠️</div>
+        <div class="stat-content">
+          <span class="stat-label">Alertas Clínicas</span>
+          <span class="stat-value" id="kpiAlertas">0</span>
+          <span class="stat-sub">Diabetes / Contraste / Movilidad</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. BARRA DE HERRAMIENTAS, FILTROS Y BÚSQUEDA -->
+    <section class="toolbar-card">
+      <div class="toolbar-row-top">
+        <!-- Presets de Fecha -->
+        <div class="date-presets-group">
+          <button class="date-btn active" id="btnDateToday" data-filter="today">
+            <span>📅 Citas de Hoy</span>
+          </button>
+          <button class="date-btn" id="btnDateTomorrow" data-filter="tomorrow">
+            <span>📅 Mañana</span>
+          </button>
+          <button class="date-btn" id="btnDateAll" data-filter="all">
+            <span>🌐 Ver Todos</span>
+          </button>
+          <div class="date-picker-wrap">
+            <label for="inputCustomDate" style="font-size:0.75rem; font-weight:700; color:var(--text-muted);">OTRA FECHA:</label>
+            <input type="date" id="inputCustomDate">
+          </div>
+        </div>
+
+        <!-- Pestañas de Estado -->
+        <div class="status-tabs-group">
+          <button class="status-tab active" data-status="all">
+            Todos <span class="tab-pill-count" id="countTabAll">0</span>
+          </button>
+          <button class="status-tab" data-status="pending">
+            🟡 Pendientes <span class="tab-pill-count" id="countTabPending">0</span>
+          </button>
+          <button class="status-tab" data-status="done">
+            🟢 Protocolizados <span class="tab-pill-count" id="countTabDone">0</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="toolbar-row-bottom">
+        <div class="filter-controls">
+          <!-- Búsqueda en tiempo real -->
+          <div class="search-input-wrap">
+            <svg class="search-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="searchInput" placeholder="Buscar por nombre, NHC, diagnóstico o servicio solicitante...">
+          </div>
+
+          <!-- Filtro por Isótopo -->
+          <select id="selectTracer" class="filter-select">
+            <option value="all">🧪 Todos los Radiofármacos</option>
+            <option value="18F-FDG">18F-FDG (Oncológico / Inflamatorio)</option>
+            <option value="PSMA">18F-PSMA / 68Ga-PSMA (Próstata)</option>
+            <option value="Colina">18F-Colina (Próstata / Paratiroides)</option>
+            <option value="DOTATOC">68Ga-DOTATOC / Neuroendocrinos</option>
+            <option value="Neurologico">FDG Neurológico / Demencias</option>
+          </select>
+
+          <!-- Filtro por Tipo de Prueba / Rango -->
+          <select id="selectTestType" class="filter-select">
+            <option value="all">📐 Todos los Tipos de Prueba</option>
+            <option value="cabeza_cuello">Cabeza-Cuello + Cuerpo Entero</option>
+            <option value="base_craneo">Base de Cráneo a Muslos</option>
+            <option value="mmii">MMII (Miembros Inferiores)</option>
+            <option value="cuerpo_total">Cuerpo Total (Vértice a Pies)</option>
+            <option value="cerebro">Cerebro Dedicado (NeuroPET)</option>
+          </select>
+        </div>
+
+        <!-- Alternador de Vista y Sincronización en Red -->
+        <div class="view-toggles" style="display:flex; align-items:center; gap:8px;">
+          <button class="btn-secondary" id="btnSyncPatients" title="Buscar nuevos pacientes y sincronizar con la red" style="padding:6px 12px; font-size:0.8rem; display:flex; align-items:center; gap:5px; background:white; border:1px solid #cbd5e1; border-radius:6px; cursor:pointer; color:var(--sergas-navy); font-weight:700;">
+            <span id="syncIcon">🔄</span>
+            <span>Sincronizar Red</span>
+          </button>
+          <button class="btn-view-toggle active" id="btnViewCards" title="Vista en Tarjetas">
+            <span>🗂️ Tarjetas</span>
+          </button>
+          <button class="btn-view-toggle" id="btnViewTable" title="Vista en Tabla">
+            <span>📋 Tabla</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. LISTADO DE PACIENTES CITADOS -->
+    <section>
+      <div class="patients-section-header">
+        <h2>
+          <span>📋</span>
+          <span id="sectionTitleText">Agenda de Pacientes Citados para la Jornada</span>
+        </h2>
+        <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;" id="displayFilteredCount">0 pacientes encontrados</span>
+      </div>
+
+      <!-- Contenedor Vista Tarjetas -->
+      <div class="patients-grid" id="patientsGrid" style="margin-top: 1rem;">
+        <!-- Inyección dinámica de tarjetas de pacientes -->
+      </div>
+
+      <!-- Contenedor Vista Tabla -->
+      <div class="table-container-card" id="patientsTableWrap" style="margin-top: 1rem;">
+        <table class="patients-table">
+          <thead>
+            <tr>
+              <th>Hora Cita</th>
+              <th>Paciente & NHC</th>
+              <th>Datos Físicos</th>
+              <th>Radiofármaco</th>
+              <th>Diagnóstico / Sospecha</th>
+              <th>Prioridad</th>
+              <th>Alertas</th>
+              <th>Estado Protocolo</th>
+              <th style="text-align: right;">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="patientsTableBody">
+            <!-- Inyección dinámica de filas -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mensaje cuando no hay pacientes -->
+      <div id="noPatientsMessage" style="display: none; background: white; border-radius: 12px; padding: 3rem 1.5rem; text-align: center; border: 1px dashed #cbd5e1; margin-top: 1.5rem;">
+        <div style="font-size: 3rem; margin-bottom: 0.75rem;">🔍</div>
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.25rem; color: var(--sergas-navy); margin-bottom: 0.5rem;">Ningún paciente encontrado con estos filtros</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 500px; margin: 0 auto 1.25rem auto;">Pruebe a cambiar la fecha seleccionada, limpiar el buscador o pulsar en "Ver Todos" para inspeccionar la base de datos completa.</p>
+        <button class="btn-primary" onclick="window.consolaApp && window.consolaApp.resetFilters()">Restablecer Filtros</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       MODAL DE PROTOCOLIZACIÓN MÉDICA PET/CT
+       ========================================================================== -->
+  <div class="modal-backdrop" id="protocolModalBackdrop" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <!-- Encabezado Modal -->
+      <div class="modal-header">
+        <div class="modal-header-titles">
+          <h3>
+            <span>🩺</span>
+            Protocolización de Adquisición PET/CT
+          </h3>
+          <p>Defina las instrucciones técnicas y clínicas para la preparación, paso a máquina y adquisición tomográfica.</p>
+        </div>
+        <button class="btn-close-modal" id="btnCloseProtocolModal" title="Cerrar modal">&times;</button>
+      </div>
+
+      <!-- Tira con datos del paciente seleccionado -->
+      <div class="modal-patient-strip" id="modalPatientStrip">
+        <div class="strip-patient-details">
+          <span class="strip-name" id="modalPatName">Nombre del Paciente</span>
+          <span class="strip-item">NHC: <strong id="modalPatNHC">--</strong></span>
+          <span class="strip-item">Edad: <strong id="modalPatAge">--</strong></span>
+          <span class="strip-item">Peso/Talla: <strong id="modalPatWeight">--</strong></span>
+          <span class="strip-item">Isótopo: <strong id="modalPatTracer">--</strong></span>
+          <span class="strip-item">Glucemia: <strong id="modalPatGlucose">--</strong></span>
+        </div>
+        <button class="btn-secondary" id="btnViewVolanteFromModal" style="padding: 4px 10px; font-size: 0.78rem;">
+          📄 Ver Volante de Petición
+        </button>
+      </div>
+
+      <!-- Barra de Pestañas de Acceso Rápido a las 5 Áreas de Protocolización -->
+      <nav class="protocol-nav-tabs-bar" id="protocolNavTabsBar" aria-label="Secciones del protocolo">
+        <button type="button" class="protocol-tab-btn active" data-target="sectionUptake">
+          <span class="tab-num">1</span>
+          <span>⏱️</span>
+          <span>Tiempo Máquina</span>
+        </button>
+        <button type="button" class="protocol-tab-btn" data-target="sectionArmsRange">
+          <span class="tab-num">2</span>
+          <span>🙆‍♂️</span>
+          <span>Brazos y Rango</span>
+        </button>
+        <button type="button" class="protocol-tab-btn" data-target="sectionHydration">
+          <span class="tab-num">3</span>
+          <span>💧</span>
+          <span>Hidratación en Box</span>
+        </button>
+        <button type="button" class="protocol-tab-btn" data-target="sectionMedications">
+          <span class="tab-num">4</span>
+          <span>💊</span>
+          <span>Diurético y Contraste</span>
+        </button>
+        <button type="button" class="protocol-tab-btn" data-target="sectionSignature">
+          <span class="tab-num">5</span>
+          <span>✍️</span>
+          <span>Firma Médica</span>
+        </button>
+      </nav>
+
+      <!-- Cuerpo del Formulario de Protocolización -->
+      <div class="modal-body" id="protocolModalBody">
+
+        <!-- Banner Informativo Superior: 5 Secciones Disponibles -->
+        <div class="protocol-all-sections-banner">
+          <div class="banner-title">
+            <span>📋</span>
+            <strong>Protocolo Clínico Integral PET/CT:</strong> 5 Áreas Clínicas para Pautar
+          </div>
+          <p class="banner-text">
+            Puede desplazarse verticalmente usando la rueda/panel táctil o hacer clic en las <strong>pestañas superiores (1 a 5)</strong> para saltar directamente a:
+            <strong>1. Tiempo de Máquina</strong> • <strong>2. Brazos y Rango</strong> • <strong>3. Hidratación en Box</strong> • <strong>4. Medicación (Diurético Post-Inyección) y Contraste (En máquina / IV en box / Sin contraste)</strong> • <strong>5. Firma Médica</strong>.
+          </p>
+        </div>
+
+        <!-- 1. TIEMPO DE ESPERA / PASO A MÁQUINA (UPTAKE TIME) -->
+        <section class="protocol-section-box recommended-highlight" id="sectionUptake">
+          <div class="section-box-header">
+            <h4 class="section-box-title">
+              <span>⏱️</span>
+              1. Tiempo de Espera / Paso a Máquina (Tiempo de Captación)
+            </h4>
+            <span class="section-box-sub">Minutos desde inyección endovenosa hasta adquisición en gantry</span>
+          </div>
+
+          <div class="options-grid" id="uptakeOptionsGrid">
+            <!-- 60 min -->
+            <label class="option-radio-card selected" data-field="uptake" data-val="60">
+              <input type="radio" name="radioUptake" value="60" checked>
+              <div class="option-icon">⏱️</div>
+              <div class="option-title">60 minutos</div>
+              <div class="option-desc">Estándar oficial EANM/SERGAS. Óptimo para tumores sólidos con 18F-FDG.</div>
+              <span class="option-pill-badge">Recomendado Estándar</span>
+            </label>
+
+            <!-- 90 min -->
+            <label class="option-radio-card" data-field="uptake" data-val="90">
+              <input type="radio" name="radioUptake" value="90">
+              <div class="option-icon">⏳</div>
+              <div class="option-title">90 minutos</div>
+              <div class="option-desc">Captación metabólica prolongada en procesos infecciosos, endocarditis o vasculitis.</div>
+              <span class="option-pill-badge">Infección / Inflamación</span>
+            </label>
+
+            <!-- 120 min -->
+            <label class="option-radio-card" data-field="uptake" data-val="120">
+              <input type="radio" name="radioUptake" value="120">
+              <div class="option-icon">🔬</div>
+              <div class="option-title">120 minutos (Tardía)</div>
+              <div class="option-desc">Adquisición tardía o dual-point para lavado de pool vascular en lesiones dudosas hepáticas o pulmonares.</div>
+              <span class="option-pill-badge">Fase Tardía</span>
+            </label>
+
+            <!-- 45 min -->
+            <label class="option-radio-card" data-field="uptake" data-val="45">
+              <input type="radio" name="radioUptake" value="45">
+              <div class="option-icon">⚡</div>
+              <div class="option-title">45 minutos</div>
+              <div class="option-desc">Captación precoz indicada para 18F-PSMA o 18F-Colina en neoplasia prostática.</div>
+              <span class="option-pill-badge">PSMA / Colina</span>
+            </label>
+          </div>
+
+          <div class="custom-input-row">
+            <span style="font-size:0.82rem; font-weight:700; color:var(--text-secondary);">Otro tiempo personalizado:</span>
+            <input type="number" id="inputCustomUptake" placeholder="Ej: 75" min="20" max="240" style="width: 100px;">
+            <span style="font-size:0.82rem; color:var(--text-muted);">minutos post-inyección</span>
+          </div>
+
+          <div class="section-next-step-row">
+            <button type="button" class="btn-next-step" onclick="window.consolaApp.scrollToSection('sectionArmsRange')">
+              Continuar a 2. Brazos y Rango ➡️
+            </button>
+          </div>
+        </section>
+
+        <!-- 2. POSICIONAMIENTO E IMÁGENES (BRAZOS Y RANGO DE ADQUISICIÓN) -->
+        <section class="protocol-section-box" id="sectionArmsRange">
+          <div class="section-box-header">
+            <h4 class="section-box-title">
+              <span>🙆‍♂️</span>
+              2. Posicionamiento del Paciente e Imágenes (Brazos y Rango de Cobertura)
+            </h4>
+            <span class="section-box-sub">Orientación de extremidades superiores y longitud anatómica</span>
+          </div>
+
+          <div style="font-size: 0.82rem; font-weight: 700; color: var(--sergas-navy); margin-bottom: 0.35rem;">
+            A) Posición de los Brazos:
+          </div>
+          <div class="options-grid" id="armsOptionsGrid">
+            <!-- Ambos Brazos Arriba -->
+            <label class="option-radio-card selected" data-field="arms" data-val="arriba">
+              <input type="radio" name="radioArms" value="arriba" checked>
+              <div class="option-icon">🙆‍♂️</div>
+              <div class="option-title">Ambos Brazos Arriba (Arms Up)</div>
+              <div class="option-desc">Con soporte cefálico. Estándar para tórax, abdomen y pelvis; elimina artefactos de endurecimiento óseo.</div>
+              <span class="option-pill-badge">Estándar Tronco</span>
+            </label>
+
+            <!-- Ambos Brazos Abajo -->
+            <label class="option-radio-card" data-field="arms" data-val="abajo">
+              <input type="radio" name="radioArms" value="abajo">
+              <div class="option-icon">🙇‍♂️</div>
+              <div class="option-title">Ambos Brazos Abajo (Arms Down)</div>
+              <div class="option-desc">A lo largo del cuerpo. OBLIGATORIO en tumores de cabeza y cuello, cavum, melanoma facial, hombro doloroso o prótesis.</div>
+              <span class="option-pill-badge">Cabeza / Cuello / Dolor</span>
+            </label>
+
+            <!-- Soporte Abdominal -->
+            <label class="option-radio-card" data-field="arms" data-val="abdominal">
+              <input type="radio" name="radioArms" value="abdominal">
+              <div class="option-icon">🧍‍♂️</div>
+              <div class="option-title">Brazos en Reposo Abdominal</div>
+              <div class="option-desc">Sobre el abdomen con cincha de confort. Pacientes encamados, dolor severo, artrosis o cifosis torácica.</div>
+              <span class="option-pill-badge">Movilidad Reducida</span>
+            </label>
+          </div>
+
+          <div style="font-size: 0.82rem; font-weight: 700; color: var(--sergas-navy); margin-top: 1rem; margin-bottom: 0.35rem;">
+            B) Tipo de Prueba y Rango Anatómico de Adquisición (Scout View):
+          </div>
+          <div class="options-grid" id="rangeOptionsGrid">
+            <!-- Cabeza y Cuello + Cuerpo Entero -->
+            <label class="option-radio-card" data-field="range" data-val="cabeza_cuello_cuerpo">
+              <input type="radio" name="radioRange" value="cabeza_cuello_cuerpo">
+              <div class="option-icon">🔄</div>
+              <div class="option-title">Cabeza-Cuello + Cuerpo Entero</div>
+              <div class="option-desc">Protocolo combinado en 2 fases: 1ª fase cabeza-cuello con brazos abajo + 2ª fase cuerpo entero de cuello a muslos.</div>
+              <span class="option-pill-badge">Combinado 2 Fases</span>
+            </label>
+
+            <!-- Base de Cráneo a Muslos -->
+            <label class="option-radio-card selected" data-field="range" data-val="base_craneo_muslos">
+              <input type="radio" name="radioRange" value="base_craneo_muslos" checked>
+              <div class="option-icon">📐</div>
+              <div class="option-title">Base de Cráneo a Muslos</div>
+              <div class="option-desc">Desde base craneal hasta tercio medio de muslos. Estándar clásico EANM para oncología toraco-abdominal y linfomas.</div>
+              <span class="option-pill-badge">Estándar Oncológico</span>
+            </label>
+
+            <!-- MMII (Miembros Inferiores) -->
+            <label class="option-radio-card" data-field="range" data-val="mmii">
+              <input type="radio" name="radioRange" value="mmii">
+              <div class="option-icon">🦵</div>
+              <div class="option-title">MMII (Miembros Inferiores)</div>
+              <div class="option-desc">Adquisición dedicada a extremidades inferiores (muslos, rodillas, piernas y pies): sarcomas, melanoma acral o vasculitis.</div>
+              <span class="option-pill-badge">Extremidades MMII</span>
+            </label>
+
+            <!-- Cuerpo Total (Vértice a pies) -->
+            <label class="option-radio-card" data-field="range" data-val="cuerpo_total">
+              <input type="radio" name="radioRange" value="cuerpo_total">
+              <div class="option-icon">🦶</div>
+              <div class="option-title">Cuerpo Total (Vértice a Pies)</div>
+              <div class="option-desc">Cobertura anatómica completa desde la coronilla hasta las plantas de los pies (melanoma, mieloma, sarcomas).</div>
+              <span class="option-pill-badge">Cuerpo Extendido</span>
+            </label>
+
+            <!-- Cerebro / NeuroPET -->
+            <label class="option-radio-card" data-field="range" data-val="cerebro">
+              <input type="radio" name="radioRange" value="cerebro">
+              <div class="option-icon">🧠</div>
+              <div class="option-title">Cerebro Dedicado (NeuroPET)</div>
+              <div class="option-desc">Adquisición craneal estática 3D de alta resolución (demencias, deterioro cognitivo, epilepsia o gliomas).</div>
+              <span class="option-pill-badge">NeuroPET 3D</span>
+            </label>
+
+            <!-- Otro Rango Personalizado -->
+            <label class="option-radio-card" data-field="range" data-val="otro_rango">
+              <input type="radio" name="radioRange" value="otro_rango">
+              <div class="option-icon">✍️</div>
+              <div class="option-title">Otro / Rango Personalizado</div>
+              <div class="option-desc">Definir cortes anatómicos específicos manualmente para el técnico operador.</div>
+              <span class="option-pill-badge">Personalizado</span>
+            </label>
+          </div>
+
+          <div class="custom-input-row" id="wrapCustomRange" style="display: none; margin-top: 0.6rem;">
+            <span style="font-size:0.82rem; font-weight:700; color:var(--text-secondary);">Detalle del Rango Personalizado:</span>
+            <input type="text" id="inputCustomRange" placeholder="Ej: Desde sínfisis púbica hasta huecos poplíteos..." style="flex:1;">
+          </div>
+
+          <div class="section-next-step-row">
+            <button type="button" class="btn-next-step" onclick="window.consolaApp.scrollToSection('sectionHydration')">
+              Continuar a 3. Hidratación en Box ➡️
+            </button>
+          </div>
+        </section>
+
+        <!-- 3. PAUTA DE HIDRATACIÓN (SOLO HIDRATACIÓN EN BOX) -->
+        <section class="protocol-section-box" id="sectionHydration">
+          <div class="section-box-header">
+            <h4 class="section-box-title">
+              <span>💧</span>
+              3. Pauta de Hidratación en Box
+            </h4>
+            <span class="section-box-sub">Ingesta hídrica oral programada durante la estancia en el box de reposo</span>
+          </div>
+
+          <div class="options-grid" id="hydrationOptionsGrid">
+            <!-- Hidratación en Box SÍ -->
+            <label class="option-radio-card selected" data-field="hydration" data-val="box_si">
+              <input type="radio" name="radioHydration" value="box_si" checked>
+              <div class="option-icon">💧</div>
+              <div class="option-title">Hidratación en Box (Recomendado)</div>
+              <div class="option-desc">Beber agua continuamente durante el tiempo de espera en el box de reposo (500 a 1.000 mL) para forzar aclaramiento renal y lavado urinario del radiofármaco.</div>
+              <span class="option-pill-badge">Pauta Estándar en Box</span>
+            </label>
+
+            <!-- Sin Hidratación en Box -->
+            <label class="option-radio-card" data-field="hydration" data-val="box_no">
+              <input type="radio" name="radioHydration" value="box_no">
+              <div class="option-icon">🚫</div>
+              <div class="option-title">Sin Hidratación en Box</div>
+              <div class="option-desc">Restricción hídrica oral en el box de reposo (insuficiencia cardíaca congestiva severa o procedimiento con sedación/anestesia programada).</div>
+              <span class="option-pill-badge">Restricción Hídrica</span>
+            </label>
+          </div>
+
+          <div class="section-next-step-row">
+            <button type="button" class="btn-next-step" onclick="window.consolaApp.scrollToSection('sectionMedications')">
+              Continuar a 4. Medicación y Contrastes ➡️
+            </button>
+          </div>
+        </section>
+
+        <!-- 4. MEDICACIÓN (SOLO DIURÉTICO) Y CONTRASTE -->
+        <section class="protocol-section-box" id="sectionMedications">
+          <div class="section-box-header">
+            <h4 class="section-box-title">
+              <span>💊</span>
+              4. Pauta de Medicación y Contraste
+            </h4>
+            <span class="section-box-sub">Diurético (Furosemida) y modalidad de contraste (en máquina, en box con tiempo previo o sin contraste)</span>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:1.1rem;">
+            
+            <!-- A) MEDICACIÓN: SOLO DIURÉTICO (FUROSEMIDA / SEGURIL) -->
+            <div class="med-subgroup highlight-diuretic">
+              <div class="med-subgroup-title">
+                <span style="display:flex; align-items:center; gap:6px;">
+                  <span>⚡</span>
+                  <strong>A) Medicación: Diurético (Furosemida / Seguril 20 mg):</strong>
+                </span>
+                <span style="font-size:0.75rem; color:#64748b;">Eliminación de estasis vesical y aclaramiento renal</span>
+              </div>
+              <div class="options-grid" id="diureticOptionsGrid">
+                <!-- SÍ Post Inyección -->
+                <label class="option-radio-card" data-field="diuretic" data-val="si_20mg_post">
+                  <input type="radio" name="radioDiuretic" value="si_20mg_post">
+                  <div class="option-icon">💉</div>
+                  <div class="option-title">SÍ: Furosemida 20 mg Post-Inyección</div>
+                  <div class="option-desc">Administrar 20 mg IV lenta a los 15-20 min tras inyectar el radiofármaco. Lavado vesical progresivo.</div>
+                  <span class="option-pill-badge" style="background:#0284c7; color:white;">Post-Inyección</span>
+                </label>
+
+                <!-- NO Diurético -->
+                <label class="option-radio-card selected" data-field="diuretic" data-val="no">
+                  <input type="radio" name="radioDiuretic" value="no" checked>
+                  <div class="option-icon">❌</div>
+                  <div class="option-title">NO Administrar Diurético</div>
+                  <div class="option-desc">Estándar en la mayoría de tumores fuera de la pelvis o sin sospecha de lesión vesicoprostática.</div>
+                  <span class="option-pill-badge">Habitual</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- B) CONTRASTE: EN MÁQUINA, IV EN BOX CON TIEMPO, O SIN CONTRASTE -->
+            <div class="med-subgroup highlight-contrast">
+              <div class="med-subgroup-title">
+                <span style="display:flex; align-items:center; gap:6px;">
+                  <span>☢️</span>
+                  <strong>B) Protocolo de Contraste:</strong>
+                </span>
+                <span style="font-size:0.75rem; color:#0284c7; font-weight:700;">Contraste en máquina, IV en box o sin contraste</span>
+              </div>
+              <div class="options-grid" id="contrastOptionsGrid">
+                <!-- 1. CONTRASTE EN MÁQUINA -->
+                <label class="option-radio-card" data-field="contrast" data-val="en_maquina">
+                  <input type="radio" name="radioContrast" value="en_maquina">
+                  <div class="option-icon">💉</div>
+                  <div class="option-title">Contraste en Máquina (CT con CIV)</div>
+                  <div class="option-desc">Inyección endovenosa de contraste iodado acoplada en máquina con inyector automático en camilla (fase portal 70s).</div>
+                  <span class="option-pill-badge" style="background:#0284c7; color:white;">CIV en Máquina</span>
+                </label>
+
+                <!-- 2. CONTRASTE IV EN BOX (CON TIEMPO ANTES DE LA PRUEBA) -->
+                <label class="option-radio-card" data-field="contrast" data-val="en_box">
+                  <input type="radio" name="radioContrast" value="en_box">
+                  <div class="option-icon">💉</div>
+                  <div class="option-title">Contraste IV en Box (Endovenoso)</div>
+                  <div class="option-desc">
+                    Administrar contraste intravenoso (CIV) en el box de preparación 
+                    <span class="med-time-input-box" style="margin:2px 0;">
+                      <input type="number" id="inputContrastBoxMinutes" value="15" min="5" max="120"> min
+                    </span>
+                    antes de la prueba para fase diagnóstica previa a la adquisición en camilla.
+                  </div>
+                  <span class="option-pill-badge" style="background:#0284c7; color:white;">CIV en Box</span>
+                </label>
+
+                <!-- 3. SIN CONTRASTE -->
+                <label class="option-radio-card selected" data-field="contrast" data-val="sin_contraste">
+                  <input type="radio" name="radioContrast" value="sin_contraste" checked>
+                  <div class="option-icon">❌</div>
+                  <div class="option-title">Sin Contraste (CT Baja Dosis)</div>
+                  <div class="option-desc">Adquisición tomográfica exclusivamente a baja dosis (Low-Dose) para corrección de atenuación y localización anatómica.</div>
+                  <span class="option-pill-badge">Baja Dosis Estándar</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- OBSERVACIONES EN TEXTO LIBRE -->
+            <div style="margin-top: 0.2rem;">
+              <label for="txtDoctorNotes" style="font-size:0.76rem; font-weight:700; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:4px;">
+                Observaciones Clínicas y Técnicas del Médico (Texto Libre para la Consola del TSID):
+              </label>
+              <textarea id="txtDoctorNotes" class="textarea-notes" placeholder="Ej: Furosemida 15 min antes de entrar a máquina; vaciado vesical previo obligatorio..."></textarea>
+            </div>
+
+          </div>
+
+          <div class="section-next-step-row">
+            <button type="button" class="btn-next-step" onclick="window.consolaApp.scrollToSection('sectionSignature')">
+              Continuar a 5. Firma Médica ➡️
+            </button>
+          </div>
+        </section>
+
+        <!-- 5. FIRMA Y VALIDACIÓN MÉDICA -->
+        <section class="signature-box" id="sectionSignature">
+          <div class="signature-fields">
+            <div class="signature-input-group">
+              <label for="selectDoctorSign">Facultativo Especialista Responsable:</label>
+              <select id="selectDoctorSign">
+                <option value="Dr. Manuel Gómez Feijóo (Col. 36/08421)">Dr. Manuel Gómez Feijóo (Col. 36/08421)</option>
+                <option value="Dra. Elena Rial Vázquez (Col. 36/09144)">Dra. Elena Rial Vázquez (Col. 36/09144)</option>
+                <option value="Dr. Alberto Silva Pousa (Col. 15/07332)">Dr. Alberto Silva Pousa (Col. 15/07332)</option>
+                <option value="Dra. Carmen Montes Rey (Col. 36/06118)">Dra. Carmen Montes Rey (Col. 36/06118)</option>
+              </select>
+            </div>
+            <div class="signature-input-group">
+              <label>Fecha y Hora de Validación:</label>
+              <input type="text" id="displaySignTimestamp" readonly style="background:#e2e8f0; width:180px;">
+            </div>
+          </div>
+
+          <div style="font-size:0.75rem; color:var(--sergas-navy); font-weight:700; display:flex; align-items:center; gap:6px;">
+            <span>🔒 Firma Digital Galaria · SERGAS</span>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Footer del Modal -->
+      <div class="modal-footer">
+        <button class="btn-secondary" id="btnCancelProtocol">Cancelar</button>
+        <div class="footer-actions-right">
+          <button class="btn-print-action" id="btnPrintProtocolSheet">
+            🖨️ Imprimir Hoja Técnica para TSID
+          </button>
+          <button class="btn-primary" id="btnSaveProtocol">
+            💾 Guardar y Validar Protocolo Oficial
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL DE VISUALIZACIÓN DEL VOLANTE DE PETICIÓN
+       ========================================================================== -->
+  <div class="modal-backdrop" id="volanteModalBackdrop" role="dialog" aria-modal="true">
+    <div class="modal-dialog volante-modal-dialog">
+      <div class="modal-header">
+        <div class="modal-header-titles">
+          <h3>
+            <span>📄</span>
+            Volante Oficial de Petición Médica — Galaria · SERGAS
+          </h3>
+          <p id="volanteModalSubtitle">Consulta de antecedentes clínicos, motivo de prescripción y parámetros dosimétricos.</p>
+        </div>
+        <button class="btn-close-modal" id="btnCloseVolanteModal" title="Cerrar volante">&times;</button>
+      </div>
+      <iframe id="volanteIframe" class="volante-iframe-wrap" title="Volante de Petición Oficial"></iframe>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="btnCloseVolanteModalBtn">Cerrar Visor</button>
+        <button class="btn-primary" id="btnPrintVolanteFromViewer">🖨️ Imprimir Volante de Petición</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       CONTENEDOR DE TOASTS Y NOTIFICACIONES
+       ========================================================================== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ==========================================================================
+       PIE DE PÁGINA INSTITUCIONAL
+       ========================================================================== -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div>
+        <strong>Galaria · Empresa Pública de Servizos Sanitarios</strong> | Servizo Galego de Saúde (SERGAS)
+        <br>
+        <span style="font-size: 0.76rem; color: var(--text-muted);">Unidades de Medicina Nuclear e Radiofarmacia de Vigo, Santiago e A Coruña</span>
+      </div>
+      <div class="footer-nav">
+        <a href="../index.html">Portal Maestro</a>
+        <a href="../pet_peticion_medica/index.html">Módulo 1: Prescrición</a>
+        <a href="../pet_ct_triage/web_app/index.html">Módulo 2: Triaxe</a>
+        <a href="../pet_prep_page/enfermeria.html">Módulo 4: Enfermaría</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js?v=20261019_5"></script>
+</body>
+</html>

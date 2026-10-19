@@ -1,0 +1,3417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Instrucciones oficiales de preparación para PET FDG Oncológico / Inflamatorio: ayuno de 6 horas, dieta pobre en hidratos, reposo muscular y asistente virtual de enfermería.">
+  <title>PET FDG Oncológico / Inflamatorio | Audioguía Oficial de Preparación</title>
+  
+  <!-- Fuente Google Fonts: Open Sans (Identidad Corporativa Galaria / SERGAS) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       VARIABLES Y SISTEMA DE DISEÑO GALARIA - SERGAS (SERVIZO GALEGO DE SAÚDE)
+       ========================================================================== */
+    :root {
+      /* Colores Institucionales Galaria / SERGAS */
+      --sergas-blue: #007eb4;             /* Azul principal Galaria / Sergas */
+      --sergas-blue-hover: #005b82;       /* Azul interacción */
+      --sergas-navy: #004868;            /* Azul escuro corporativo titulares */
+      --sergas-dark: #08293d;            /* Azul profundo institucional */
+      --sergas-soft-blue: #e6f4fa;       /* Azul pastel fondos e etiquetas */
+      --sergas-subtle: #f0f7fb;          /* Fondo suave destacados */
+      
+      --primary: #007eb4;
+      --primary-hover: #005b82;
+      --primary-dark: #004868;
+      --accent-cyan: #0284c7;
+      
+      --bg-page: #f4f7f9;                /* Fondo limpo sanitario */
+      --bg-card: #ffffff;                /* Tarxetas e paneis brancos */
+      --bg-card-hover: #f8fafc;
+      --bg-elevated: #e2e8f0;            /* Bordes institucionais */
+      --border-subtle: #d6e2e9;
+      
+      --danger: #dc2626;                 /* Alertas e cancelación */
+      --danger-hover: #b91c1c;
+      --danger-bg: #fef2f2;
+      --danger-border: #fca5a5;
+      
+      --warning: #d97706;                /* Avisos precaución */
+      --warning-bg: #fffbeb;
+      --warning-border: #fde68a;
+      
+      --success: #16a34a;                /* Verificación clínica */
+      --success-bg: #f0fdf4;
+      --success-border: #86efac;
+
+      --text-main: #1e293b;              /* Texto principal de alta lexibilidade */
+      --text-muted: #526071;             /* Texto secundario */
+      --text-dim: #718096;               /* Notas ao pé e marcas */
+      
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-full: 9999px;
+      
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s ease;
+      --shadow-sm: 0 1px 3px rgba(0, 40, 70, 0.06);
+      --shadow-md: 0 4px 14px rgba(0, 60, 100, 0.08);
+      --shadow-lg: 0 10px 25px rgba(0, 60, 100, 0.12);
+      --shadow-blue: 0 4px 16px rgba(0, 126, 180, 0.25);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--sergas-blue);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 980px;
+      padding: 0 1.25rem;
+      margin: 0 auto;
+    }
+
+    /* ==========================================================================
+       BARRA INSTITUCIONAL SUPERIOR (SERGAS / XUNTA)
+       ========================================================================== */
+    .sergas-top-bar {
+      width: 100%;
+      background: #004868;
+      color: #ffffff;
+      font-size: 0.8rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .sergas-top-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .sergas-gov-text {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .xunta-pill {
+      background: #007eb4;
+      color: #ffffff;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .sergas-sub {
+      color: #e0f2fe;
+    }
+
+    .sergas-portal-id {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.78rem;
+      color: #bae6fd;
+    }
+
+    .lang-pill {
+      background: rgba(255,255,255,0.12);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       CABECERA CORPORATIVA GALARIA
+       ========================================================================== */
+    .galaria-main-header {
+      width: 100%;
+      background: #ffffff;
+      border-bottom: 3px solid var(--sergas-blue);
+      padding: 1rem 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brand-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand-logo-area {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .galaria-brand-logo {
+      height: 48px;
+      width: auto;
+      max-width: 260px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .hospital-unit-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .unit-tag {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--sergas-navy);
+      letter-spacing: 0.04em;
+    }
+
+    .unit-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       HERO BANNER DE LA PRUEBA (FONDO CLARO SERGAS)
+       ========================================================================== */
+    .hero-banner {
+      width: 100%;
+      background: linear-gradient(180deg, #ffffff 0%, #edf6fb 100%);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 2rem 0 1.5rem 0;
+      text-align: center;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--sergas-soft-blue);
+      border: 1.5px solid #bae6fd;
+      color: var(--sergas-navy);
+      padding: 0.35rem 1.1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+      letter-spacing: 0.03em;
+    }
+
+    .header-badge svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--sergas-blue);
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 4.5vw, 2.75rem);
+      font-weight: 800;
+      color: var(--sergas-navy);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.4rem;
+    }
+
+    .subtitle {
+      font-size: clamp(0.95rem, 2vw, 1.12rem);
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 1.25rem auto;
+      font-weight: 400;
+      line-height: 1.55;
+    }
+
+    .alert-banner {
+      background-color: var(--sergas-soft-blue);
+      border: 1px solid #7dd3fc;
+      border-left: 4px solid var(--sergas-blue);
+      color: #0369a1;
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .alert-banner svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      fill: var(--sergas-blue);
+    }
+
+    /* Tarjeta Oficial del Paciente Citado Galaria */
+    .patient-card-container {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-left: 5px solid var(--sergas-blue);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem auto 1.35rem auto;
+      max-width: 820px;
+      box-shadow: var(--shadow-md);
+      text-align: left;
+    }
+
+    .patient-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--bg-elevated);
+      padding-bottom: 0.65rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .patient-card-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--sergas-navy);
+      letter-spacing: 0.04em;
+    }
+
+    .live-pulse {
+      width: 10px;
+      height: 10px;
+      background: var(--success);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7);
+      animation: pulseGreen 2s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(22, 163, 74, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+    }
+
+    .patient-study-tag {
+      background: var(--sergas-blue);
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.25rem 0.85rem;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.03em;
+    }
+
+    .patient-card-body {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .patient-data-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .p-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+    }
+
+    .p-value {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--sergas-navy);
+    }
+
+    .p-nhc {
+      color: var(--sergas-blue);
+      font-family: monospace;
+      font-size: 1.2rem;
+      font-weight: 800;
+      background: var(--sergas-soft-blue);
+      border: 1px solid #bae6fd;
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .p-date {
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       SECCIÓN PRINCIPAL & REPRODUCTOR VÍDEO
+       ========================================================================== */
+    main {
+      flex: 1;
+      width: 100%;
+      padding-top: 2rem;
+      padding-bottom: 5rem;
+    }
+
+    .video-section {
+      background-color: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 2.25rem;
+    }
+
+    .video-header-info {
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .video-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--sergas-navy);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .video-duration {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background-color: var(--sergas-soft-blue);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background-color: #0f172a;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .video-container video,
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      object-fit: cover;
+    }
+
+    .video-markers {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .marker-btn {
+      background-color: #ffffff;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 0.55rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: inherit;
+      text-align: left;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .marker-btn:hover, .marker-btn.active {
+      border-color: var(--sergas-blue);
+      color: #ffffff;
+      background-color: var(--sergas-blue);
+      box-shadow: 0 4px 12px rgba(0, 126, 180, 0.25);
+      transform: translateY(-1px);
+    }
+
+    .marker-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      font-weight: 700;
+      background: var(--sergas-soft-blue);
+      color: var(--sergas-navy);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--sergas-light-border);
+      flex-shrink: 0;
+    }
+
+    .marker-btn:hover .marker-time, .marker-btn.active .marker-time {
+      background: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* ==========================================================================
+       TARJETAS DE RESUMEN CLÍNICO (SERGAS)
+       ========================================================================== */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-top: 4px solid var(--sergas-blue);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      transition: var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--sergas-blue);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background-color: var(--sergas-soft-blue);
+      color: var(--sergas-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .card-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .card-title {
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--sergas-navy);
+    }
+
+    .card-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .card-list li {
+      position: relative;
+      padding-left: 1.25rem;
+      line-height: 1.5;
+    }
+
+    .card-list li::before {
+      content: "•";
+      color: var(--sergas-blue);
+      font-weight: bold;
+      font-size: 1.3rem;
+      position: absolute;
+      left: 0;
+      top: -3px;
+    }
+
+    .highlight-text {
+      color: var(--sergas-navy);
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       SECCIÓN ASISTENTE CHATBOT EN PÁGINA
+       ========================================================================== */
+    .assistant-card-section {
+      background: linear-gradient(135deg, #f0f7fb 0%, #e6f2f9 100%);
+      border: 1.5px solid var(--sergas-blue);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 2.25rem 0;
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ==========================================================================
+       SECCIÓN DIABETES: PROTOCOLO DE ESCALADO Y SEMÁFORO METABÓLICO
+       ========================================================================== */
+    .diabetes-wrapper {
+      margin-top: 2.5rem;
+      background-color: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-left: 5px solid var(--sergas-blue);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .diabetes-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .diabetes-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--sergas-navy);
+    }
+
+    .diabetes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .glucose-result-box {
+      margin-top: 1.25rem;
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .glucose-result-box.visible {
+      display: block;
+    }
+
+    .glucose-result-box.verde {
+      background-color: var(--success-bg);
+      border: 1.5px solid var(--success);
+      color: #14532d;
+    }
+
+    .glucose-result-box.ambar {
+      background-color: var(--warning-bg);
+      border: 1.5px solid var(--warning);
+      color: #78350f;
+    }
+
+    .glucose-result-box.rojo {
+      background-color: var(--danger-bg);
+      border: 2px solid var(--danger);
+      color: #7f1d1d;
+    }
+
+    .nursing-console-alert {
+      background-color: #fef2f2;
+      border: 1px dashed var(--danger);
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      margin-top: 0.75rem;
+      font-family: monospace;
+      font-size: 0.88rem;
+      color: #991b1b;
+    }
+
+    /* ==========================================================================
+       SECCIÓN 2: CANCELACIÓN DE CITA (CONFIRMACIÓN EN 2 PASOS)
+       ========================================================================== */
+    .cancellation-wrapper {
+      margin-top: 3.5rem;
+      background-color: #ffffff;
+      border: 1.5px solid #fca5a5;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-normal);
+    }
+
+    .cancel-trigger-header {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+      background-color: #fff5f5;
+      border-bottom: 1px solid transparent;
+      transition: var(--transition-fast);
+    }
+
+    .cancel-trigger-header:hover {
+      background-color: #fee2e2;
+    }
+
+    .cancel-trigger-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #991b1b;
+      font-size: 1.08rem;
+      font-weight: 700;
+    }
+
+    .cancel-trigger-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: var(--radius-full);
+      background-color: #fee2e2;
+      color: var(--danger);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cancel-trigger-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .chevron-icon {
+      width: 20px;
+      height: 20px;
+      fill: var(--text-muted);
+      transition: transform 0.3s ease;
+    }
+
+    .cancel-trigger-header[aria-expanded="true"] .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .cancel-accordion-content {
+      display: none;
+      padding: 0 1.5rem;
+      background-color: #ffffff;
+    }
+
+    .cancel-accordion-content.expanded {
+      display: block;
+      padding: 1.5rem;
+      border-top: 1px solid #fecaca;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .reason-menu-btn {
+      background: #f8fafc;
+      border: 1px solid var(--bg-elevated);
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      padding: 0.65rem 0.85rem;
+      font-size: 0.86rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: inherit;
+      font-weight: 500;
+    }
+
+    .reason-menu-btn:hover {
+      border-color: var(--sergas-blue);
+      color: var(--sergas-blue);
+      background: var(--sergas-soft-blue);
+    }
+
+    .reason-menu-btn.active {
+      border-color: var(--sergas-blue);
+      background: var(--sergas-blue);
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(0, 126, 180, 0.35);
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--sergas-navy);
+      margin-bottom: 0.45rem;
+    }
+
+    select, textarea, input[type="text"], input[type="tel"], input[type="time"], input[type="number"] {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background-color: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: var(--transition-fast);
+    }
+
+    select:focus, textarea:focus, input:focus {
+      border-color: var(--sergas-blue);
+      box-shadow: 0 0 0 3px rgba(0, 126, 180, 0.18);
+      outline: none;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition-fast);
+      text-decoration: none;
+      font-family: inherit;
+    }
+
+    .btn-danger {
+      background-color: var(--danger);
+      color: #ffffff;
+    }
+
+    .btn-danger:hover:not(:disabled) {
+      background-color: var(--danger-hover);
+      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.35);
+    }
+
+    .btn-danger:disabled {
+      background-color: #cbd5e1;
+      color: #64748b;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .btn-secondary {
+      background-color: #f1f5f9;
+      color: var(--text-main);
+      border: 1px solid var(--bg-elevated);
+    }
+
+    .btn-secondary:hover {
+      background-color: #e2e8f0;
+      color: var(--sergas-navy);
+    }
+
+    .cancel-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Modal Paso 2 */
+    .confirmation-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 1rem;
+    }
+
+    .confirmation-modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background-color: #ffffff;
+      border-top: 5px solid var(--danger);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      text-align: center;
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+    }
+
+    .confirmation-modal-overlay.active .modal-card {
+      transform: scale(1);
+    }
+
+    .modal-warning-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: var(--radius-full);
+      background-color: #fee2e2;
+      color: var(--danger);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem auto;
+    }
+
+    .modal-warning-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: currentColor;
+    }
+
+    .modal-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--sergas-navy);
+    }
+
+    .modal-description {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.55;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cancelled-success-box {
+      display: none;
+      padding: 2rem;
+      background-color: #ffffff;
+      border: 2px solid var(--success);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      animation: fadeIn 0.4s ease-in-out;
+      box-shadow: 0 8px 25px rgba(22, 163, 74, 0.1);
+    }
+
+    .cancelled-success-box.visible {
+      display: block;
+    }
+
+    .success-icon-big {
+      width: 60px;
+      height: 60px;
+      background-color: var(--success-bg);
+      color: var(--success);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem auto;
+    }
+
+    .success-icon-big svg {
+      width: 32px;
+      height: 32px;
+      fill: currentColor;
+    }
+
+    /* ==========================================================================
+       CHATBOT ENFERMERO VIRTUAL GALARIA / SERGAS
+       ========================================================================== */
+    .chatbot-fab {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--sergas-blue) 0%, var(--sergas-navy) 100%);
+      color: #ffffff;
+      border: 2.5px solid #ffffff;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(0, 126, 180, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 990;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .chatbot-fab:hover {
+      transform: scale(1.08) translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0, 72, 104, 0.45);
+    }
+
+    .chatbot-fab svg {
+      width: 30px;
+      height: 30px;
+      fill: currentColor;
+    }
+
+    .fab-badge {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      background-color: var(--danger);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      width: 22px;
+      height: 22px;
+      border-radius: var(--radius-full);
+      border: 2px solid #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(220, 38, 38, 0.4);
+    }
+
+    .chat-window {
+      position: fixed;
+      bottom: 5.5rem;
+      right: 1.5rem;
+      width: clamp(340px, 94vw, 430px);
+      height: 610px;
+      max-height: 82vh;
+      background-color: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 50px rgba(0, 48, 76, 0.22);
+      display: flex;
+      flex-direction: column;
+      z-index: 995;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px) scale(0.96);
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .chat-window.open {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, var(--sergas-navy) 0%, var(--sergas-blue) 100%);
+      color: #ffffff;
+      padding: 0.85rem 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .chat-header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nurse-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nurse-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-full);
+      background-color: #ffffff;
+      padding: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      border: 1.5px solid rgba(255, 255, 255, 0.8);
+      overflow: visible;
+      flex-shrink: 0;
+    }
+
+    .nurse-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: var(--radius-full);
+    }
+
+    .online-indicator {
+      position: absolute;
+      bottom: -1px;
+      right: -1px;
+      width: 11px;
+      height: 11px;
+      background-color: #22c55e;
+      border-radius: var(--radius-full);
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 6px #22c55e;
+      animation: pulseGreenDot 2s infinite;
+    }
+
+    @keyframes pulseGreenDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.1); }
+    }
+
+    .nurse-name {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .chat-badge-sergas {
+      background: rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 1px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .nurse-role {
+      font-size: 0.76rem;
+      color: #e0f2fe;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-weight: 500;
+    }
+
+    .test-badge-bar {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      background-color: rgba(0, 40, 70, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: var(--radius-sm);
+      padding: 0.35rem 0.75rem;
+      font-size: 0.78rem;
+      color: #e0f2fe;
+    }
+
+    .test-badge-bar.visible {
+      display: flex;
+    }
+
+    .selected-test-name {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .chat-badge-verified {
+      background: rgba(34, 197, 94, 0.25);
+      color: #86efac;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      border: 1px solid rgba(34, 197, 94, 0.4);
+    }
+
+    .chat-close-btn {
+      background: rgba(255, 255, 255, 0.12);
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      padding: 0.35rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .chat-close-btn:hover {
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.25);
+      transform: rotate(90deg);
+    }
+
+    .chat-close-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .chat-body {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      background-color: #f8fafc;
+    }
+
+    .disclaimer-banner {
+      background-color: var(--sergas-soft-blue);
+      border: 1px solid #bae6fd;
+      border-radius: var(--radius-sm);
+      padding: 0.55rem 0.85rem;
+      font-size: 0.76rem;
+      color: var(--sergas-navy);
+      text-align: left;
+      line-height: 1.4;
+      flex-shrink: 0;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .disclaimer-banner svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--sergas-blue);
+      flex-shrink: 0;
+    }
+
+    .message {
+      max-width: 88%;
+      padding: 0.8rem 1.05rem;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      animation: messagePop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      word-wrap: break-word;
+      position: relative;
+    }
+
+    @keyframes messagePop {
+      from { opacity: 0; transform: translateY(8px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .message-bot {
+      align-self: flex-start;
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-left: 3.5px solid var(--sergas-blue);
+      color: var(--text-main);
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0, 72, 104, 0.05);
+    }
+
+    .bot-author-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--sergas-navy);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .bot-author-tag img {
+      height: 14px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .message-user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, var(--sergas-blue) 0%, var(--sergas-navy) 100%);
+      color: #ffffff;
+      border-bottom-right-radius: 4px;
+      box-shadow: 0 3px 10px rgba(0, 126, 180, 0.25);
+    }
+
+    .message-alert {
+      align-self: center;
+      background-color: #fef2f2;
+      border: 1.5px solid var(--danger);
+      color: #991b1b;
+      border-radius: var(--radius-md);
+      max-width: 95%;
+      font-weight: 600;
+      padding: 0.9rem 1.15rem;
+      box-shadow: 0 4px 14px rgba(239, 68, 68, 0.15);
+    }
+
+    /* Chips de sugerencias rápidas */
+    .quick-chips-wrapper {
+      display: none;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-top: 0.35rem;
+    }
+
+    .quick-chips-wrapper.visible {
+      display: flex;
+    }
+
+    .chips-label {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .quick-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .chip-btn {
+      background-color: #ffffff;
+      border: 1.5px solid var(--sergas-blue);
+      color: var(--sergas-blue);
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 6px rgba(0, 126, 180, 0.08);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .chip-btn:hover {
+      background-color: var(--sergas-blue);
+      color: #ffffff;
+      border-color: var(--sergas-blue);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 126, 180, 0.25);
+    }
+
+    /* Indicador typing */
+    .typing-indicator {
+      align-self: flex-start;
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-left: 3.5px solid var(--sergas-blue);
+      padding: 0.65rem 1rem;
+      border-radius: 14px;
+      border-bottom-left-radius: 4px;
+      display: none;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 2px 6px rgba(0, 40, 70, 0.05);
+    }
+
+    .typing-indicator.active {
+      display: flex;
+    }
+
+    .typing-dot {
+      width: 7px;
+      height: 7px;
+      background-color: var(--sergas-blue);
+      border-radius: 50%;
+      animation: typingBounce 1.4s infinite ease-in-out both;
+    }
+
+    .typing-dot:nth-child(1) { animation-delay: 0s; }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    .chat-footer {
+      padding: 0.8rem 1rem;
+      background-color: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      display: block;
+    }
+
+    .chat-footer.visible {
+      display: block;
+    }
+
+    .chat-input-form {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .chat-input {
+      flex: 1;
+      background-color: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: var(--radius-full);
+      padding: 0.65rem 1.15rem;
+      color: var(--text-main);
+      font-size: 0.92rem;
+      outline: none;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .chat-input:focus {
+      background-color: #ffffff;
+      border-color: var(--sergas-blue);
+      box-shadow: 0 0 0 3px rgba(0, 126, 180, 0.18);
+    }
+
+    .chat-send-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--sergas-blue) 0%, var(--sergas-navy) 100%);
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      box-shadow: 0 3px 10px rgba(0, 126, 180, 0.25);
+    }
+
+    .chat-send-btn:hover {
+      transform: scale(1.06);
+      filter: brightness(1.1);
+      box-shadow: 0 5px 14px rgba(0, 126, 180, 0.35);
+    }
+
+    .chat-send-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes messagePop {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes typingBounce {
+      0%, 80%, 100% { transform: scale(0); }
+      40% { transform: scale(1); }
+    }
+
+    @media (max-width: 600px) {
+      .brand-row { flex-direction: column; align-items: flex-start; }
+      .hospital-unit-info { align-items: flex-start; text-align: left; }
+      .hero-banner { padding: 1.5rem 0 1rem 0; }
+      .video-section { padding: 1rem; }
+      .cancel-actions { flex-direction: column; }
+      .cancel-actions .btn { width: 100%; }
+      .chat-window {
+        right: 4%;
+        left: 4%;
+        width: 92%;
+        bottom: 5rem;
+        height: 75vh;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR INSTITUCIONAL XUNTA / SERGAS -->
+  <div class="sergas-top-bar">
+    <div class="container sergas-top-container">
+      <div class="sergas-gov-text">
+        <span class="xunta-pill">XUNTA DE GALICIA</span>
+        <span class="sergas-sub">CONSELLERÍA DE SANIDADE · SERGAS</span>
+      </div>
+      <div class="sergas-portal-id">
+        <span>Portal Asistencial ao Paciente</span>
+        <span class="lang-pill">GAL | ES</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CABECERA PRINCIPAL CON LOGOTIPO GALARIA -->
+  <header class="galaria-main-header">
+    <div class="container brand-row">
+      <div class="brand-logo-area">
+        <img src="galaria_logo.jpg" alt="Galaria - Empresa Pública de Servizos Sanitarios" class="galaria-brand-logo" id="galariaLogoHeader">
+      </div>
+      <div class="hospital-unit-info">
+        <span class="unit-tag">UNIDADE DE MEDICINA NUCLEAR E IMAXE MOLECULAR</span>
+        <span class="unit-sub">Centro PET-CT de Galicia · SERGAS</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO BANNER DE LA PRUEBA -->
+  <section class="hero-banner">
+    <div class="container">
+      <div class="header-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v4h4v2h-4v4h-2v-4H7v-2h4V7z"/></svg><span>PROTOCOLO EXCLUSIVO: PET FDG ONCOLÓGICO / INFLAMATORIO</span></div>
+      <h1>PET FDG Oncológico / Inflamatorio</h1>
+      <p class="subtitle">Audioguía interactiva e información asistencial de preparación previa para pacientes citados a estudio PET/CT con 18F-FDG (Glucosa).</p>
+
+      <!-- TARJETA OFICIAL DEL PACIENTE CITADO (PET FDG GLUCOSA) -->
+      <div id="patient-card-container" class="patient-card-container">
+        <div class="patient-card-header">
+          <div class="patient-card-status">
+            <span class="live-pulse"></span>
+            <span>PACIENTE CITADO OFICIAL</span>
+          </div>
+          <span class="patient-study-tag">ESTUDIO: PET FDG ONCOLÓGICO / INFLAMATORIO</span>
+        </div>
+        <div class="patient-card-body">
+          <div class="patient-data-item">
+            <span class="p-label">👤 NOMBRE COMPLETO:</span>
+            <span class="p-value" id="display-patient-name">Cargando paciente...</span>
+          </div>
+          <div class="patient-data-item">
+            <span class="p-label">📋 NÚMERO DE HISTORIA CLÍNICA (NHC):</span>
+            <span class="p-value p-nhc" id="display-patient-nhc">Consultar en Citaciones</span>
+          </div>
+          <div class="patient-data-item" id="display-cita-container">
+            <span class="p-label">📅 FECHA Y HORA DE CITA:</span>
+            <span class="p-value p-date" id="display-patient-cita">Asignada en Agenda</span>
+          </div>
+        </div>
+        <div style="margin-top: 0.75rem; padding: 0.5rem 1rem; border-top: 1px dashed var(--border-subtle); display: flex; justify-content: flex-end;">
+          <button type="button" onclick="toggleCancelAccordion(true)" style="background: rgba(220, 38, 38, 0.08); border: 1px solid rgba(220, 38, 38, 0.3); color: #dc2626; font-size: 0.85rem; font-weight: 600; padding: 6px 14px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease;">
+            ⚠️ ¿No puedes asistir a tu cita? Cancelar o aplazar prueba
+          </button>
+        </div>
+      </div>
+
+      <div class="alert-banner" role="alert"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg><span><strong>PROTOCOLO EXCLUSIVO PET FDG (GLUCOSA):</strong> Ayuno estricto de mínimo 6 horas de sólidos, dieta sin carbohidratos 24h antes, glucemia capilar previa inferior a 160 mg/dL y reposo muscular 24-48h antes.</span></div>
+    </div>
+  </section>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="container">
+
+    <!-- SECCIÓN 1: VÍDEO EXPLICATIVO -->
+    <section class="video-section" aria-labelledby="video-heading">
+      <div class="video-header-info">
+        <h2 id="video-heading" class="video-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--primary-hover)" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          Vídeo Explicativo: Preparación para <span id="videoTestTitle" style="color: var(--sergas-blue); font-weight: 700;">PET FDG Oncológico / Inflamatorio</span>
+        </h2>
+        <span class="video-duration">Duración: 2:50 min (16 pasos)</span>
+      </div>
+
+      <div class="video-container" style="position: relative; width: 100%; aspect-ratio: 16/9; background: #000; border-radius: var(--radius-md); overflow: hidden;">
+        <video id="petVideo" controls preload="metadata" title="Vídeo de instrucción para paciente de PET" style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+          <source id="videoSource" src="Video_Completo_PET_CT_1_al_16.mp4" type="video/mp4">
+          Tu navegador no soporta el reproductor de vídeo HTML5.
+        </video>
+      </div>
+
+      <div class="video-markers-header" style="margin-top: 1.25rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+        <span style="font-size: 0.88rem; font-weight: 700; color: var(--sergas-navy); display: flex; align-items: center; gap: 6px;">
+          ⏱️ Índice por Segundos del Vídeo (16 Escenas Explicativas)
+        </span>
+        <span style="font-size: 0.78rem; color: var(--text-secondary);">Pulsa en cualquier paso para ir al segundo exacto</span>
+      </div>
+
+      <div class="video-markers" aria-label="Marcadores del vídeo">
+        <button class="marker-btn active" data-seconds="0" onclick="seekVideo(0)">
+          <span class="marker-time">0:00</span> <span>🏥 Inicio y Bienvenida</span>
+        </button>
+        <button class="marker-btn" data-seconds="10" onclick="seekVideo(10)">
+          <span class="marker-time">0:10</span> <span>🚶 Llegada al Hospital y Acceso</span>
+        </button>
+        <button class="marker-btn" data-seconds="20" onclick="seekVideo(20)">
+          <span class="marker-time">0:20</span> <span>🥗 Dieta Previa Sin Hidratos (24h)</span>
+        </button>
+        <button class="marker-btn" data-seconds="30" onclick="seekVideo(30)">
+          <span class="marker-time">0:30</span> <span>🏃 Reposo Muscular / Sin Ejercicio</span>
+        </button>
+        <button class="marker-btn" data-seconds="40" onclick="seekVideo(40)">
+          <span class="marker-time">0:40</span> <span>⏰ Ayuno Estricto de 6 Horas</span>
+        </button>
+        <button class="marker-btn" data-seconds="50" onclick="seekVideo(50)">
+          <span class="marker-time">0:50</span> <span>💧 Beber Agua y Pauta Diabetes</span>
+        </button>
+        <button class="marker-btn" data-seconds="60" onclick="seekVideo(60)">
+          <span class="marker-time">1:00</span> <span>🎫 Admisión en Medicina Nuclear</span>
+        </button>
+        <button class="marker-btn" data-seconds="70" onclick="seekVideo(70)">
+          <span class="marker-time">1:10</span> <span>🩸 Control de Glucemia Capilar</span>
+        </button>
+        <button class="marker-btn" data-seconds="80" onclick="seekVideo(80)">
+          <span class="marker-time">1:20</span> <span>💉 Vía e Inyección Radiofármaco</span>
+        </button>
+        <button class="marker-btn" data-seconds="90" onclick="seekVideo(90)">
+          <span class="marker-time">1:30</span> <span>🛏️ Reposo en Box en Penumbra (60m)</span>
+        </button>
+        <button class="marker-btn" data-seconds="100" onclick="seekVideo(100)">
+          <span class="marker-time">1:40</span> <span>🚪 Entrada a Sala Tomógrafo PET</span>
+        </button>
+        <button class="marker-btn" data-seconds="120" onclick="seekVideo(120)">
+          <span class="marker-time">2:00</span> <span>🔬 Adquisición en el Escáner</span>
+        </button>
+        <button class="marker-btn" data-seconds="130" onclick="seekVideo(130)">
+          <span class="marker-time">2:10</span> <span>🩹 Salida y Retirada de Vía</span>
+        </button>
+        <button class="marker-btn" data-seconds="140" onclick="seekVideo(140)">
+          <span class="marker-time">2:20</span> <span>🩺 Despedida y Recomendaciones</span>
+        </button>
+        <button class="marker-btn" data-seconds="150" onclick="seekVideo(150)">
+          <span class="marker-time">2:30</span> <span>🚼 Radioprotección Niños/Embarazo</span>
+        </button>
+        <button class="marker-btn" data-seconds="160" onclick="seekVideo(160)">
+          <span class="marker-time">2:40</span> <span>✅ Finalización y Vida Normal</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- RESUMEN EN TARJETAS -->
+    <section class="summary-grid" aria-label="Resumen de instrucciones de preparación">
+  <article class="card">
+    <div class="card-icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+    </div>
+    <h3 class="card-title">1. Antes de la prueba</h3>
+    <ul class="card-list">
+      <li>NO hacer deporte ni ejercicio físico 24 a 48h antes (para no desviar la glucosa radiactiva a los músculos).</li>
+          <li>Seguir dieta pobre en carbohidratos (sin pan, pasta, arroz, patatas, legumbres, fruta ni azúcar) el día previo.</li>
+          <li>Informar si tienes diabetes, tomas insulina o tienes claustrofobia.</li>
+    </ul>
+  </article>
+
+  <article class="card">
+    <div class="card-icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg>
+    </div>
+    <h3 class="card-title">2. Dieta y Ayuno de 6 Horas</h3>
+    <ul class="card-list">
+      <li>Mínimo 6 horas de ayuno estricto de sólidos antes de tu cita.</li>
+          <li>Beber abundante agua sola sin gas (1 litro); prohibido zumos, refrescos, café, té y chicles.</li>
+          <li>Toma tus pastillas habituales con agua sola (salvo pauta especial de insulina/antidiabéticos).</li>
+    </ul>
+  </article>
+
+  <article class="card">
+    <div class="card-icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14V6c0-1.1-.9-2-2-2H7c-1.1 0-2 .9-2 2v8c-1.66 0-3 1.34-3 3v3h2v-2h16v2h2v-3c0-1.66-1.34-3-3-3zm-9-8h4v2h-4V6zm-5 6h14v2H5v-2z"/></svg>
+    </div>
+    <h3 class="card-title">3. Día de la prueba</h3>
+    <ul class="card-list">
+      <li>Retirar ticket en admisión 15 minutos antes de la hora indicada.</li>
+          <li>Viste ropa cálida y cómoda sin cremalleras metálicas ni joyas.</li>
+          <li>Duración total: ~2h a 2h30 (incluye 60 min de reposo en penumbra y 30 min de revisión médica de imágenes).</li>
+    </ul>
+  </article>
+</section>
+
+
+
+    <!-- SECCIÓN ASISTENTE CHATBOT EN PÁGINA -->
+    <section class="assistant-card-section" aria-labelledby="assistant-card-title" style="background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); border: 1.5px solid #d0e3ef; border-top: 4px solid var(--sergas-blue); border-radius: var(--radius-lg); padding: 1.75rem; margin: 2rem 0; box-shadow: 0 8px 24px rgba(0, 48, 76, 0.08);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="width: 52px; height: 52px; border-radius: 12px; background: #ffffff; padding: 4px; border: 1.5px solid #d0e3ef; box-shadow: 0 4px 10px rgba(0, 48, 76, 0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative;">
+            <img src="galaria_logo.jpg" alt="Galaria Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
+            <span style="position: absolute; bottom: -3px; right: -3px; width: 12px; height: 12px; background-color: #22c55e; border-radius: 50%; border: 2px solid #ffffff; box-shadow: 0 0 6px #22c55e;"></span>
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <h3 id="assistant-card-title" style="margin: 0; font-size: 1.25rem; font-weight: 800; color: var(--sergas-navy);">Asistente Virtual de Enfermería — PET FDG Oncológico / Inflamatorio</h3>
+              <span style="font-size: 0.72rem; background: rgba(0, 126, 180, 0.1); color: var(--sergas-blue); border: 1px solid rgba(0, 126, 180, 0.25); padding: 2px 8px; border-radius: 6px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em;">
+                GALARIA · SERGAS
+              </span>
+              <span style="font-size: 0.75rem; background: rgba(34, 197, 94, 0.12); color: #15803d; border: 1px solid rgba(34, 197, 94, 0.3); padding: 2px 8px; border-radius: 20px; font-weight: 700;">
+                🟢 Asistencia Activa en Directo
+              </span>
+            </div>
+            <p style="margin: 0.35rem 0 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.45;">
+              Resuelve tus dudas en tiempo real sobre preparación, ayuno, glucemia y medicación o pulsa sobre las preguntas frecuentes:
+            </p>
+          </div>
+        </div>
+        <button type="button" onclick="toggleChatbot(true)" class="btn" style="background: linear-gradient(135deg, var(--sergas-blue) 0%, var(--sergas-navy) 100%); color: #ffffff; font-weight: 700; font-size: 0.92rem; padding: 0.7rem 1.4rem; border-radius: 30px; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 14px rgba(0, 126, 180, 0.28); cursor: pointer; transition: all 0.2s ease;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+          Abrir Chatbot de Enfermería
+        </button>
+      </div>
+
+      <!-- Formulario para escribir una duda directamente desde la página -->
+      <form onsubmit="event.preventDefault(); const val=document.getElementById('pageChatInput').value.trim(); if(val){ openChatAndAsk(val); document.getElementById('pageChatInput').value=''; }" style="display: flex; gap: 0.6rem; margin-bottom: 1.15rem; flex-wrap: wrap;">
+        <input type="text" id="pageChatInput" placeholder="Escribe aquí tu duda clínica (ej. ¿Puedo tomar café?, ¿horas de ayuno?, ¿agua?)..." style="flex: 1; min-width: 280px; padding: 0.8rem 1.25rem; border-radius: 30px; border: 1.5px solid #d0e3ef; background: #ffffff; color: var(--text-main); font-size: 0.95rem; box-shadow: 0 2px 6px rgba(0, 48, 76, 0.04); outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease;" onfocus="this.style.borderColor='var(--sergas-blue)'; this.style.boxShadow='0 0 0 3px rgba(0, 126, 180, 0.15)';" onblur="this.style.borderColor='#d0e3ef'; this.style.boxShadow='0 2px 6px rgba(0, 48, 76, 0.04)';">
+        <button type="submit" class="btn" style="background: linear-gradient(135deg, var(--sergas-blue) 0%, var(--sergas-navy) 100%); color: #ffffff; border-radius: 30px; padding: 0.8rem 1.6rem; font-weight: 700; font-size: 0.92rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.45rem; box-shadow: 0 3px 10px rgba(0, 126, 180, 0.2);">
+          Consultar al Asistente 💬
+        </button>
+      </form>
+      
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+        <button type="button" class="chip-btn" onclick="openChatAndAsk('¿Horas de ayuno?')">⏱️ ¿Horas de ayuno?</button>
+        <button type="button" class="chip-btn" onclick="openChatAndAsk('¿Puedo beber agua?')">💧 ¿Puedo beber agua?</button>
+        <button type="button" class="chip-btn" onclick="openChatAndAsk('¿Puedo tomar café o té?')">☕ ¿Puedo tomar café o té?</button>
+        <button type="button" class="chip-btn" onclick="openChatAndAsk('¿Puedo hacer deporte?')">🏃‍♂️ ¿Puedo hacer deporte?</button>
+        <button type="button" class="chip-btn" onclick="openChatAndAsk('¿Tomo mis pastillas?')">💊 ¿Tomo mis pastillas?</button>
+        <button type="button" class="chip-btn" style="border-color: var(--sergas-blue); background-color: var(--sergas-soft-blue); color: var(--sergas-navy); font-weight: 700;" onclick="abrirModalConsultaEnfermeria()">💬 Otras consultas (Enfermería)</button>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DIABETES: PROTOCOLO DE ESCALADO Y SEMÁFORO METABÓLICO EN DOMICILIO -->
+    <section class="diabetes-wrapper" aria-labelledby="diabetes-heading">
+      <div class="diabetes-header">
+        <div class="card-icon" style="background-color: var(--sergas-soft-blue); color: var(--sergas-blue);">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+        </div>
+        <div>
+          <h2 id="diabetes-heading" class="diabetes-title">💉 Pacientes Diabéticos Insulinodependientes</h2>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Nivel 2: Protocolo de Escalado a Enfermería – Semáforo Metabólico en Domicilio (Reportar glucemia 1-2h antes)</p>
+        </div>
+      </div>
+
+      <form id="glucoseForm" onsubmit="event.preventDefault(); evaluarGlucemiaDiabetica();">
+        <div class="diabetes-grid">
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="patientName">Nombre y Apellidos del Paciente <span style="color: var(--danger)">*</span></label>
+            <input type="text" id="patientName" placeholder="Ej. Juan Pérez" required>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="glucoseTime">Hora del control capilar <span style="color: var(--danger)">*</span></label>
+            <input type="time" id="glucoseTime" required>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="glucoseValue">Glucemia Capilar (mg/dL) <span style="color: var(--danger)">*</span></label>
+            <input type="number" id="glucoseValue" min="30" max="600" placeholder="Ej. 185" required>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.25rem; text-align: right;">
+          <button type="submit" class="btn" style="background-color: var(--primary); color: #FFF;">
+            🩺 Validar Glucemia y Notificar a Enfermería
+          </button>
+        </div>
+      </form>
+
+      <!-- Cuadro de Respuesta del Semáforo Metabólico -->
+      <div id="glucoseResultBox" class="glucose-result-box" role="status" aria-live="assertive">
+        <div id="glucoseBadge" style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;"></div>
+        <p id="glucoseActionText" style="font-size: 0.95rem; line-height: 1.5;"></p>
+        <div id="nursingAlertBox" class="nursing-console-alert" style="display: none;"></div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: CANCELACIÓN DE CITA (CONFIRMACIÓN EN 2 PASOS) -->
+    <section class="cancellation-wrapper" aria-labelledby="cancel-heading">
+      <div class="cancel-trigger-header" id="cancelHeaderTrigger" role="button" aria-expanded="false" aria-controls="cancelAccordionContent" tabindex="0" title="Haz clic para cancelar o aplazar tu prueba" onclick="toggleCancelAccordion()">
+        <div class="cancel-trigger-title" style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+          <div class="cancel-trigger-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          </div>
+          <span id="cancel-heading" style="font-weight: 700;">¿Necesitas cancelar o aplazar tu prueba PET?</span>
+          <span style="background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.4); padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+            ⚠️ Cancelación en 2 pasos
+          </span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-left: auto;">
+          <span style="font-size: 0.85rem; color: #FCA5A5; font-weight: 600;">Abrir formulario</span>
+          <svg class="chevron-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+        </div>
+      </div>
+
+      <div class="cancel-accordion-content" id="cancelAccordionContent">
+        <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: var(--radius-md); padding: 0.85rem 1.1rem; margin-bottom: 1.25rem; font-size: 0.88rem; color: #FCA5A5; display: flex; align-items: center; gap: 0.75rem; line-height: 1.45;">
+          <svg style="width: 22px; height: 22px; fill: currentColor; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+          <span><strong>Gestión de cancelación en 2 pasos:</strong> La dosis radiactiva se calibra y sintetiza individualmente para tu hora de citación. En el <strong>Paso 1</strong> indícanos el motivo y tus datos para proceder a la recitación, y en el <strong>Paso 2</strong> confirma de nuevo la cancelación para liberar de inmediato tu hueco y remitir el aviso automático a <strong>oscarferreiradavila@gmail.com</strong>.</span>
+        </div>
+
+        <form id="cancellationForm" onsubmit="event.preventDefault(); triggerModalConfirmation();">
+          <!-- Encabezado del Paso 1: Menú de Motivos -->
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; border-bottom: 1px solid var(--bg-elevated); padding-bottom: 0.6rem;">
+            <div>
+              <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--danger); background: rgba(239, 68, 68, 0.12); padding: 2px 8px; border-radius: 4px;">Paso 1 de 2</span>
+              <h4 style="margin: 0.35rem 0 0.15rem 0; font-size: 1.15rem; color: var(--text-main);">¿Por qué quieres cancelar la prueba?</h4>
+              <p style="margin: 0; font-size: 0.84rem; color: var(--text-muted);">Selecciona un motivo del menú e introduce tus datos de contacto para tramitar la recitación.</p>
+            </div>
+          </div>
+
+          <!-- Datos de Identificación del Paciente para Recitación -->
+          <div style="background: rgba(15, 23, 42, 0.45); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-sm); padding: 0.9rem; margin-bottom: 1.25rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.65rem; flex-wrap: wrap; gap: 6px;">
+              <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em;">
+                👤 Datos del Paciente Citado (Autocompletados)
+              </span>
+              <span style="font-size: 0.76rem; color: #34D399; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 2px 8px; border-radius: 12px; font-weight: 600;">
+                ✓ Verificado en agenda de citaciones
+              </span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.85rem;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="cancelPatientName" style="font-size: 0.84rem;">Nombre del Paciente <span style="color: var(--danger)">*</span></label>
+                <input type="text" id="cancelPatientName" placeholder="Cargando paciente citado..." required oninput="validateCancelForm()">
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="cancelPatientNhc" style="font-size: 0.84rem;">Nº Historia Clínica (NHC) <span style="color: var(--danger)">*</span></label>
+                <input type="text" id="cancelPatientNhc" placeholder="Cargando NHC..." required oninput="validateCancelForm()">
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="cancelPatientPhone" style="font-size: 0.84rem;">Teléfono de contacto <span style="color: var(--danger)">*</span></label>
+                <input type="tel" id="cancelPatientPhone" placeholder="Teléfono para recitar" required oninput="validateCancelForm()">
+              </div>
+            </div>
+          </div>
+
+          <!-- Menú interactivo de selección de motivos -->
+          <div class="form-group">
+            <label for="cancelReason" style="font-weight: 600; display: block; margin-bottom: 0.5rem;">
+              Menú de motivos: ¿Por qué necesitas cancelar? <span style="color: var(--danger)">*</span>
+            </label>
+            
+            <div id="cancelReasonChips" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0.5rem; margin-bottom: 0.75rem;">
+              <button type="button" class="reason-menu-btn" data-reason="enfermedad" onclick="selectReasonFromMenu('enfermedad')">
+                🤒 Enfermedad, fiebre o infección
+              </button>
+              <button type="button" class="reason-menu-btn" data-reason="imprevisto" onclick="selectReasonFromMenu('imprevisto')">
+                📅 Imprevisto personal o laboral
+              </button>
+              <button type="button" class="reason-menu-btn" data-reason="transporte" onclick="selectReasonFromMenu('transporte')">
+                🚗 Problemas de desplazamiento
+              </button>
+              <button type="button" class="reason-menu-btn" data-reason="dieta_incumplida" onclick="selectReasonFromMenu('dieta_incumplida')">
+                🍽️ Ayuno o dieta no cumplida
+              </button>
+              <button type="button" class="reason-menu-btn" data-reason="diabetes_medicacion" onclick="selectReasonFromMenu('diabetes_medicacion')">
+                💉 Glucemia alta / Medicación
+              </button>
+              <button type="button" class="reason-menu-btn" data-reason="claustrofobia_duda" onclick="selectReasonFromMenu('claustrofobia_duda')">
+                😰 Ansiedad o dudas médicas
+              </button>
+              <button type="button" class="reason-menu-btn" data-reason="otro" onclick="selectReasonFromMenu('otro')">
+                ✍️ Otro motivo particular
+              </button>
+            </div>
+
+            <select id="cancelReason" required onchange="handleReasonChange(this.value)">
+              <option value="" disabled selected>-- O selecciona un motivo del desplegable --</option>
+              <option value="enfermedad">🤒 Encontrarme mal / Enfermedad, infección o fiebre</option>
+              <option value="imprevisto">📅 No puedo asistir ese día / Imprevisto personal o laboral</option>
+              <option value="transporte">🚗 Problemas de transporte o desplazamiento</option>
+              <option value="dieta_incumplida">🍽️ No he podido seguir la dieta previa o las horas de ayuno</option>
+              <option value="diabetes_medicacion">💉 Glucemia descompensada / Medicación no suspendida</option>
+              <option value="claustrofobia_duda">😰 Ansiedad / Claustrofobia / Dudas médicas pendientes</option>
+              <option value="otro">✍️ Otro motivo (especificar en detalle abajo)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="cancelReasonExplanation">Explica el motivo de la cancelación <span style="color: var(--danger)">*</span></label>
+            <textarea id="cancelReasonExplanation" rows="3" placeholder="Explica detalladamente por qué no puedes acudir a la cita para que el equipo médico y enfermería puedan valorarlo al recitar tu cita..." required oninput="validateCancelForm()"></textarea>
+          </div>
+
+          <div class="cancel-actions">
+            <button type="button" class="btn btn-secondary" onclick="toggleCancelAccordion(false)">Cerrar sin cancelar</button>
+            <button type="submit" id="btnConfirmStep1" class="btn btn-danger" disabled>
+              Continuar al Paso 2: Revisar y Confirmar cancelación ➡️
+            </button>
+          </div>
+        </form>
+
+        <div id="cancellationSuccessBox" class="cancelled-success-box" role="status" aria-live="polite">
+          <div class="success-icon-big">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          </div>
+          <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-main);">Tu cita ha sido cancelada correctamente</h3>
+          
+          <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: var(--radius-md); padding: 1.25rem; text-align: left; margin: 1rem auto; max-width: 580px; font-size: 0.92rem; line-height: 1.6; box-shadow: var(--shadow-sm);">
+            <div>👤 <strong>Paciente:</strong> <span id="recordedNameDisplay" style="color: var(--sergas-navy); font-weight: 700;">--</span></div>
+            <div>📋 <strong>Nº Historia Clínica (NHC):</strong> <code id="recordedNhcDisplay" style="color: var(--sergas-blue); font-weight: 700; background: var(--sergas-soft-blue); padding: 2px 8px; border-radius: 4px;">--</code></div>
+            <div>📞 <strong>Teléfono registrado:</strong> <span id="recordedPhoneDisplay" style="color: var(--text-main); font-weight: 600;">--</span></div>
+            <div>🩺 <strong>Estudio cancelado:</strong> <span id="recordedRfDisplay" style="color: var(--text-main); font-weight: 600;">--</span></div>
+            <div style="margin-top: 0.4rem; padding-top: 0.4rem; border-top: 1px dashed var(--border-subtle);">
+              ⚠️ <strong>Motivo principal:</strong> <strong id="recordedReasonDisplay" style="color: #dc2626;">--</strong>
+            </div>
+            <div style="margin-top: 0.25rem;">
+              📝 <strong>Explicación del paciente:</strong> <span id="recordedExplanationDisplay" style="color: var(--text-muted); font-style: italic;">--</span>
+            </div>
+            <div style="color: var(--success); font-weight: 700; margin-top: 0.6rem; display: flex; align-items: center; gap: 6px;">
+              <span>🟢</span> Hueco liberado en agenda médica para proceder a la recitación.
+            </div>
+          </div>
+          
+          <!-- Notificación enviada automáticamente a oscarferreiradavila@gmail.com -->
+          <div id="emailDeliveryStatus" style="margin: 1.25rem auto; max-width: 580px; padding: 16px 20px; border-radius: var(--radius-md); background: #f0fdf4; border: 1.5px solid #86efac; font-size: 0.92rem; text-align: left;">
+            <div style="display: flex; align-items: flex-start; gap: 14px;">
+              <div style="background: #dcfce7; border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0;">
+                ✉️
+              </div>
+              <div style="flex: 1;">
+                <div style="font-weight: 700; color: #166534; font-size: 1.05rem; margin-bottom: 4px;">
+                  Notificación enviada automáticamente a oscarferreiradavila@gmail.com
+                </div>
+                <div id="emailDeliveryStatusText" style="color: #1e293b; line-height: 1.55; font-size: 0.9rem;">
+                  Se ha remitido la notificación de cancelación a <strong>oscarferreiradavila@gmail.com</strong> con los datos clínicos del paciente citado (<strong id="notifiedName">--</strong>, NHC: <strong id="notifiedNhc">--</strong>) y el motivo explicado para proceder a su recitación médica.
+                </div>
+                <div style="margin-top: 10px; padding-top: 8px; border-top: 1px dashed #bbf7d0; font-size: 0.84rem; color: #15803d; display: flex; align-items: center; gap: 6px;">
+                  <span>🟢</span> <strong>Estado:</strong> Hueco liberado en agenda médica. Envío completado automáticamente en segundo plano.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL CONFIRMACIÓN CANCELACIÓN (PASO 2 DE 2) -->
+  <div class="confirmation-modal-overlay" id="confirmModalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+    <div class="modal-card">
+      <div class="modal-warning-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+      </div>
+      <div style="margin-bottom: 0.5rem;">
+        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--danger); background: rgba(239, 68, 68, 0.15); padding: 3px 10px; border-radius: 20px;">
+          Paso 2 de 2: Confirmación Final
+        </span>
+      </div>
+      <h3 id="modalTitle" class="modal-title">¿Confirmas de nuevo la cancelación de tu prueba PET?</h3>
+      <p id="modalDesc" class="modal-description">
+        Por favor, revisa tus datos antes de continuar. Al confirmar de nuevo la anulación, tu hueco quedará libre en la agenda y se remitirá una notificación oficial a <strong>oscarferreiradavila@gmail.com</strong> explicando el motivo para que el equipo médico y enfermería puedan ponerse en contacto contigo y gestionar tu recitación.
+      </p>
+
+      <!-- Resumen previo de datos en el modal -->
+      <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: var(--radius-sm); padding: 0.85rem; text-align: left; margin: 1rem 0; font-size: 0.88rem; line-height: 1.55;">
+        <div>👤 <strong>Paciente:</strong> <span id="modalReviewName" style="color: var(--sergas-navy); font-weight: 700;">--</span></div>
+        <div>📋 <strong>Nº Historia Clínica (NHC):</strong> <span id="modalReviewNhc" style="color: var(--sergas-blue); font-family: monospace; font-weight: 700; background: var(--sergas-soft-blue); padding: 1px 6px; border-radius: 4px;">--</span></div>
+        <div>📞 <strong>Teléfono de contacto:</strong> <span id="modalReviewPhone" style="color: var(--text-main); font-weight: 600;">--</span></div>
+        <div>⚠️ <strong>Motivo de cancelación:</strong> <span id="modalReviewReason" style="color: #dc2626; font-weight: 700;">--</span></div>
+        <div>📝 <strong>Explicación:</strong> <span id="modalReviewExplanation" style="color: var(--text-muted); font-style: italic;">--</span></div>
+      </div>
+
+      <div class="modal-buttons">
+        <button type="button" class="btn btn-secondary" onclick="closeModalConfirmation()">⬅️ Volver (Modificar motivo)</button>
+        <button type="button" class="btn btn-danger" onclick="executeFinalCancellation()" style="background: var(--danger); font-weight: 700;">
+          🔴 Confirmar de nuevo la cancelación
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE OTRAS PREGUNTAS / CONSULTA A ENFERMERÍA (TEXTO O NOTA DE VOZ) -->
+  <div class="confirmation-modal-overlay" id="consultModalOverlay" role="dialog" aria-modal="true" aria-labelledby="consultModalTitle">
+    <div class="modal-card" style="max-width: 520px; text-align: left; border-color: var(--sergas-blue); border-top: 4px solid var(--sergas-blue);">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--sergas-navy); font-weight: 800; font-size: 1.18rem;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--sergas-blue)" aria-hidden="true"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+          <span id="consultModalTitle">Otras Consultas – Llamada de Enfermería</span>
+        </div>
+        <button type="button" class="chat-close-btn" onclick="cerrarModalConsultaEnfermeria()" aria-label="Cerrar modal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </div>
+
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.5;">
+        Si tienes cualquier otra duda clínica sobre tu prueba PET, escribe tu mensaje o graba una nota de voz e indica tu número de teléfono. Tu consulta se transmitirá directamente al programa de Enfermería para que <strong>el equipo asistencial te llame por teléfono y te la resuelva</strong>.
+      </p>
+
+      <form id="nursingConsultForm" onsubmit="event.preventDefault(); enviarConsultaEnfermeria();">
+        <div class="form-group">
+          <label for="consultName">Nombre y Apellidos <span style="color: var(--danger)">*</span></label>
+          <input type="text" id="consultName" placeholder="Ej. Juan Pérez" required>
+        </div>
+
+        <div class="form-group">
+          <label for="consultPhone">Número de teléfono para recibir la llamada <span style="color: var(--danger)">*</span></label>
+          <input type="tel" id="consultPhone" placeholder="Ej. 600 000 000" required>
+        </div>
+
+        <!-- Selector de Modo: Escrito vs Audio -->
+        <div class="form-group">
+          <label>¿Cómo deseas formular tu duda? <span style="color: var(--danger)">*</span></label>
+          <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <button type="button" id="tabTextBtn" class="chip-btn" style="flex: 1; text-align: center; padding: 0.55rem; background-color: var(--sergas-blue); color: #FFF; border-color: var(--sergas-blue); font-weight: 700;" onclick="switchConsultMode('text')">
+              📝 Mensaje Escrito
+            </button>
+            <button type="button" id="tabAudioBtn" class="chip-btn" style="flex: 1; text-align: center; padding: 0.55rem; font-weight: 700;" onclick="switchConsultMode('audio')">
+              🎙️ Nota de Voz (Audio)
+            </button>
+          </div>
+        </div>
+
+        <!-- Modo Escrito -->
+        <div id="consultTextContainer" class="form-group">
+          <label for="consultMessage">Escribe aquí tu duda clínica <span style="color: var(--danger)">*</span></label>
+          <textarea id="consultMessage" rows="3" placeholder="Detalla tu pregunta sobre la preparación, tu tratamiento o situación personal..."></textarea>
+        </div>
+
+        <!-- Modo Audio -->
+        <div id="consultAudioContainer" class="form-group" style="display: none; background-color: #f8fafc; padding: 1rem; border-radius: var(--radius-md); border: 1.5px solid #d0e3ef; text-align: left;">
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem; text-align: center;">Pulsa el botón para grabar tu duda por voz desde el micrófono:</p>
+          
+          <button type="button" id="recordAudioBtn" class="btn" style="background-color: var(--danger); color: #FFF; border-radius: var(--radius-full); width: 100%; justify-content: center; font-weight: 700;" onclick="toggleRecordingAudio()">
+            🔴 Iniciar grabación de voz
+          </button>
+
+          <div id="recordingStatusText" style="font-size: 0.85rem; margin-top: 0.5rem; color: #b45309; display: none; text-align: center; font-weight: 700;">
+            ⏱️ Grabando y transcribiendo en tiempo real... <span id="recordingTimer">00:00</span>
+          </div>
+
+          <div id="audioPreviewWrapper" style="margin-top: 0.75rem; display: none;">
+            <p style="font-size: 0.8rem; color: #15803d; margin-bottom: 0.25rem; font-weight: 700;">✅ Grabación realizada correctamente:</p>
+            <audio id="consultAudioPlayer" controls style="width: 100%; height: 36px; margin-bottom: 0.75rem;"></audio>
+
+            <!-- Caja de Transcripción Automática -->
+            <label for="audioTranscriptionText" style="font-size: 0.85rem; color: var(--sergas-navy); margin-bottom: 0.35rem; display: block; font-weight: 700;">
+              📝 Transcripción automática a texto (puedes revisarla o editarla):
+            </label>
+            <textarea id="audioTranscriptionText" rows="3" placeholder="La transcripción de tu voz aparecerá aquí automáticamente..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-buttons" style="margin-top: 1.5rem; justify-content: flex-end; gap: 0.5rem;">
+          <button type="button" class="btn btn-secondary" onclick="cerrarModalConsultaEnfermeria()">Cancelar</button>
+          <button type="submit" class="btn" style="background: linear-gradient(135deg, var(--sergas-blue) 0%, var(--sergas-navy) 100%); color: #FFF; font-weight: 700; display: inline-flex; align-items: center; gap: 0.5rem; border-radius: 30px; padding: 0.75rem 1.4rem;">
+            📞 Enviar Duda para Llamada de Enfermería
+          </button>
+        </div>
+      </form>
+
+      <!-- Feedback de éxito -->
+      <div id="consultSuccessFeedback" style="display: none; text-align: center; padding: 1.5rem 0;">
+        <div class="success-icon-big" style="margin-bottom: 0.75rem; width: 56px; height: 56px; background: rgba(34, 197, 94, 0.15); color: #15803d; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem auto;">
+          <svg viewBox="0 0 24 24" aria-hidden="true" style="width: 32px; height: 32px; fill: currentColor;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        </div>
+        <h3 style="font-size: 1.2rem; color: var(--sergas-navy); margin-bottom: 0.5rem; font-weight: 800;">¡Consulta enviada con éxito!</h3>
+        <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.5;">
+          El equipo de Enfermería de la Unidad PET ha recibido tu mensaje en la consola asistencial y se pondrá en contacto contigo en el teléfono <strong id="consultFeedbackPhone" style="color: var(--sergas-navy);"></strong> mediante una llamada para resolver tu duda.
+        </p>
+        <button type="button" class="btn btn-secondary" style="margin-top: 1.25rem;" onclick="cerrarModalConsultaEnfermeria()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 3: CHATBOT ENFERMERO VIRTUAL -->
+  <button class="chatbot-fab" id="chatbotFab" onclick="toggleChatbot()" aria-label="Abrir asistente de enfermería virtual" aria-expanded="false" aria-controls="chatWindow">
+    <span class="fab-badge" id="fabBadge" aria-hidden="true">1</span>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>
+    </svg>
+  </button>
+
+  <div class="chat-window" id="chatWindow" role="region" aria-label="Chatbot Enfermero Virtual">
+    <div class="chat-header">
+      <div class="chat-header-top">
+        <div class="nurse-info">
+          <div class="nurse-avatar">
+            <img src="galaria_logo.jpg" alt="Galaria Logo">
+            <span class="online-indicator"></span>
+          </div>
+          <div>
+            <div class="nurse-name">
+              <span>Enfermería Virtual PET</span>
+              <span class="chat-badge-sergas">GALARIA · SERGAS</span>
+            </div>
+            <div class="nurse-role">
+              <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #4ade80;"></span>
+              Atención clínica en directo
+            </div>
+          </div>
+        </div>
+        <button class="chat-close-btn" onclick="toggleChatbot(false)" aria-label="Cerrar chat">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </div>
+
+      <!-- Barra indicadora de la prueba seleccionada (Exclusivo PET FDG) -->
+      <div class="test-badge-bar visible" id="testBadgeBar">
+        <span>Protocolo Asistencial: <strong id="selectedTestBadge" class="selected-test-name">PET FDG Oncológico / Inflamatorio</strong></span>
+        <span class="chat-badge-verified">✓ Verificado SERGAS</span>
+      </div>
+    </div>
+
+    <div class="chat-body" id="chatMessages" aria-live="polite">
+      <!-- Aviso fijo de exención legal -->
+      <div class="disclaimer-banner">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        <span>Asistente clínico institucional Galaria · SERGAS. No sustituye la valoración médica presencial.</span>
+      </div>
+
+      <!-- Contenedor dinámico del chat -->
+      <div id="dynamicChatFlow" style="display: flex; flex-direction: column; gap: 0.75rem; width: 100%;"></div>
+
+      <!-- Indicador Typing -->
+      <div class="typing-indicator" id="typingIndicator">
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+      </div>
+    </div>
+
+    <!-- Input de texto para preguntas -->
+    <div class="chat-footer" id="chatFooter">
+      <form class="chat-input-form" onsubmit="handleUserMessageSubmit(event)">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Escribe tu duda médica sobre el PET..." autocomplete="off" aria-label="Escribe tu pregunta">
+        <button type="submit" class="chat-send-btn" aria-label="Enviar pregunta">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER INSTITUCIONAL GALARIA / SERGAS -->
+  <footer style="background-color: #ffffff; border-top: 3px solid var(--sergas-blue); padding: 2.5rem 0 1.5rem 0; margin-top: 3rem; color: var(--text-muted); font-size: 0.88rem;">
+    <div class="container" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.9rem;">
+      <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+        <img src="galaria_logo.jpg" alt="Galaria Empresa Pública de Servizos Sanitarios" style="height: 42px; width: auto; object-fit: contain;">
+      </div>
+      <p id="footerHospitalInfo" style="font-weight: 700; color: var(--sergas-navy); margin: 0; font-size: 0.95rem;">
+        © Galaria - Empresa Pública de Servizos Sanitarios, S.A. | Servizo Galego de Saúde (SERGAS)
+      </p>
+      <p style="margin: 0; font-size: 0.82rem; color: var(--text-muted);">
+        Unidade de Medicina Nuclear e Diagnóstico Molecular · Rede Hospitalaria Pública de Galicia
+      </p>
+      <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #94a3b8;">
+        En caso de urxencia médica grave, chame de inmediato ao 061 ou 112.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       LÓGICA JAVASCRIPT Y BASE DE CONOCIMIENTO
+       ========================================================================== -->
+  <script>
+    /* --------------------------------------------------------------------------
+       1. CONFIGURACIÓN DEL SCRIPT (VARIABLES AGRUPADAS AL INICIO)
+       -------------------------------------------------------------------------- */
+    const CONFIG = {
+      NOMBRE_CENTRO: "Galaria - Empresa Pública de Servizos Sanitarios (SERGAS)",
+      TELEFONO: "986811111",
+      VIDEO_URL: "Video_Completo_PET_CT_1_al_16.mp4",
+      VIDEO_POSTER: "galaria_logo.jpg",
+      CANCEL_ENDPOINT: "/api/citas/cancelar",
+      EMAIL_NOTIFICACION_CANCELACION: "oscarferreiradavila@gmail.com",
+      DATABASE_API_URL: "/api/enfermeria/base_datos", // Endpoint para BD SQLite local
+      CHATBOT_API_URL: null // URL de API IA opcional
+    };
+
+    /* --------------------------------------------------------------------------
+       2. BASE DE CONOCIMIENTO POR PRUEBA PET (OBJETO JS)
+       -------------------------------------------------------------------------- */
+    const PET_KNOWLEDGE_BASE = {
+      FDG: {
+        name: "PET FDG Oncológico",
+        ayuno: "Requiere un mínimo de 6 horas de ayuno estricto de alimentos sólidos. Durante este tiempo solo puedes beber abundante agua sola sin azúcar.",
+        dieta: "El día anterior debes seguir una dieta pobre en hidratos de carbono (evita pan, pasta, arroz, patatas, legumbres, dulces y fruta). Cena ligero (proteína a la plancha con verduras).",
+        particularidades: "Requerirás 60 minutos de reposo absoluto y tranquilo tras la inyección del trazador. Evita ejercicio intenso 24-48h antes. Si tienes diabetes, requiere pauta especial de glucemia."
+      },
+      FDG_ENDOCARDITIS: {
+        name: "PET FDG Endocarditis / Infección Valvular",
+        ayuno: "Requiere de 12 a 16 horas de ayuno estricto absoluto. Únicamente está permitido beber agua sola sin azúcar.",
+        dieta: "El día anterior (24h antes): Dieta CETOGÉNICA rica en grasas y totalmente CERO hidratos (huevos, queso curado, carnes, pescados, jamón, bacon, mantequilla, aceite de oliva; absolutamente nada de pan, pasta, arroz, patatas, azúcares, fruta ni cereales).",
+        particularidades: "Esta preparación estricta suprime el consumo de glucosa en el miocardio normal para resaltar cualquier foco infeccioso en válvulas o dispositivos cardíacos."
+      },
+      PET_PSMA: {
+        name: "PET 18F-PSMA (Próstata)",
+        ayuno: "No requiere un ayuno prolongado estricto (se recomienda un ayuno ligero de 2-4 horas o comida suave sin grasas).",
+        dieta: "Sin dieta especial el día previo. Se aconseja comida sana no copiosa e hidratación muy abundante con agua sola.",
+        particularidades: "Hidratación obligatoria (beber 1L de agua antes). Es fundamental orinar inmediatamente antes de entrar al escáner para vaciar la vejiga."
+      },
+      GA68_PSMA: {
+        name: "PET 68Ga-PSMA (Próstata)",
+        ayuno: "No requiere ayuno estricto prolongado. Se aconseja no ingerir alimentos pesados 2-3 horas antes.",
+        dieta: "No requiere dieta especial previa. Mantén una hidratación muy abundante con agua sola pura.",
+        particularidades: "Es indispensable orinar justo antes de la adquisición en el escáner para evaluar la pelvis con nitidez."
+      },
+      COLINA: {
+        name: "PET 18F-Colina",
+        ayuno: "Requiere entre 4 y 6 horas de ayuno estricto, en las que solo puedes beber agua sola.",
+        dieta: "No requiere una dieta especial el día anterior, se recomienda una cena ligera baja en grasas saturadas.",
+        particularidades: "Beber agua abundante y orinar justo antes de comenzar la adquisición en la sala del escáner PET."
+      },
+      COLINA_PARATIROIDEA: {
+        name: "PET 18F-Colina Adenoma Paratiroideo",
+        ayuno: "Requiere de 4 a 6 horas de ayuno estricto (solo agua sola sin gas).",
+        dieta: "Sin dieta especial previa. Cena suave la noche anterior.",
+        particularidades: "Avisa a la unidad si tomas suplementos de calcio, vitamina D o si has tenido cirugías previas en el cuello."
+      },
+      GA68: {
+        name: "PET 68Ga-DOTATOC / Somatostatina (NET)",
+        ayuno: "Ayuno ligero de 2 a 4 horas previas. Mantener una hidratación muy abundante con agua sola.",
+        dieta: "Dieta habitual sana y equilibrada el día anterior.",
+        particularidades: "Si tomas análogos de somatostatina (octreótido o lanreótido), la unidad te indicará la pauta de interrupción previa obligatoria."
+      },
+      DOPA: {
+        name: "PET 18F-DOPA (Parkinsonismos / TNE)",
+        ayuno: "Requiere unas 4 a 6 horas de ayuno estricto previo a la cita. Solo agua sola.",
+        dieta: "Evita comidas ricas en proteínas en las horas previas a la prueba según la indicación facilitada.",
+        particularidades: "Puede requerir premedicación (carbidopa) pautada o administrada en la unidad para optimizar el contraste de imagen."
+      },
+      PET_NEURO: {
+        name: "PET Cerebral / Neurológico (18F-FDG / Amiloide)",
+        ayuno: "Requiere de 4 a 6 horas de ayuno estricto. Solo se permite beber agua sola.",
+        dieta: "El día anterior evitar estimulantes (café, té, bebidas con cola, chocolate) y alcohol.",
+        particularidades: "Fase de inyección y reposo con aislamiento sensorial (sala en penumbra, en silencio, sin hablar, sin leer y sin usar el móvil) para evitar la activación cortical cerebral."
+      }
+    };
+
+    let selectedTestKey = null;
+
+    /* --------------------------------------------------------------------------
+       3. INICIALIZACIÓN
+       -------------------------------------------------------------------------- */
+    document.addEventListener("DOMContentLoaded", () => {
+      try {
+        const elHospBadge = document.getElementById("hospital-name-badge");
+        if (elHospBadge) elHospBadge.innerText = CONFIG.NOMBRE_CENTRO;
+
+        const elFooter = document.getElementById("footerHospitalInfo");
+        if (elFooter) elFooter.innerText = `© ${CONFIG.NOMBRE_CENTRO} | Unidad de Medicina Nuclear`;
+
+        document.querySelectorAll(".phone-num-span").forEach(el => {
+          if (el) el.innerText = CONFIG.TELEFONO;
+        });
+
+        const elUnitPhone = document.getElementById("unitPhoneCall");
+        if (elUnitPhone) elUnitPhone.href = `tel:${CONFIG.TELEFONO.replace(/\s+/g, '')}`;
+
+        loadConfiguredVideo(CONFIG.VIDEO_URL);
+      } catch (err) {
+        console.warn("Inicialización básica:", err);
+      }
+
+      const cancelTrigger = document.getElementById("cancelHeaderTrigger");
+      if (cancelTrigger) {
+        cancelTrigger.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggleCancelAccordion();
+          }
+        });
+      }
+
+      renderChatInitialState();
+      initPatientParams();
+    });
+
+    function resolveCitedPatient() {
+      const urlParams = new URLSearchParams(window.location.search);
+      
+      // 1. Prioridad: Parámetros URL directos
+      let nombre = urlParams.get('nombre') || urlParams.get('name') || urlParams.get('paciente');
+      let nhc = urlParams.get('nhc') || urlParams.get('historia') || urlParams.get('id');
+      let fecha = urlParams.get('fecha') || urlParams.get('cita');
+      let hora = urlParams.get('hora');
+      let rf = urlParams.get('rf') || urlParams.get('radiofarmaco') || urlParams.get('estudio') || urlParams.get('prueba');
+      let tel = urlParams.get('tel') || urlParams.get('telefono') || urlParams.get('phone');
+
+      // 2. Prioridad: SessionStorage o LocalStorage previo
+      if (!nombre) nombre = sessionStorage.getItem('pet_patient_name') || localStorage.getItem('pet_patient_name');
+      if (!nhc) nhc = sessionStorage.getItem('pet_patient_nhc') || localStorage.getItem('pet_patient_nhc');
+      if (!fecha) fecha = sessionStorage.getItem('pet_patient_fecha') || localStorage.getItem('pet_patient_fecha');
+      if (!hora) hora = sessionStorage.getItem('pet_patient_hora') || localStorage.getItem('pet_patient_hora');
+      if (!rf) rf = sessionStorage.getItem('pet_patient_rf') || localStorage.getItem('pet_patient_rf');
+      if (!tel) tel = sessionStorage.getItem('pet_patient_phone') || localStorage.getItem('pet_patient_phone');
+
+      // 3. Prioridad: Base de datos de Triaje de pacientes citados
+      if (!nombre || !nhc) {
+        try {
+          const masterDb = JSON.parse(localStorage.getItem('PET_DATABASE_MASTER_V4') || '[]');
+          if (Array.isArray(masterDb) && masterDb.length > 0) {
+            const citedFromDb = masterDb.find(p => p["Estado de Triaje"] === "Cita Asignada" || p.estado_triaje === "Cita Asignada" || p["Fecha Cita Asignada"]) || masterDb[0];
+            if (citedFromDb) {
+              if (!nombre) nombre = citedFromDb["Nombre del Paciente"] || citedFromDb["Nombre y Apellidos"] || citedFromDb.nombre;
+              if (!nhc) nhc = citedFromDb["NHC / Historia Clínica"] || citedFromDb.nhc;
+              if (!fecha) fecha = citedFromDb["Fecha Cita Asignada"] || citedFromDb.fecha_cita || citedFromDb.fecha;
+              if (!hora) hora = citedFromDb["Hora Cita Asignada"] || citedFromDb.hora_cita || citedFromDb.hora;
+              if (!rf) rf = citedFromDb["Tipo de Estudio PET Solicitado"] || citedFromDb.estudio || citedFromDb.rf;
+              if (!tel) tel = citedFromDb.telefono || citedFromDb.tel;
+            }
+          }
+        } catch(e) {
+          console.warn("Lectura de masterDb:", e);
+        }
+      }
+
+      // 4. Valores clínicos canónicos del paciente citado oficial (PET FDG)
+      if (!nombre) nombre = "Cristina Rodríguez Martín";
+      if (!nhc) nhc = "NHC-131362";
+      if (!fecha) fecha = "2026-12-04";
+      if (!hora) hora = "08:20";
+      if (!tel) tel = "612 131 362";
+      if (!rf) rf = "18F-FDG (Oncológico General)";
+
+      return { nombre, nhc, fecha, hora, rf, tel };
+    }
+
+    function initPatientParams() {
+      const patient = resolveCitedPatient();
+
+      // Guardar en sessionStorage para sincronizar todas las vistas
+      sessionStorage.setItem('pet_patient_name', patient.nombre);
+      sessionStorage.setItem('pet_patient_nhc', patient.nhc);
+      sessionStorage.setItem('pet_patient_fecha', patient.fecha);
+      sessionStorage.setItem('pet_patient_hora', patient.hora);
+      sessionStorage.setItem('pet_patient_phone', patient.tel);
+      sessionStorage.setItem('pet_patient_rf', patient.rf);
+
+      // 1. Mostrar automáticamente en cabecera oficial
+      const elName = document.getElementById("display-patient-name");
+      if (elName) elName.textContent = patient.nombre;
+      const elNhc = document.getElementById("display-patient-nhc");
+      if (elNhc) elNhc.textContent = patient.nhc;
+      const elCita = document.getElementById("display-patient-cita");
+      if (elCita) {
+        const citaStr = [patient.fecha, patient.hora ? `${patient.hora} h` : ''].filter(Boolean).join(' - ');
+        elCita.textContent = citaStr || "04/12/2026 - 08:20 h";
+      }
+
+      // 2. Rellenar automáticamente campos del formulario de cancelación
+      const cancelNameInput = document.getElementById('cancelPatientName');
+      if (cancelNameInput) cancelNameInput.value = patient.nombre;
+      const cancelNhcInput = document.getElementById('cancelPatientNhc');
+      if (cancelNhcInput) cancelNhcInput.value = patient.nhc;
+      const cancelPhoneInput = document.getElementById('cancelPatientPhone');
+      if (cancelPhoneInput) cancelPhoneInput.value = patient.tel;
+
+      // 3. Rellenar campos de soporte y glucemia
+      const patientNameInput = document.getElementById('patientName');
+      if (patientNameInput && !patientNameInput.value) patientNameInput.value = patient.nombre;
+      const consultPhoneInput = document.getElementById('consultPhone');
+      if (consultPhoneInput && !consultPhoneInput.value) consultPhoneInput.value = patient.tel;
+
+      validateCancelForm();
+
+      // 4. Chatbot exclusivo para PET FDG Glucosa con saludo personalizado
+      selectedTestKey = 'FDG';
+      setTimeout(() => {
+        selectPETTest('FDG', true);
+      }, 250);
+    }
+
+    function loadConfiguredVideo(url) {
+      const container = document.querySelector(".video-container");
+      if (!container) return;
+
+      if (url.includes("drive.google.com")) {
+        let iframeUrl = url;
+        if (url.includes("/file/d/")) {
+          const fileIdMatch = url.match(/\/file\/d\/([^\/]+)/);
+          if (fileIdMatch && fileIdMatch[1]) {
+            iframeUrl = `https://drive.google.com/file/d/${fileIdMatch[1]}/preview`;
+          }
+        }
+        
+        container.innerHTML = `
+          <iframe src="${iframeUrl}" title="Vídeo explicativo PET" allow="autoplay; encrypted-media" allowfullscreen style="position: absolute; top:0; left:0; width:100%; height:100%; border:0;"></iframe>
+          <div style="position: absolute; bottom: 12px; right: 12px; z-index: 10;">
+            <a href="${url}" target="_blank" rel="noopener noreferrer" style="background: rgba(15, 23, 42, 0.9); color: #06B6D4; padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 500; text-decoration: none; border: 1px solid rgba(6, 182, 212, 0.4); display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+              ▶️ Abrir vídeo en Google Drive ↗
+            </a>
+          </div>`;
+      } else if (url.includes("youtube.com") || url.includes("vimeo.com")) {
+        container.innerHTML = `<iframe src="${url}" title="Vídeo explicativo PET" allow="autoplay; encrypted-media" allowfullscreen style="position: absolute; top:0; left:0; width:100%; height:100%; border:0;"></iframe>`;
+      } else {
+        container.innerHTML = `
+          <video id="petVideo" controls poster="${CONFIG.VIDEO_POSTER}" preload="metadata" title="Vídeo de instrucción para paciente de PET" style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source id="videoSource" src="${url}" type="video/mp4">
+            Tu navegador no soporta el reproductor de vídeo HTML5.
+          </video>`;
+        attachVideoTimeSync();
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       4. VÍDEO Y CANCELACIÓN
+       -------------------------------------------------------------------------- */
+    function seekVideo(seconds) {
+      const video = document.getElementById("petVideo");
+      if (video) {
+        video.currentTime = seconds;
+        video.play().catch(e => console.log("Play triggered:", e));
+      }
+      highlightActiveMarker(seconds);
+    }
+
+    function highlightActiveMarker(seconds) {
+      const buttons = document.querySelectorAll(".marker-btn");
+      buttons.forEach(btn => {
+        const s = parseInt(btn.getAttribute("data-seconds"), 10);
+        if (s === seconds) {
+          btn.classList.add("active");
+          btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } else {
+          btn.classList.remove("active");
+        }
+      });
+    }
+
+    function attachVideoTimeSync() {
+      const video = document.getElementById("petVideo");
+      if (!video) return;
+      video.addEventListener("timeupdate", () => {
+        const cur = Math.floor(video.currentTime);
+        const buttons = Array.from(document.querySelectorAll(".marker-btn"));
+        let activeBtn = null;
+        for (let i = 0; i < buttons.length; i++) {
+          const s = parseInt(buttons[i].getAttribute("data-seconds"), 10);
+          const nextS = (i < buttons.length - 1) ? parseInt(buttons[i+1].getAttribute("data-seconds"), 10) : 9999;
+          if (cur >= s && cur < nextS) {
+            activeBtn = buttons[i];
+            break;
+          }
+        }
+        if (activeBtn && !activeBtn.classList.contains("active")) {
+          buttons.forEach(b => b.classList.remove("active"));
+          activeBtn.classList.add("active");
+        }
+      });
+    }
+
+    function toggleCancelAccordion(forceState) {
+      const header = document.getElementById("cancelHeaderTrigger");
+      const content = document.getElementById("cancelAccordionContent");
+      if (!content) return;
+      const isCurrentlyExpanded = content.classList.contains("expanded") || content.style.display === "block";
+      const willBeExpanded = forceState !== undefined ? forceState : !isCurrentlyExpanded;
+
+      if (willBeExpanded) {
+        content.classList.add("expanded");
+        content.style.display = "block";
+        if (header) header.setAttribute("aria-expanded", "true");
+        setTimeout(() => {
+          if (header) header.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 80);
+      } else {
+        content.classList.remove("expanded");
+        content.style.display = "none";
+        if (header) header.setAttribute("aria-expanded", "false");
+      }
+    }
+    window.toggleCancelAccordion = toggleCancelAccordion;
+
+    function validateCancelForm() {
+      const nameInput = document.getElementById("cancelPatientName");
+      const nhcInput = document.getElementById("cancelPatientNhc");
+      const phoneInput = document.getElementById("cancelPatientPhone");
+      const reasonSelect = document.getElementById("cancelReason");
+      const explanationInput = document.getElementById("cancelReasonExplanation");
+      const btnConfirm = document.getElementById("btnConfirmStep1");
+      if (!btnConfirm) return;
+
+      const hasName = nameInput && nameInput.value.trim().length > 0;
+      const hasNhc = nhcInput && nhcInput.value.trim().length > 0;
+      const hasPhone = phoneInput && phoneInput.value.trim().length > 0;
+      const hasReason = reasonSelect && reasonSelect.value !== "";
+      const hasExplanation = explanationInput && explanationInput.value.trim().length > 0;
+
+      btnConfirm.disabled = !(hasName && hasNhc && hasPhone && hasReason && hasExplanation);
+    }
+    window.validateCancelForm = validateCancelForm;
+
+    function selectReasonFromMenu(reasonVal) {
+      const select = document.getElementById("cancelReason");
+      if (select) {
+        select.value = reasonVal;
+        handleReasonChange(reasonVal);
+      }
+      const explanationInput = document.getElementById("cancelReasonExplanation");
+      if (explanationInput) {
+        explanationInput.focus();
+      }
+    }
+    window.selectReasonFromMenu = selectReasonFromMenu;
+
+    function handleReasonChange(val) {
+      document.querySelectorAll(".reason-menu-btn").forEach(btn => {
+        if (btn.getAttribute("data-reason") === val) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
+      });
+      validateCancelForm();
+      const explanationInput = document.getElementById("cancelReasonExplanation");
+      if (explanationInput && !explanationInput.value.trim()) {
+        const select = document.getElementById("cancelReason");
+        if (select && select.selectedIndex >= 0) {
+          const rawText = select.options[select.selectedIndex].text;
+          const reasonText = rawText.replace(/^[^\wáéíóúÁÉÍÓÚ]+/, '').trim();
+          explanationInput.placeholder = `Explica por qué (${reasonText}) no puedes acudir a la cita...`;
+        }
+      }
+    }
+    window.handleReasonChange = handleReasonChange;
+
+    function triggerModalConfirmation() {
+      const name = document.getElementById("cancelPatientName").value.trim();
+      const nhc = document.getElementById("cancelPatientNhc").value.trim();
+      const phone = document.getElementById("cancelPatientPhone").value.trim();
+      const select = document.getElementById("cancelReason");
+      const explanation = document.getElementById("cancelReasonExplanation").value.trim();
+
+      if (!name || !nhc || !phone || !select.value || !explanation) {
+        alert("Por favor, completa todos los campos requeridos (nombre completo, NHC, teléfono, motivo y explicación) antes de continuar.");
+        return;
+      }
+
+      const modalReviewName = document.getElementById("modalReviewName");
+      if (modalReviewName) modalReviewName.textContent = name;
+      const modalReviewNhc = document.getElementById("modalReviewNhc");
+      if (modalReviewNhc) modalReviewNhc.textContent = nhc;
+      const modalReviewPhone = document.getElementById("modalReviewPhone");
+      if (modalReviewPhone) modalReviewPhone.textContent = phone;
+      const modalReviewReason = document.getElementById("modalReviewReason");
+      if (modalReviewReason) modalReviewReason.textContent = select.options[select.selectedIndex].text;
+      const modalReviewExplanation = document.getElementById("modalReviewExplanation");
+      if (modalReviewExplanation) modalReviewExplanation.textContent = explanation;
+
+      const modal = document.getElementById("confirmModalOverlay");
+      modal.classList.add("active");
+      modal.querySelector(".btn-secondary").focus();
+    }
+
+    function closeModalConfirmation() {
+      document.getElementById("confirmModalOverlay").classList.remove("active");
+    }
+
+    async function executeFinalCancellation() {
+      closeModalConfirmation();
+      const nameInput = document.getElementById("cancelPatientName");
+      const nhcInput = document.getElementById("cancelPatientNhc");
+      const phoneInput = document.getElementById("cancelPatientPhone");
+      const select = document.getElementById("cancelReason");
+      const explanationInput = document.getElementById("cancelReasonExplanation");
+
+      const finalName = (nameInput && nameInput.value.trim()) || sessionStorage.getItem('pet_patient_name') || 'Paciente no identificado';
+      const finalNhc = (nhcInput && nhcInput.value.trim()) || sessionStorage.getItem('pet_patient_nhc') || 'No especificado';
+      const finalPhone = (phoneInput && phoneInput.value.trim()) || 'No facilitado';
+      const finalReasonCat = select.options[select.selectedIndex].text;
+      const finalExplanation = (explanationInput && explanationInput.value.trim()) || 'Sin detalle adicional';
+      
+      const pFecha = sessionStorage.getItem('pet_patient_fecha') || 'Cita en agenda';
+      const pHora = sessionStorage.getItem('pet_patient_hora') || '';
+      const pRf = sessionStorage.getItem('pet_patient_rf') || (selectedTestKey ? PET_KNOWLEDGE_BASE[selectedTestKey].name : 'PET FDG Glucosa');
+
+      document.getElementById("cancellationForm").style.display = "none";
+      
+      const elRecName = document.getElementById("recordedNameDisplay");
+      if (elRecName) elRecName.textContent = finalName;
+      const elRecNhc = document.getElementById("recordedNhcDisplay");
+      if (elRecNhc) elRecNhc.textContent = finalNhc;
+      const elRecPhone = document.getElementById("recordedPhoneDisplay");
+      if (elRecPhone) elRecPhone.textContent = finalPhone;
+      const elRecRf = document.getElementById("recordedRfDisplay");
+      if (elRecRf) elRecRf.textContent = pRf;
+      const elRecReason = document.getElementById("recordedReasonDisplay");
+      if (elRecReason) elRecReason.textContent = finalReasonCat;
+      const elRecExpl = document.getElementById("recordedExplanationDisplay");
+      if (elRecExpl) elRecExpl.textContent = finalExplanation;
+
+      const successBox = document.getElementById("cancellationSuccessBox");
+      successBox.classList.add("visible");
+      successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      const elNotifiedName = document.getElementById("notifiedName");
+      if (elNotifiedName) elNotifiedName.textContent = finalName;
+      const elNotifiedNhc = document.getElementById("notifiedNhc");
+      if (elNotifiedNhc) elNotifiedNhc.textContent = finalNhc;
+
+      // Asunto y marcas temporales para la notificación oficial
+      const mailSubject = `🚨 CANCELACIÓN CITA PET: ${finalName} (NHC: ${finalNhc}) - ${finalReasonCat}`;
+      const timestampText = new Date().toLocaleString('es-ES');
+
+      // 1. Envío 100% automático en segundo plano directo a oscarferreiradavila@gmail.com (sin abrir cliente de correo)
+      try {
+        let hiddenIframe = document.getElementById("hidden_email_iframe");
+        if (!hiddenIframe) {
+          hiddenIframe = document.createElement("iframe");
+          hiddenIframe.id = "hidden_email_iframe";
+          hiddenIframe.name = "hidden_email_iframe";
+          hiddenIframe.style.display = "none";
+          document.body.appendChild(hiddenIframe);
+        }
+
+        const directForm = document.createElement("form");
+        directForm.method = "POST";
+        directForm.action = `https://formsubmit.co/${CONFIG.EMAIL_NOTIFICACION_CANCELACION}`;
+        directForm.target = "hidden_email_iframe";
+        directForm.style.display = "none";
+
+        const fields = {
+          _subject: mailSubject,
+          _captcha: "false",
+          _template: "table",
+          _autoresponse: "false",
+          "PACIENTE": finalName,
+          "NHC": finalNhc,
+          "TELEFONO_CONTACTO": finalPhone,
+          "ESTUDIO_PET": pRf,
+          "FECHA_CITA": pFecha,
+          "HORA_CITA": pHora || "Según agenda",
+          "MOTIVO_CANCELACION": finalReasonCat,
+          "EXPLICACION_DETALLADA": finalExplanation,
+          "ESTADO_AGENDA": "HUECO LIBERADO PARA RECITACIÓN",
+          "FECHA_HORA_AVISO": timestampText,
+          "DESTINATARIO_NOTIFICACION": CONFIG.EMAIL_NOTIFICACION_CANCELACION
+        };
+
+        for (const [k, v] of Object.entries(fields)) {
+          const inp = document.createElement("input");
+          inp.type = "hidden";
+          inp.name = k;
+          inp.value = v;
+          directForm.appendChild(inp);
+        }
+
+        document.body.appendChild(directForm);
+        directForm.submit();
+        setTimeout(() => {
+          if (directForm.parentNode) directForm.parentNode.removeChild(directForm);
+        }, 1500);
+      } catch (fErr) {
+        console.warn("Direct form submission error:", fErr);
+      }
+
+      // Sincronización en Base de Datos y localStorage para Triaje PET
+      const cancelPayload = {
+        origen: "CANCELACION_PACIENTE_WEB",
+        nivel: "CANCELACION_CITA",
+        fecha_hora: new Date().toISOString(),
+        paciente_nombre: finalName,
+        paciente_nhc: finalNhc,
+        paciente_telefono: finalPhone,
+        estudio: pRf,
+        fecha_cita: pFecha,
+        hora_cita: pHora,
+        motivo_categoria: finalReasonCat,
+        explicacion_motivo: finalExplanation,
+        motivo: `${finalReasonCat} — "${finalExplanation}"`,
+        email_notificado: CONFIG.EMAIL_NOTIFICACION_CANCELACION,
+        mensaje_alerta: `🚨 CITA CANCELADA: ${finalName} (NHC: ${finalNhc}) canceló su prueba ${pRf} del ${pFecha} ${pHora}. Motivo: ${finalReasonCat}. Explicación: ${finalExplanation}. Teléfono: ${finalPhone}. Hueco libre para recitar.`
+      };
+
+      try {
+        // Registrar en freed_slots de Triaje PET para liberar el hueco
+        const freedMap = JSON.parse(localStorage.getItem('pet_ct_freed_slots') || '{}');
+        const slotKey = `${pFecha}_${pHora}`;
+        freedMap[slotKey] = {
+          date: pFecha,
+          time: pHora,
+          freedAt: new Date().toISOString(),
+          reason: `Cancelado por paciente: ${finalReasonCat} - ${finalExplanation}`,
+          patientName: finalName,
+          nhc: finalNhc,
+          phone: finalPhone,
+          rf: pRf
+        };
+        localStorage.setItem('pet_ct_freed_slots', JSON.stringify(freedMap));
+
+        // Registrar en lista de pacientes cancelados
+        const cancellationsList = JSON.parse(localStorage.getItem('PET_CANCELLED_PATIENTS') || '[]');
+        cancellationsList.push(cancelPayload);
+        localStorage.setItem('PET_CANCELLED_PATIENTS', JSON.stringify(cancellationsList));
+      } catch (stErr) {
+        console.warn("Error sincronizando localStorage de Triaje:", stErr);
+      }
+
+      sendToDatabase(cancelPayload);
+
+      // Envío garantizado a backend local (con reenvío automático FormSubmit sin bloqueo de origen)
+      const cancelData = {
+        email_destino: CONFIG.EMAIL_NOTIFICACION_CANCELACION,
+        asunto: mailSubject,
+        motivo_categoria: finalReasonCat,
+        explicacion_motivo: finalExplanation,
+        motivo: finalReasonCat,
+        explicacion: finalExplanation,
+        fecha_hora: timestampText,
+        paciente_nombre: finalName,
+        paciente_nhc: finalNhc,
+        paciente_telefono: finalPhone,
+        estudio: pRf,
+        fecha_cita: pFecha,
+        hora_cita: pHora || "08:20 h"
+      };
+
+      try {
+        const endpoint = (window.location.protocol === 'file:') ? 'http://localhost:8000/api/citas/cancelar' : CONFIG.CANCEL_ENDPOINT;
+        fetch(endpoint, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(cancelData)
+        })
+        .then(r => r.json())
+        .then(res => {
+          console.log("Servidor local procesó cancelación:", res);
+          const statusText = document.getElementById("emailDeliveryStatusText");
+          if (statusText) {
+            statusText.innerHTML = `Notificación enviada automáticamente a <strong>${CONFIG.EMAIL_NOTIFICACION_CANCELACION}</strong> con los datos del paciente citado (<strong>${finalName}</strong>, NHC: <strong>${finalNhc}</strong>) para tramitar su recitación médica.`;
+          }
+        })
+        .catch(err => {
+          console.warn("Backend local offline, usando FormSubmit directo:", err);
+        });
+      } catch (e) {}
+
+      try {
+        fetch(`https://formsubmit.co/ajax/${CONFIG.EMAIL_NOTIFICACION_CANCELACION}`, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+          body: JSON.stringify({
+            _subject: mailSubject,
+            asunto: mailSubject,
+            destinatario: CONFIG.EMAIL_NOTIFICACION_CANCELACION,
+            paciente: finalName,
+            nhc: finalNhc,
+            telefono: finalPhone,
+            estudio: pRf,
+            fecha_cita: pFecha,
+            hora_cita: pHora,
+            motivo: finalReasonCat,
+            explicacion: finalExplanation,
+            fecha_hora: timestampText,
+            _captcha: "false"
+          })
+        }).catch(() => {});
+      } catch (e) {}
+
+      const statusText = document.getElementById("emailDeliveryStatusText");
+      if (statusText) {
+        statusText.innerHTML = `Notificación enviada automáticamente a <strong>${CONFIG.EMAIL_NOTIFICACION_CANCELACION}</strong> con los datos del paciente citado (<strong>${finalName}</strong>, NHC: <strong>${finalNhc}</strong>) y el motivo explicado para proceder a su recitación médica.`;
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       4.1 PROTOCOLO DE ESCALADO NIVEL 2 - SEMÁFORO METABÓLICO EN DOMICILIO
+       -------------------------------------------------------------------------- */
+    function evaluarGlucemiaDiabetica() {
+      const nameInput = document.getElementById("patientName").value.trim();
+      const timeInput = document.getElementById("glucoseTime").value;
+      const valInput = parseInt(document.getElementById("glucoseValue").value, 10);
+
+      if (!nameInput || !timeInput || isNaN(valInput)) return;
+
+      const resultBox = document.getElementById("glucoseResultBox");
+      const badge = document.getElementById("glucoseBadge");
+      const actionText = document.getElementById("glucoseActionText");
+      const nursingAlert = document.getElementById("nursingAlertBox");
+
+      resultBox.className = "glucose-result-box visible";
+      nursingAlert.style.display = "none";
+
+      if (valInput < 160) {
+        // Glucemia Verde (<160mg/dL)
+        resultBox.className = "glucose-result-box visible verde";
+        badge.innerHTML = "🟢 Glucemia Verde (" + valInput + " mg/dL) - Validación Autónoma Correcta";
+        actionText.textContent = "Cifra validada de forma automática. Tu nivel de glucemia es adecuado para la prueba. Continúa en ayunas estricto bebiendo abundante agua sola. No requiere alertar al personal.";
+      } else if (valInput >= 160 && valInput <= 199) {
+        // Glucemia Ámbar (160-199mg/dL)
+        resultBox.className = "glucose-result-box visible ambar";
+        badge.innerHTML = "🟡 Glucemia Ámbar (" + valInput + " mg/dL) - Aviso de Baja Prioridad a Enfermería";
+        actionText.textContent = "Glucemia moderadamente elevada. Es necesario que mantengas reposo estricto e hidratación abundante con agua sola. Hemos generado un aviso de baja prioridad en la consola de Enfermería para priorizar el control capilar inmediato a tu llegada al box.";
+      } else {
+        // Glucemia Roja (>=200mg/dL) - NIVEL 2: PROTOCOLO DE ESCALADO A ENFERMERÍA
+        resultBox.className = "glucose-result-box visible rojo";
+        badge.innerHTML = "🔴 Glucemia Roja (" + valInput + " mg/dL) - ALERTA METABÓLICA PREFERENTE (ESCALADO A ENFERMERÍA)";
+        actionText.textContent = "El sistema ha detectado un valor que supera el umbral de seguridad clínica. Se ha emitido una Alerta Asistencial Preferente en la Consola de Enfermería. En breves momentos se pondran en contacto con usted para indicarle la actuacion a seguir.";
+
+        nursingAlert.style.display = "block";
+        nursingAlert.innerHTML = "<strong>🚨 ALERTA ASISTENCIAL EN PUESTO DE ENFERMERÍA:</strong><br>" +
+          "\"ALERTA METABÓLICA: Paciente " + escapeHTML(nameInput) + " (Cita hoy, FDG) reporta glucemia capilar de " + valInput + " mg/dL a las " + escapeHTML(timeInput) + " h\".";
+
+        // SOLO SE ENVÍA A LA BASE DE DATOS LA ALERTA DE GLUCEMIA SUPERIOR A 200 mg/dL
+        sendToDatabase({
+          origen: "ALERTA_GLUCEMIA_DIABETES",
+          nivel: "ROJO_PREFERENTE",
+          fecha_hora: new Date().toISOString(),
+          paciente_nombre: nameInput,
+          hora_control_capilar: timeInput,
+          glucemia_mg_dl: valInput,
+          mensaje_alerta: `ALERTA METABÓLICA: Paciente ${nameInput} (Cita hoy, FDG) reporta glucemia capilar de ${valInput} mg/dL a las ${timeInput} h`
+        });
+      }
+
+      resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    /* --------------------------------------------------------------------------
+
+/* --------------------------------------------------------------------------
+   5. LÓGICA Y FLUJO DEL CHATBOT ENFERMERO
+   -------------------------------------------------------------------------- */
+function toggleChatbot(forceState) {
+  const win = document.getElementById("chatWindow");
+  const fab = document.getElementById("chatbotFab");
+  const badge = document.getElementById("fabBadge");
+  if (!win) return;
+  
+  const isOpen = forceState !== undefined ? forceState : !win.classList.contains("open");
+
+  if (isOpen) {
+    win.classList.add("open");
+    if (fab) fab.setAttribute("aria-expanded", "true");
+    if (badge) badge.style.display = "none";
+    setTimeout(() => {
+      scrollChatToBottom();
+      const inputEl = document.getElementById("chatInput");
+      if (inputEl) inputEl.focus();
+    }, 150);
+  } else {
+    win.classList.remove("open");
+    if (fab) fab.setAttribute("aria-expanded", "false");
+  }
+}
+
+// Renderiza el inicio del chatbot exclusivo para PET FDG Oncológico / Inflamatorio
+function renderChatInitialState() {
+  selectPETTest('FDG', true);
+}
+
+function selectPETTest(testKey = 'FDG', isAutoLaunch = true) {
+  selectedTestKey = 'FDG';
+
+  const badge = document.getElementById("selectedTestBadge");
+  if (badge) badge.textContent = "PET FDG Oncológico / Inflamatorio";
+  const videoTitle = document.getElementById("videoTestTitle");
+  if (videoTitle) videoTitle.textContent = "PET FDG Oncológico / Inflamatorio";
+  const testBadgeBar = document.getElementById("testBadgeBar");
+  if (testBadgeBar) testBadgeBar.classList.add("visible");
+  const chatFooter = document.getElementById("chatFooter");
+  if (chatFooter) chatFooter.classList.add("visible");
+
+  const flow = document.getElementById("dynamicChatFlow");
+  if (!flow) return;
+  flow.innerHTML = "";
+
+  const pName = sessionStorage.getItem('pet_patient_name') || "";
+  const pFecha = sessionStorage.getItem('pet_patient_fecha') || "";
+  const pHora = sessionStorage.getItem('pet_patient_hora') || "";
+  const pNhc = sessionStorage.getItem('pet_patient_nhc') || "";
+
+  let introText = "";
+  if (pName) {
+    introText = `👋 ¡Hola **${pName}**! Soy tu asistente de enfermería virtual para tu prueba **PET FDG Oncológico / Inflamatorio**.\n\n` +
+      `Veo en tu expediente que tienes tu cita el día **${pFecha || 'indicado en tu citación'}** ` +
+      `${pHora ? `a las **${pHora} h**` : ''} ${pNhc ? `(NHC: \`${pNhc}\`)` : ''}.\n\n` +
+      `Este asistente está configurado exclusivamente en la preparación para **PET FDG Oncológico / Inflamatorio** (18F-Fluorodesoxiglucosa). Resuelvo tus dudas sobre el **ayuno estricto (mínimo 6 horas)**, la **dieta sin hidratos de carbono**, el **consumo de agua pura**, por qué **NO hacer deporte 24-48h antes**, **medicación habitual y diabetes**, y la **duración total de la prueba** (~2h a 2h30 con 30 min de revisión médica).\n\n` +
+      `Si tienes cualquier otra duda, puedes usar el botón **Otras consultas** para que el equipo de enfermería te llame por teléfono.\n\n` +
+      `Escribe tu pregunta abajo o pulsa una de las sugerencias rápidas:`;
+  } else {
+    introText = `👋 ¡Hola! Soy tu asistente de enfermería virtual especializado exclusivamente en la preparación para **PET FDG Oncológico / Inflamatorio** (18F-Fluorodesoxiglucosa). Resuelvo tus dudas sobre el **ayuno estricto (mínimo 6 horas)**, la **dieta sin hidratos de carbono**, el **consumo de agua pura**, por qué **NO hacer deporte 24-48h antes**, **medicación habitual y diabetes**, y la **duración total de la prueba** (~2h a 2h30 con 30 min de revisión médica).\n\n` +
+      `Si tienes cualquier otra duda, dispones de la opción **Otras consultas** para escribirnos o enviarnos un audio con tu teléfono y recibir una llamada de enfermería.\n\n` +
+      `Escribe tu pregunta abajo o pulsa una de las sugerencias rápidas:`;
+  }
+
+  showTyping(true);
+  setTimeout(() => {
+    showTyping(false);
+    const confirmationMsg = createMessageElement(introText, "bot");
+    flow.appendChild(confirmationMsg);
+
+    renderQuickChips(flow, 'FDG');
+    scrollChatToBottom();
+    const inputEl = document.getElementById("chatInput");
+    if (inputEl) inputEl.focus();
+  }, 300);
+}
+
+function renderQuickChips(container, testKey) {
+  const chipsWrapper = document.createElement("div");
+  chipsWrapper.className = "quick-chips-wrapper visible";
+
+  const label = document.createElement("span");
+  label.className = "chips-label";
+  label.textContent = "Sugerencias rápidas para tu prueba:";
+  chipsWrapper.appendChild(label);
+
+  const chipsDiv = document.createElement("div");
+  chipsDiv.className = "quick-chips";
+
+  const questions = [
+  "¿Cuántas horas de ayuno?",
+  "¿Qué como el día anterior?",
+  "¿Puedo beber agua?",
+  "¿Puedo tomar café o té?",
+  "¿Puedo masticar chicle?",
+  "¿Puedo hacer deporte o ir al gym?",
+  "¿Tomo mis pastillas habituales?",
+  "¿Qué hago si soy diabético?",
+  "¿Cuánto dura la prueba?",
+  "¿Cuándo me dan los resultados?",
+  "💬 Otras consultas (Llamada de Enfermería)"
+];
+
+  questions.forEach(qText => {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "chip-btn";
+    if (qText.startsWith("💬")) {
+      chip.style.borderColor = "var(--sergas-blue)";
+      chip.style.backgroundColor = "var(--sergas-soft-blue)";
+      chip.style.color = "var(--sergas-navy)";
+      chip.style.fontWeight = "700";
+      chip.onclick = () => {
+        abrirModalConsultaEnfermeria();
+      };
+    } else {
+      chip.onclick = () => askQuickQuestion(qText);
+    }
+    chip.textContent = qText;
+    chipsDiv.appendChild(chip);
+  });
+
+  chipsWrapper.appendChild(chipsDiv);
+  container.appendChild(chipsWrapper);
+}
+
+function resetTestSelection() {
+  renderChatInitialState();
+  scrollChatToBottom();
+}
+
+function askQuickQuestion(qText) {
+  processUserMessage(qText);
+}
+window.askQuickQuestion = askQuickQuestion;
+
+function openChatAndAsk(qText) {
+  toggleChatbot(true);
+  selectPETTest('FDG', false);
+  setTimeout(() => {
+    processUserMessage(qText);
+  }, 250);
+}
+window.openChatAndAsk = openChatAndAsk;
+
+function handleUserMessageSubmit(e) {
+  e.preventDefault();
+  const input = document.getElementById("chatInput");
+  const text = input.value.trim();
+  if (!text) return;
+
+  input.value = "";
+  processUserMessage(text);
+}
+
+function processUserMessage(rawText) {
+  const flow = document.getElementById("dynamicChatFlow");
+  
+  const userMsg = createMessageElement(rawText, "user");
+  flow.appendChild(userMsg);
+  scrollChatToBottom();
+
+  const cleanInput = normalizeText(rawText);
+
+  // Reglas de dolor de pecho / urgencia vital
+  if (cleanInput.includes("dolor de pecho") || cleanInput.includes("falta de aire") || cleanInput.includes("asfixia") || cleanInput.includes("desmayo") || cleanInput.includes("mareo intenso")) {
+    showTyping(true);
+    setTimeout(() => {
+      showTyping(false);
+      const alertMsg = createMessageElement("🚨 ALERTA MÉDICA URGENTE: Si experimentas dolor en el pecho, sensación de asfixia o pérdida de conocimiento, llama inmediatamente al 112 o acude al servicio de urgencias hospitalarias más cercano.", "alert");
+      flow.appendChild(alertMsg);
+      scrollChatToBottom();
+    }, 350);
+
+    sendToDatabase({
+      origen: "CHATBOT_ALERTA_URGENTE",
+      nivel: "ROJO_112",
+      fecha_hora: new Date().toISOString(),
+      paciente_nombre: sessionStorage.getItem('pet_patient_name') || "Paciente Chatbot",
+      hora_control_capilar: 'PET FDG Oncológico / Inflamatorio',
+      mensaje_escrito: rawText,
+      mensaje_alerta: "🚨 ALERTA MÉDICA URGENTE: Dolor de pecho / Falta de aire reportado en Chatbot"
+    });
+    return;
+  }
+
+  showTyping(true);
+
+  setTimeout(() => {
+    let answer = generateBotResponse(cleanInput);
+
+    showTyping(false);
+    const botMsg = createMessageElement(answer, "bot");
+    flow.appendChild(botMsg);
+    scrollChatToBottom();
+  }, 500);
+}
+
+function generateBotResponse(cleanText) {
+  selectedTestKey = 'FDG';
+  const testName = 'PET FDG Oncológico / Inflamatorio';
+
+  if (cleanText.includes("ayuno") || cleanText.includes("horas") || cleanText.includes("sin comer") || cleanText.includes("desayun")) {
+  return `Para tu prueba **PET FDG Oncológico / Inflamatorio**:\n\n• **Horas de ayuno**: Requiere un **mínimo de 6 horas de ayuno estricto de alimentos sólidos** antes de tu hora de cita.\n• Durante el ayuno **solo está permitido beber agua sola** (sin gas, sin azúcar ni edulcorantes).\n• Quedan totalmente prohibidos zumos, leche, refrescos, café, té e infusiones.\n• Si tu cita es por la mañana temprano, ven en ayunas desde la cena de la noche anterior habiendo dormido con normalidad.`;
+}
+if (cleanText.includes("dieta") || cleanText.includes("dia anterior") || cleanText.includes("que como") || cleanText.includes("cena") || cleanText.includes("carbohidrato") || cleanText.includes("hidrato") || /\b(pan|panes)\b/.test(cleanText) || cleanText.includes("pasta") || cleanText.includes("arroz") || cleanText.includes("patata") || cleanText.includes("dulce") || cleanText.includes("fruta")) {
+  return `Dieta el día previo a tu prueba **PET FDG Oncológico**:\n\n• **Dieta POBRE en carbohidratos e hidratos de carbono** durante las 24 horas previas:\n  - ❌ **EVITAR**: Pan, pasta, arroz, patatas, legumbres, bollería, fruta, azúcares y dulces.\n  - ✔️ **PERMITIDO**: Carnes, pescados, huevos, ensaladas verdes y verduras bajas en hidratos aliñadas con aceite de oliva.\n• **Cena de la víspera**: Cena temprano y ligero (por ejemplo, tortilla francesa o pescado blanco con calabacín). Bebe agua sola.`;
+}
+if (cleanText.includes("ejercicio") || cleanText.includes("deporte") || cleanText.includes("gimnasio") || cleanText.includes("gym") || cleanText.includes("entrenar") || cleanText.includes("correr") || cleanText.includes("pesas") || cleanText.includes("spinning") || cleanText.includes("bici")) {
+  return `❌ **NO, no se puede hacer deporte ni ejercicio físico (en las 24 a 48 horas previas a la prueba)**.\n\n**Justificación médica**:\n• Al realizar actividad física o esfuerzo muscular, las fibras musculares sobreactivan los transportadores de glucosa (GLUT4).\n• Como el trazador del PET FDG es glucosa radiactiva, los músculos que han trabajado absorberán masivamente el radiofármaco.\n• Esto produce manchas difusas que tapan las lesiones tumorales o inflamatorias reales e impiden un diagnóstico certero.\n• Mantén reposo muscular relativo 24-48h antes y acude al hospital caminando con tranquilidad.`;
+}
+if (cleanText.includes("diabet") || cleanText.includes("glucemia") || cleanText.includes("insulina") || cleanText.includes("metformina")) {
+  return `💉 **PROTOCOLO PARA PACIENTES DIABÉTICOS (PET FDG)**:\n\n• **Insulina rápida**: NO debes inyectarte insulina en las 4 a 6 horas previas a la prueba (para que el trazador no sea desviado a los músculos periféricos).\n• **Glucemia en ayunas**: Mide tu glucemia capilar 1-2 horas antes de salir de casa:\n  - 🟢 **<160 mg/dL**: Glucemia óptima para realizar el estudio.\n  - 🟡 **160-199 mg/dL**: Glucemia de precaución.\n  - 🔴 **≥200 mg/dL**: Alerta roja asistencial (contacta con la unidad para valorar pauta o reprogramación: [CONFIRMA_UNIDAD]).`;
+}
+if (cleanText.includes("dura") || cleanText.includes("duracion") || cleanText.includes("tiempo") || cleanText.includes("fases")) {
+  return `⏱️ **DURACIÓN TOTAL: APROXIMADAMENTE 2 HORAS A 2 HORAS Y MEDIA**:\n\n1. **Acogida y glucemia** (~15 min): Control analítico y canalización de vía venosa.\n2. **Inyección del trazador** (~2-5 min).\n3. **Reposo metabólico** (~60 min): En sillón individual en penumbra y silencio total, sin hablar ni usar el móvil.\n4. **Escáner PET-CT** (~20-30 min): Tumbado/a en la camilla mientras se adquieren las imágenes tomográficas.\n5. **Revisión médica de imágenes** (~30 min): Espera mientras el médico especialista en Medicina Nuclear inspecciona y confirma la calidad técnica antes de retirar la vía.`;
+}
+
+
+  if (cleanText.includes("hola") || cleanText.includes("buenos dias") || cleanText.includes("buenas tardes") || cleanText.includes("buenas noches") || cleanText.includes("saludos") || cleanText.includes("quien eres") || cleanText.includes("ayuda")) {
+  return `¡Hola! Soy el asistente de enfermería virtual de Medicina Nuclear especializado en preparación para **PET FDG Oncológico / Inflamatorio**.
+
+Puedo responderte con precisión sobre **ayuno**, **dieta previa**, **agua**, **medicación**, **ropa**, **radiación tras la prueba** o **duración**. ¿Qué te gustaría saber?`;
+}
+
+if (cleanText.includes("gracias") || cleanText.includes("muchas gracias") || cleanText.includes("perfecto") || cleanText.includes("entendido") || cleanText.includes("vale") || cleanText.includes("adios") || cleanText.includes("hasta luego")) {
+  return `¡De nada! Es un placer orientarte. Si te surge cualquier otra duda antes de tu cita, vuelve a consultarme aquí cuando lo desees. Recuerda venir bien hidratado/a y puntual a tu cita para **PET FDG Oncológico / Inflamatorio**.`;
+}
+
+if (cleanText.includes("chicle") || cleanText.includes("caramelo") || cleanText.includes("golosina")) {
+  return `🚫 **EVITA MASTICAR CHICLE O TOMAR CARAMELOS**:
+
+• Masticar o chupar de forma repetida activa los músculos mandibulares (maseteros, pterigoideos) y la lengua, lo que puede originar artefactos de captación en cuello y cabeza.
+• Se recomienda no consumir chicles ni caramelos la mañana de la prueba.`;
+}
+
+if (cleanText.includes("cafe") || cleanText.includes("te") || cleanText.includes("infusion") || cleanText.includes("energetica")) {
+  return `☕ **CAFÉ E INFUSIONES**:
+
+• Se aconseja no tomar café, té ni bebidas energéticas antes de la prueba para mantener la frecuencia cardíaca y la presión arterial estables y acudir en un estado de reposo psicofísico óptimo.`;
+}
+
+if (cleanText.includes("fumar") || cleanText.includes("tabaco") || cleanText.includes("vapear") || cleanText.includes("nicotina")) {
+  return `🚫 **NO FUMES NI VAPEES** la mañana de la prueba ni durante las 12 horas previas:
+
+• La nicotina altera el tono vascular periférico y puede perjudicar la calidad diagnóstica de las imágenes.`;
+}
+
+if (cleanText.includes("alcohol") || cleanText.includes("cerveza") || cleanText.includes("vino")) {
+  return `🚫 **EVITA EL CONSUMO DE ALCOHOL** durante al menos **24 a 48 horas antes** de tu cita para no interferir en el metabolismo ni la hidratación tisular.`;
+}
+
+if (cleanText.includes("medicacion") || cleanText.includes("pastilla") || cleanText.includes("tension") || cleanText.includes("corazon") || cleanText.includes("tiroides") || cleanText.includes("eutirox") || cleanText.includes("sintrom")) {
+  return `💊 **MEDICACIÓN HABITUAL**:
+
+• **SÍ, debes tomar tu medicación crónica habitual** (pastillas de la tensión, corazón, tiroides, protectores gástricos, analgésicos o sintrom/anticoagulantes) a tu hora acostumbrada, acompañada de un vaso de **agua sola**.
+• Trae contigo la lista escrita actualizada de tus medicamentos a la cita.`;
+}
+
+if (cleanText.includes("ropa") || cleanText.includes("vestir") || cleanText.includes("metal") || cleanText.includes("joyas") || cleanText.includes("marcapasos") || cleanText.includes("protesis")) {
+  return `👕 **ROPA Y OBJETOS METÁLICOS**:
+
+• Viste **ropa cómoda, holgada y cálida**, preferiblemente sin cremalleras metálicas, remaches ni aros en el sujetador.
+• Retira antes del escáner cadenas, collares y anillos.
+• **Marcapasos y prótesis metálicas**: El PET-CT es **totalmente seguro** con prótesis y marcapasos (no es un imán como la resonancia). Solo infórmalo al técnico.`;
+}
+
+if (cleanText.includes("claustro") || cleanText.includes("miedo") || cleanText.includes("cerrado") || cleanText.includes("tubo") || cleanText.includes("ansiedad")) {
+  return `🧘 **TRANQUILIDAD ANTE EL ESCÁNER PET-CT**:
+
+• El equipo PET-CT **NO es un tubo largo y cerrado** como las resonancias magnéticas.
+• Es un anillo corto y amplio (más de 70 cm de apertura), totalmente abierto por delante y por detrás, iluminado y ventilado.
+• Estarás monitorizado/a por cámara e interfonía en todo momento con un pulsador en la mano.`;
+}
+
+if (cleanText.includes("radiacion") || cleanText.includes("despues") || cleanText.includes("ninos") || cleanText.includes("bebe") || cleanText.includes("embarazada") || cleanText.includes("contacto")) {
+  return `☢️ **PROTECCIÓN RADIOLÓGICA TRAS LA PRUEBA**:
+
+• El radiofármaco inyectado decae con rapidez en pocas horas.
+• **Durante las 6 a 8 horas siguientes**:
+  1. Mantén una distancia de 1 a 2 metros con **bebés, niños pequeños y mujeres embarazadas**.
+  2. Bebe agua abundante y orina con frecuencia.
+  3. En el inodoro, orina sentado/a, tira dos veces de la cadena y lávate bien las manos.
+• Al día siguiente podrás hacer vida completamente normal.`;
+}
+
+if (cleanText.includes("resultado") || cleanText.includes("informe") || cleanText.includes("cuando me dan")) {
+  return `📋 **ENTREGA DE RESULTADOS**:
+
+• Los resultados no se entregan en el acto. El equipo médico especialista analiza y fusiona minuciosamente las imágenes.
+• El informe clínico definitivo se transmitirá directamente a tu médico solicitante y estará disponible en tu portal de salud en un plazo habitual de **48 a 72 horas laborables**.`;
+}
+
+if (cleanText.includes("cancelar") || cleanText.includes("anular") || cleanText.includes("cambiar cita") || cleanText.includes("aplazar") || cleanText.includes("posponer")) {
+  return `📅 **CANCELAR O MODIFICAR TU CITA**:
+
+• Puedes tramitar la anulación mediante la pestaña **'¿Necesitas cancelar o aplazar tu prueba PET?'** en esta misma página.
+• Se remitirá una notificación por correo a **oscarferreiradavila@gmail.com** con tus datos para liberar el hueco en agenda.
+• Puedes abrir la pestaña de cancelación pulsando aquí: [ABRIR_CANCELACION]
+• O llamando directamente a nuestra unidad: [CONFIG_TEL].`;
+}
+
+if (cleanText.includes("otra consulta") || cleanText.includes("otras consultas") || cleanText.includes("otra pregunta") || cleanText.includes("llamar") || cleanText.includes("llamada") || cleanText.includes("telefono") || cleanText.includes("contacto")) {
+  return `📞 **OTRAS CONSULTAS / LLAMADA TELEFÓNICA DE ENFERMERÍA**:
+
+Si tienes cualquier otra consulta no contemplada en las respuestas automáticas, o necesitas una valoración personalizada:
+
+• Puedes abrir el apartado de consulta directa donde podrás **escribir tu mensaje o grabar una nota de voz (audio)** e introducir tu **número de teléfono**.
+• Tu consulta se remitirá al programa de Enfermería para que el equipo asistencial **te llame por teléfono y te resuelva la duda directamente**.
+
+👉 Pulsa aquí para abrir el formulario: [CONFIRMA_UNIDAD]
+
+O si lo prefieres, llámanos al [CONFIG_TEL].`;
+}
+
+return `No he identificado con certeza tu duda. Como asistente virtual de Enfermería para **PET FDG Oncológico / Inflamatorio** puedo informarte sobre:
+
+• **Ayuno e ingesta de agua**
+• **Dieta y recomendaciones específicas de PET FDG Oncológico / Inflamatorio**
+• **Medicación habitual**
+• **Ropa y duración de la prueba**
+• **Protección tras la prueba y contacto con niños**
+• **Resultados e informes**
+
+Si tienes **otras consultas** o necesitas que el equipo de enfermería te llame por teléfono para resolver tu duda particular, pulsa en [CONFIRMA_UNIDAD] para escribir tu consulta o enviar un audio junto a tu número de teléfono.`;
+
+}
+
+    function createMessageElement(text, type) {
+      const div = document.createElement("div");
+      div.className = `message message-${type}`;
+      
+      if (type === "user") {
+        div.textContent = text;
+      } else {
+        let formatted = escapeHTML(text)
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/`([^`]+)`/g, '<code style="background: rgba(0, 126, 180, 0.08); padding: 1px 6px; border-radius: 4px; font-family: monospace; font-size: 0.88em; color: var(--sergas-navy); font-weight: 600;">$1</code>')
+          .replace(/\n\n/g, '<br><br>')
+          .replace(/\n/g, '<br>')
+          .replace(/\[CONFIRMA_UNIDAD\]/g, '<a href="#" onclick="abrirModalConsultaEnfermeria(); return false;" class="nursing-consult-link" style="color: var(--sergas-blue); font-weight: 700; text-decoration: underline; cursor: pointer;">consulta directa con enfermería</a>')
+          .replace(/\[ABRIR_CANCELACION\]/g, '<a href="#cancelHeaderTrigger" onclick="toggleCancelAccordion(true); return false;" style="display: inline-block; margin-top: 6px; background: rgba(220, 38, 38, 0.08); color: #dc2626; border: 1px solid rgba(220, 38, 38, 0.3); padding: 5px 12px; border-radius: 6px; font-weight: 700; text-decoration: none; cursor: pointer;">🚫 Abrir pestaña de cancelación</a>')
+          .replace(/\[CONFIG_TEL\]/g, `<a href="tel:${CONFIG.TELEFONO.replace(/\\s+/g, '')}" style="color: var(--sergas-blue); font-weight: 700;">${CONFIG.TELEFONO}</a>`);
+        
+        if (type === "bot") {
+          div.innerHTML = `
+            <div class="bot-author-tag">
+              <img src="galaria_logo.jpg" alt="Galaria" class="bot-badge-icon">
+              <span>Enfermería Galaria · SERGAS</span>
+            </div>
+            <div class="bot-content">${formatted}</div>
+          `;
+        } else {
+          div.innerHTML = formatted;
+        }
+      }
+      return div;
+    }
+
+    /* --------------------------------------------------------------------------
+       LÓGICA DEL MODAL DE CONSULTA Y GRABACIÓN DE AUDIO (VOZ)
+       -------------------------------------------------------------------------- */
+    let currentConsultMode = 'text';
+    let mediaRecorder = null;
+    let audioChunks = [];
+    let recordedAudioBlob = null;
+    let recordingInterval = null;
+    let secondsRecorded = 0;
+    let speechRecognizer = null;
+
+    // Inicializar reconocimiento de voz al cargar la página
+    document.addEventListener("DOMContentLoaded", () => {
+      initSpeechRecognition();
+    });
+
+    function initSpeechRecognition() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (SpeechRecognition) {
+        speechRecognizer = new SpeechRecognition();
+        speechRecognizer.continuous = true;
+        speechRecognizer.interimResults = true;
+        speechRecognizer.lang = 'es-ES';
+
+        speechRecognizer.onresult = (event) => {
+          let currentTranscript = "";
+          for (let i = 0; i < event.results.length; ++i) {
+            currentTranscript += event.results[i][0].transcript;
+          }
+          const transcriptionInput = document.getElementById("audioTranscriptionText");
+          if (transcriptionInput) {
+            transcriptionInput.value = currentTranscript;
+          }
+        };
+
+        speechRecognizer.onerror = (event) => {
+          console.warn("Speech recognition notice:", event.error);
+        };
+      }
+    }
+
+    function abrirModalConsultaEnfermeria() {
+      const modal = document.getElementById("consultModalOverlay");
+      document.getElementById("nursingConsultForm").style.display = "block";
+      document.getElementById("consultSuccessFeedback").style.display = "none";
+      const pName = sessionStorage.getItem('pet_patient_name');
+      const nameInput = document.getElementById("consultName");
+      if (pName && nameInput && !nameInput.value) {
+        nameInput.value = pName;
+      }
+      modal.classList.add("active");
+    }
+
+    function cerrarModalConsultaEnfermeria() {
+      stopRecordingIfActive();
+      document.getElementById("consultModalOverlay").classList.remove("active");
+    }
+
+    function switchConsultMode(mode) {
+      currentConsultMode = mode;
+      const textBtn = document.getElementById("tabTextBtn");
+      const audioBtn = document.getElementById("tabAudioBtn");
+      const textContainer = document.getElementById("consultTextContainer");
+      const audioContainer = document.getElementById("consultAudioContainer");
+      const textInput = document.getElementById("consultMessage");
+
+      if (mode === 'text') {
+        textBtn.style.backgroundColor = "var(--sergas-blue)";
+        textBtn.style.color = "#FFF";
+        textBtn.style.borderColor = "var(--sergas-blue)";
+
+        audioBtn.style.backgroundColor = "#ffffff";
+        audioBtn.style.color = "var(--sergas-navy)";
+        audioBtn.style.borderColor = "#d0e3ef";
+
+        textContainer.style.display = "block";
+        audioContainer.style.display = "none";
+        textInput.required = true;
+      } else {
+        audioBtn.style.backgroundColor = "var(--sergas-blue)";
+        audioBtn.style.color = "#FFF";
+        audioBtn.style.borderColor = "var(--sergas-blue)";
+
+        textBtn.style.backgroundColor = "#ffffff";
+        textBtn.style.color = "var(--sergas-navy)";
+        textBtn.style.borderColor = "#d0e3ef";
+
+        textContainer.style.display = "none";
+        audioContainer.style.display = "block";
+        textInput.required = false;
+      }
+    }
+
+    async function toggleRecordingAudio() {
+      const btn = document.getElementById("recordAudioBtn");
+      const statusText = document.getElementById("recordingStatusText");
+      const timerSpan = document.getElementById("recordingTimer");
+
+      if (mediaRecorder && mediaRecorder.state === "recording") {
+        mediaRecorder.stop();
+        if (speechRecognizer) {
+          try { speechRecognizer.stop(); } catch(e){}
+        }
+        btn.style.backgroundColor = "var(--danger)";
+        btn.textContent = "🔴 Volver a grabar nota de voz";
+        statusText.style.display = "none";
+        clearInterval(recordingInterval);
+      } else {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          alert("Tu navegador no admite grabación directa de micrófono. Puedes enviarnos tu consulta en modo escrito.");
+          return;
+        }
+
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          mediaRecorder = new MediaRecorder(stream);
+          audioChunks = [];
+          document.getElementById("audioTranscriptionText").value = "";
+
+          mediaRecorder.ondataavailable = (e) => {
+            if (e.data.size > 0) audioChunks.push(e.data);
+          };
+
+          mediaRecorder.onstop = () => {
+            recordedAudioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+            const audioUrl = URL.createObjectURL(recordedAudioBlob);
+            const player = document.getElementById("consultAudioPlayer");
+            player.src = audioUrl;
+            document.getElementById("audioPreviewWrapper").style.display = "block";
+            stream.getTracks().forEach(track => track.stop());
+          };
+
+          mediaRecorder.start();
+
+          if (speechRecognizer) {
+            try { speechRecognizer.start(); } catch(e){}
+          }
+
+          btn.style.backgroundColor = "#475569";
+          btn.textContent = "⏹️ Detener grabación";
+          statusText.style.display = "block";
+
+          secondsRecorded = 0;
+          timerSpan.textContent = "00:00";
+          clearInterval(recordingInterval);
+          recordingInterval = setInterval(() => {
+            secondsRecorded++;
+            const mins = String(Math.floor(secondsRecorded / 60)).padStart(2, '0');
+            const secs = String(secondsRecorded % 60).padStart(2, '0');
+            timerSpan.textContent = `${mins}:${secs}`;
+          }, 1000);
+
+        } catch(err) {
+          console.error("Permiso de micrófono denegado:", err);
+          alert("No se pudo acceder al micrófono. Por favor, concede permiso de audio o utiliza el mensaje escrito.");
+        }
+      }
+    }
+
+    function stopRecordingIfActive() {
+      if (mediaRecorder && mediaRecorder.state === "recording") {
+        mediaRecorder.stop();
+        if (speechRecognizer) {
+          try { speechRecognizer.stop(); } catch(e){}
+        }
+        clearInterval(recordingInterval);
+      }
+    }
+
+    function enviarConsultaEnfermeria() {
+      const name = document.getElementById("consultName").value.trim();
+      const phone = document.getElementById("consultPhone").value.trim();
+      const textMsg = document.getElementById("consultMessage").value.trim();
+      const transcription = document.getElementById("audioTranscriptionText").value.trim();
+
+      if (!name || !phone) return;
+      if (currentConsultMode === 'text' && !textMsg) {
+        alert("Por favor, escribe el detalle de tu consulta.");
+        return;
+      }
+      if (currentConsultMode === 'audio' && !recordedAudioBlob) {
+        alert("Por favor, graba tu nota de voz antes de enviar.");
+        return;
+      }
+
+      const consultPayload = {
+        origen: "DUDAS_UNIDAD_ENFERMERIA",
+        nivel: "DUDA_LLAMADA_PACIENTE",
+        fecha_hora: new Date().toISOString(),
+        paciente_nombre: name,
+        paciente_telefono: phone,
+        modo_envio: currentConsultMode,
+        mensaje_escrito: currentConsultMode === 'text' ? textMsg : (transcription || 'Nota de voz grabada'),
+        mensaje_alerta: `📞 [PET FDG Oncológico / Inflamatorio] Solicita llamada: ${currentConsultMode === 'text' ? textMsg : (transcription || 'Nota de voz grabada')}`,
+        transcripcion_audio: currentConsultMode === 'audio' ? transcription : null,
+        duracion_audio_segundos: currentConsultMode === 'audio' ? secondsRecorded : 0
+      };
+
+      console.log("Enviando consulta a Enfermería PET:", consultPayload);
+      sendToDatabase(consultPayload);
+
+      document.getElementById("nursingConsultForm").style.display = "none";
+      document.getElementById("consultFeedbackPhone").textContent = phone;
+      document.getElementById("consultSuccessFeedback").style.display = "block";
+    }
+
+    /* --------------------------------------------------------------------------
+       FUNCION DE CONEXION CON BASE DE DATOS DE ENFERMERÍA
+       -------------------------------------------------------------------------- */
+    async function sendToDatabase(payload) {
+      console.log("📡 [BD ENFERMERÍA] Transmitiendo datos a la Base de Datos:", CONFIG.DATABASE_API_URL, payload);
+      if (!CONFIG.DATABASE_API_URL) return;
+
+      try {
+        const res = await fetch(CONFIG.DATABASE_API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        console.log("✅ [BD ENFERMERÍA] Inserción confirmada:", res.status);
+      } catch (err) {
+        console.warn("ℹ️ [BD ENFERMERÍA DEMO] Solicitud registrada (modo demostración):", err.message);
+      }
+    }
+
+    function escapeHTML(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function normalizeText(str) {
+      if (!str) return "";
+      return str
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[¿?¡!.,;:()]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    function showTyping(show) {
+      const indicator = document.getElementById("typingIndicator");
+      if (show) indicator.classList.add("active");
+      else indicator.classList.remove("active");
+      scrollChatToBottom();
+    }
+
+    function scrollChatToBottom() {
+      const body = document.getElementById("chatMessages");
+      body.scrollTop = body.scrollHeight;
+    }
+  </script>
+</body>
+</html>

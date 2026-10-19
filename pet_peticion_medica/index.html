@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Clínico de Prescrición — Galaria & SERGAS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR INSTITUCIONAL XUNTA / SERGAS -->
+  <div class="sergas-top-bar">
+    <div class="sergas-top-container">
+      <div class="sergas-gov-text">
+        <span class="xunta-pill">XUNTA DE GALICIA</span>
+        <span class="sergas-sub">CONSELLERÍA DE SANIDADE · SERGAS</span>
+      </div>
+      <div class="sergas-portal-id">
+        <span>Galaria · Portal de Prescrición Clínica</span>
+        <span class="lang-pill">GAL | ES</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Pantalla de Acceso con Usuario y Contraseña (Facultativos)
+       ======================================================================== -->
+  <div id="login-overlay" class="login-view-wrapper hidden" style="display: none;">
+    <div class="login-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #E2E8F0; padding-bottom: 0.5rem; margin-bottom: 0.5rem;">
+        <span style="font-size: 0.85rem; font-weight: 700; color: #475569;">Selección de Facultativo Prescriptor</span>
+        <button type="button" onclick="showApp()" style="background: none; border: none; font-size: 1.25rem; cursor: pointer; color: #64748B; padding: 0.2rem 0.5rem;" title="Continuar a la petición">✕</button>
+      </div>
+
+      <div class="login-brand" style="flex-direction: column; align-items: center; text-align: center; gap: 0.5rem;">
+        <img src="galaria_logo.jpg" alt="Galaria - Empresa Pública de Servizos Sanitarios" style="height: 52px; width: auto; object-fit: contain; margin-bottom: 0.25rem;">
+        <div class="login-title">
+          <h2>Portal Clínico Prescriptor</h2>
+          <p>Galaria · Unidade de Medicina Nuclear & PET/CT Molecular (SERGAS)</p>
+        </div>
+      </div>
+
+      <!-- Botón de acceso directo a crear peticiones -->
+      <button type="button" class="btn btn-primary" onclick="quickLogin('crodriguez')" style="width: 100%; justify-content: center; padding: 0.9rem; font-size: 1.05rem; font-weight: 800; background: var(--sergas-blue); border-radius: 12px; box-shadow: var(--shadow-md); cursor: pointer;">
+        🚀 Entrar a Crear Petición (Dr. Carlos Rodríguez)
+      </button>
+
+      <!-- Quick Doctor Selection for Fast Testing -->
+      <div class="quick-login-box">
+        <div class="quick-login-title">⚡ O seleccionar otro facultativo:</div>
+        <div class="quick-doctor-buttons">
+          <button type="button" class="quick-doc-btn" onclick="quickLogin('crodriguez')">
+            <div>
+              <div class="doc-name">Dr. Carlos Rodríguez</div>
+              <div class="doc-spec">Oncología Médica (Col. 2804592)</div>
+            </div>
+            <span class="quick-doc-badge">Activar</span>
+          </button>
+          <button type="button" class="quick-doc-btn" onclick="quickLogin('egomez')">
+            <div>
+              <div class="doc-name">Dra. Elena Gómez</div>
+              <div class="doc-spec">Hematología Clínica (Col. 2809112)</div>
+            </div>
+            <span class="quick-doc-badge">Activar</span>
+          </button>
+          <button type="button" class="quick-doc-btn" onclick="quickLogin('fgarcia')">
+            <div>
+              <div class="doc-name">Dr. Fernando García</div>
+              <div class="doc-spec">Urología Oncológica (Col. 2810344)</div>
+            </div>
+            <span class="quick-doc-badge">Activar</span>
+          </button>
+          <button type="button" class="quick-doc-btn" onclick="quickLogin('cruiz')">
+            <div>
+              <div class="doc-name">Dra. Carmen Ruiz</div>
+              <div class="doc-spec">Oncología Radioterápica (Col. 2811892)</div>
+            </div>
+            <span class="quick-doc-badge">Activar</span>
+          </button>
+          <button type="button" class="quick-doc-btn" onclick="quickLogin('lsanchez')">
+            <div>
+              <div class="doc-name">Dra. Lucía Sánchez</div>
+              <div class="doc-spec">Neumología (Col. 2815671)</div>
+            </div>
+            <span class="quick-doc-badge">Activar</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Manual Login Form -->
+      <form id="login-form" onsubmit="handleManualLogin(event)">
+        <div class="form-group" style="margin-bottom: 0.85rem;">
+          <label for="login-username">Usuario Hospitalario / ID Facultativo</label>
+          <input type="text" id="login-username" placeholder="Ej: crodriguez" value="crodriguez" autocomplete="username">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1.1rem;">
+          <label for="login-password">Contraseña Corporativa</label>
+          <input type="password" id="login-password" placeholder="demo" value="demo" autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="btn btn-secondary" style="width: 100%; justify-content: center; padding: 0.75rem;">
+          🔐 Iniciar Sesión con este usuario
+        </button>
+      </form>
+
+      <button type="button" class="btn btn-outline" onclick="showApp()" style="width: 100%; justify-content: center; padding: 0.6rem; border-color: #CBD5E1; color: #475569; font-weight: 600;">
+        ✕ Cancelar y volver a la Petición
+      </button>
+
+      <div style="text-align: center; font-size: 0.75rem; color: #94A3B8;">
+        Sincronizado con Triaje Digital & Agendamiento Oficial &copy; 2026
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Contenedor Principal de la Aplicación
+       ======================================================================== -->
+  <div class="app-container" id="main-app">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-brand">
+        <img src="galaria_logo.jpg" alt="Galaria - Empresa Pública de Servizos Sanitarios" class="galaria-brand-logo">
+        <div>
+          <h1 style="font-size: 1.35rem; font-weight: 800; color: var(--sergas-navy); margin-bottom: 0.2rem; display: flex; align-items: center; gap: 0.6rem;">
+            Portal Clínico de Prescrición PET / CT <span class="header-badge" style="background: var(--sergas-blue);">Galaria · SERGAS</span>
+          </h1>
+          <p class="subtitle" style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">
+            Galaria - Empresa Pública de Servizos Sanitarios, S.A. · Unidade de Medicina Nuclear e Diagnóstico Molecular
+          </p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <span class="status-badge live" title="Servicio Oficial de Prescripción Conectado">
+          <span style="font-size: 0.9rem;">●</span> Sistema Oficial Prescriptor SERGAS
+        </span>
+
+        <!-- Logged User Info -->
+        <div class="user-profile-badge">
+          <div class="user-avatar" id="header-user-avatar">CR</div>
+          <div class="user-details">
+            <span class="user-name" id="header-user-name">Dr. Carlos Rodríguez</span>
+            <span class="user-role" id="header-user-role">Oncología Médica (Col. 2804592)</span>
+          </div>
+          <button class="btn-logout" onclick="showLogin()" title="Cambiar Facultativo" style="cursor: pointer;">Cambiar</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Selector de Modalidad al Entrar (PET vs Medicina Nuclear) -->
+    <div class="modality-hero-container">
+      <div class="modality-hero-card active" id="hero-card-pet" onclick="selectModality('pet')">
+        <div class="modality-hero-icon">☢️</div>
+        <div class="modality-hero-info">
+          <h3>Petición de PET / CT Molecular</h3>
+          <p>18F-FDG Oncológico, Fluor-PSMA Próstata, Galio-DOTATOC Neuroendocrino y PET Neurológico (Demencias / Epilepsia).</p>
+        </div>
+      </div>
+
+      <div class="modality-hero-card" id="hero-card-conv" onclick="selectModality('conv')">
+        <div class="modality-hero-icon">⚛️</div>
+        <div class="modality-hero-info">
+          <h3>Petición de Medicina Nuclear Convencional</h3>
+          <p>Gammagrafía Ósea, Renogramas MAG3/DMSA, Tiroides, Ganglio Centinela (BSGC), Perfusión Miocárdica y Terapia 131I.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- KPIs de la Sesión -->
+    <div class="kpi-grid">
+      <div class="kpi-card total">
+        <span class="kpi-label">📊 Mis Peticiones Creadas</span>
+        <span class="kpi-value" id="kpi-total-requests">0</span>
+      </div>
+      <div class="kpi-card pending">
+        <span class="kpi-label">☢️ Peticiones PET</span>
+        <span class="kpi-value" id="kpi-pet-requests">0</span>
+      </div>
+      <div class="kpi-card scheduled">
+        <span class="kpi-label">⚛️ Med. Nuclear Conv.</span>
+        <span class="kpi-value" id="kpi-conv-requests">0</span>
+      </div>
+      <div class="kpi-card p1">
+        <span class="kpi-label">🔴 Prioridad 1 (Urgente)</span>
+        <span class="kpi-value" id="kpi-p1-requests">0</span>
+      </div>
+      <div class="kpi-card p2">
+        <span class="kpi-label">🟡 Prioridad 2 (Preferente)</span>
+        <span class="kpi-value" id="kpi-p2-requests">0</span>
+      </div>
+      <div class="kpi-card p3">
+        <span class="kpi-label">🟢 Prioridad 3 (Ordinaria)</span>
+        <span class="kpi-value" id="kpi-p3-requests">0</span>
+      </div>
+    </div>
+
+    <!-- Pestañas de Navegación -->
+    <div class="main-nav-tabs">
+      <button class="nav-tab active" data-tab="tab-pet-request" onclick="switchTab('tab-pet-request')">
+        <span>☢️ Petición PET / CT</span>
+      </button>
+      <button class="nav-tab" data-tab="tab-conv-request" onclick="switchTab('tab-conv-request')">
+        <span>⚛️ Petición Medicina Nuclear Convencional</span>
+      </button>
+      <button class="nav-tab" data-tab="tab-my-requests" onclick="switchTab('tab-my-requests')">
+        <span>📋 Mis Peticiones Registradas</span>
+        <span class="tab-badge" id="tab-badge-my-count">0</span>
+      </button>
+      <button class="nav-tab" data-tab="tab-protocols-guide" onclick="switchTab('tab-protocols-guide')">
+        <span>📘 Guía Rápida & Criterios EANM</span>
+      </button>
+      <button class="nav-tab" data-tab="tab-database" onclick="switchTab('tab-database')" style="display: none;">
+        <span>🗄️ Base de Datos</span>
+        <span class="tab-badge" id="tab-badge-db-count">0</span>
+      </button>
+    </div>
+
+    <!-- ======================================================================
+         PESTAÑA 1: Formulario Oficial de Petición PET / CT (Página Tally Exacta)
+         ====================================================================== -->
+    <div class="nav-content" id="tab-pet-request">
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <h2>☢️ Formulario Oficial de Prescripción PET/CT Molecular</h2>
+            <p class="card-subtitle">Formulario oficial con los 4 tipos de estudios PET y criterios de priorización clínica</p>
+          </div>
+          <div style="display: flex; gap: 0.6rem;">
+            <button type="button" class="btn btn-secondary" onclick="loadSamplePetData()">
+              🪄 Autocompletar Caso PET Ejemplo
+            </button>
+            <button type="button" class="btn btn-secondary" onclick="resetPetForm()">
+              🧹 Limpiar Formulario
+            </button>
+          </div>
+        </div>
+
+        <form id="pet-request-form" onsubmit="handlePetSubmit(event)">
+
+          <!-- Sección 1: Identificación y Ubicación (Tally Punto 1) -->
+          <div class="form-section">
+            <div class="form-section-header">
+              <span class="section-number">1</span>
+              <h3 class="section-title">1. Identificación y Ubicación del Paciente</h3>
+              <span class="section-hint">Filiación hospitalaria</span>
+            </div>
+
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label for="pet-service">Servicio Solicitante <span class="required">*</span></label>
+                <select id="pet-service" required>
+                  <option value="Oncología">Oncología</option>
+                  <option value="Medicina Interna">Medicina Interna</option>
+                  <option value="Neumología">Neumología</option>
+                  <option value="Neurología">Neurología</option>
+                  <option value="Hematología">Hematología</option>
+                  <option value="Dermatología">Dermatología</option>
+                  <option value="Radioterapia">Radioterapia</option>
+                  <option value="Endocrinología">Endocrinología</option>
+                  <option value="Urología">Urología</option>
+                  <option value="Otro servicio (especificar)">Otro servicio (especificar)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="pet-doc-name">Médico Solicitante <span class="required">*</span></label>
+                <input type="text" id="pet-doc-name" value="Dr. Carlos Rodríguez" placeholder="Nombre y Apellidos" required readonly style="background: #F8FAFC;">
+              </div>
+
+              <div class="form-group">
+                <label for="pet-patient-name">Nombre del Paciente <span class="required">*</span></label>
+                <input type="text" id="pet-patient-name" placeholder="Nombre y Apellidos" required>
+              </div>
+
+              <div class="form-group">
+                <label for="pet-nhc">Número de Historia Clínica (NHC) <span class="required">*</span></label>
+                <input type="text" id="pet-nhc" placeholder="Ej. 12345678" required>
+              </div>
+
+              <div class="form-group">
+                <label for="pet-weight">Peso (kg) <span class="required">*</span></label>
+                <input type="number" id="pet-weight" step="0.5" min="20" max="250" placeholder="Ej. 70" required oninput="calculatePetBmi()">
+              </div>
+
+              <div class="form-group">
+                <label for="pet-height">Talla (cm) <span class="required">*</span></label>
+                <input type="number" id="pet-height" min="100" max="230" placeholder="Ej. 175" required oninput="calculatePetBmi()">
+              </div>
+            </div>
+
+            <div class="form-grid-3" style="margin-top: 1rem;">
+              <div class="form-group">
+                <label>Índice de Masa Corporal (IMC) & Superficie</label>
+                <div class="calculated-badge" id="pet-bmi-display">
+                  <span>⚖️ IMC: -- kg/m²</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>¿Precisa sedación? <span class="required">*</span></label>
+                <div class="tally-yn-buttons" style="width: 100%; display: flex;">
+                  <button type="button" class="tally-yn-btn selected-no" id="btn-sedation-no" style="flex:1;" onclick="setSedationChoice('No')">A. No</button>
+                  <button type="button" class="tally-yn-btn" id="btn-sedation-yes" style="flex:1;" onclick="setSedationChoice('Sí')">B. Sí</button>
+                </div>
+                <input type="hidden" id="pet-sedation" value="No">
+              </div>
+
+              <div class="form-group">
+                <label>¿El paciente está ingresado? <span class="required">*</span></label>
+                <div class="tally-yn-buttons" style="width: 100%; display: flex;">
+                  <button type="button" class="tally-yn-btn selected-no" id="btn-inpatient-no" style="flex:1;" onclick="setInpatientChoice('No')">A. No</button>
+                  <button type="button" class="tally-yn-btn" id="btn-inpatient-yes" style="flex:1;" onclick="setInpatientChoice('Sí')">B. Sí</button>
+                </div>
+                <input type="hidden" id="pet-inpatient" value="No">
+              </div>
+            </div>
+
+            <!-- Campos condicionales si el paciente está ingresado -->
+            <div id="pet-inpatient-box" class="tally-criteria-container hidden" style="margin-top: 0.85rem;">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="pet-room">Indicar Habitación / Cama <span class="required">*</span></label>
+                  <input type="text" id="pet-room" placeholder="Ej. 402 - Cama B">
+                </div>
+                <div class="form-group">
+                  <label for="pet-transfer">Tipo de traslado <span class="required">*</span></label>
+                  <select id="pet-transfer">
+                    <option value="Silla de ruedas">Silla de ruedas</option>
+                    <option value="Cama">Cama / Encamado</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sección 2: Selección de la Prueba y Trazador (Las 10 Pruebas Clínicas Oficiales) -->
+          <div class="form-section">
+            <div class="form-section-header">
+              <span class="section-number">2</span>
+              <h3 class="section-title">2. Selección de la Prueba y Trazador PET</h3>
+              <span class="section-hint">10 Pruebas Clínicas Oficiales</span>
+            </div>
+
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+              Seleccione el <strong>Tipo de Estudio PET Solicitado</strong>. Se desplegarán automáticamente los campos y criterios clínicos específicos de la indicación:
+            </p>
+
+            <div class="tally-pet-grid">
+              <!-- 1. FDG Oncológico / Inflamatorio -->
+              <label class="tally-pet-card selected" id="card-tally-fdg" onclick="selectTallyPetType('FDG Oncológico / Inflamatorio')">
+                <input type="radio" name="tally-pet-type" value="FDG Oncológico / Inflamatorio" checked required>
+                <span class="tracer-badge fdg">18F-FDG</span>
+                <span class="tracer-name">1. FDG Oncológico / Inflamatorio</span>
+                <span class="tracer-indications">Estudio oncológico estándar, procesos linfoproliferativos, tumores sólidos e inflamación / infección general.</span>
+              </label>
+
+              <!-- 2. FDG con Contraste Iodado -->
+              <label class="tally-pet-card" id="card-tally-fdg-contraste" onclick="selectTallyPetType('FDG con Contraste Iodado')">
+                <input type="radio" name="tally-pet-type" value="FDG con Contraste Iodado">
+                <span class="tracer-badge fdg-contraste">FDG + Contraste IV</span>
+                <span class="tracer-name">2. FDG con Contraste Iodado</span>
+                <span class="tracer-indications">Estudio metabólico coordinado con TC diagnóstica con contraste intravenoso iodado. Verificación de función renal.</span>
+              </label>
+
+              <!-- 3. FDG con Endocarditis + Protocolo HEP -->
+              <label class="tally-pet-card" id="card-tally-fdg-hep" onclick="selectTallyPetType('FDG con Endocarditis + Protocolo HEP')">
+                <input type="radio" name="tally-pet-type" value="FDG con Endocarditis + Protocolo HEP">
+                <span class="tracer-badge fdg-hep">FDG + Prot. HEP</span>
+                <span class="tracer-name">3. FDG con Endocarditis + Protocolo HEP</span>
+                <span class="tracer-indications">Endocarditis infecciosa (válvula nativa/protésica), infección de marcapasos/DAI o prótesis vasculares con dieta preparatoria HEP.</span>
+              </label>
+
+              <!-- 4. 68Ga-PSMA -->
+              <label class="tally-pet-card" id="card-tally-ga68-psma" onclick="selectTallyPetType('68Ga-PSMA')">
+                <input type="radio" name="tally-pet-type" value="68Ga-PSMA">
+                <span class="tracer-badge psma">68Ga-PSMA</span>
+                <span class="tracer-name">4. 68Ga-PSMA</span>
+                <span class="tracer-indications">Antígeno de membrana prostático con Galio-68. Recidiva bioquímica precoz (PSA bajo) y estadificación inicial de alto riesgo.</span>
+              </label>
+
+              <!-- 5. 68Ga-DOTATOC Tumores Neuroendocrinos -->
+              <label class="tally-pet-card" id="card-tally-ga68-dotatoc" onclick="selectTallyPetType('68Ga-DOTATOC Tumores Neuroendocrinos')">
+                <input type="radio" name="tally-pet-type" value="68Ga-DOTATOC Tumores Neuroendocrinos">
+                <span class="tracer-badge ga68">68Ga-DOTATOC</span>
+                <span class="tracer-name">5. 68Ga-DOTATOC Tumores Neuroendocrinos</span>
+                <span class="tracer-indications">Receptores de somatostatina (SSTR), tumores neuroendocrinos GEP-NET, feocromocitomas y selección para PRRT (177Lu).</span>
+              </label>
+
+              <!-- 6. 18F-Colina -->
+              <label class="tally-pet-card" id="card-tally-f18-colina" onclick="selectTallyPetType('18F-Colina')">
+                <input type="radio" name="tally-pet-type" value="18F-Colina">
+                <span class="tracer-badge colina">18F-Colina</span>
+                <span class="tracer-name">6. 18F-Colina</span>
+                <span class="tracer-indications">Metabolismo fosfolipídico en adenocarcinoma de próstata (recidiva bioquímica) y hepatocarcinoma / tumores hepáticos.</span>
+              </label>
+
+              <!-- 7. 18F-Paratiroides -->
+              <label class="tally-pet-card" id="card-tally-f18-paratiroides" onclick="selectTallyPetType('18F-Paratiroides')">
+                <input type="radio" name="tally-pet-type" value="18F-Paratiroides">
+                <span class="tracer-badge paratiroides">18F-Paratiroides</span>
+                <span class="tracer-name">7. 18F-Paratiroides</span>
+                <span class="tracer-indications">Localización prequirúrgica de adenoma paratiroideo en hiperparatiroidismo primario o recidivante con pruebas previas dudosas.</span>
+              </label>
+
+              <!-- 8. FDG Neurológico Normal -->
+              <label class="tally-pet-card" id="card-tally-fdg-neuro-normal" onclick="selectTallyPetType('FDG Neurológico Normal')">
+                <input type="radio" name="tally-pet-type" value="FDG Neurológico Normal">
+                <span class="tracer-badge neuro">FDG Neuro</span>
+                <span class="tracer-name">8. FDG Neurológico Normal</span>
+                <span class="tracer-indications">Estudio metabólico cerebral en demencias, deterioro cognitivo leve (DCL), Alzheimer atípico/precoz y variantes frontotemporales.</span>
+              </label>
+
+              <!-- 9. FDG Neurológico + Neurofisioneurología -->
+              <label class="tally-pet-card" id="card-tally-fdg-neuro-eeg" onclick="selectTallyPetType('FDG Neurológico + Neurofisioneurología')">
+                <input type="radio" name="tally-pet-type" value="FDG Neurológico + Neurofisioneurología">
+                <span class="tracer-badge neuro-eeg">FDG Neuro + EEG</span>
+                <span class="tracer-name">9. FDG Neurológico + Neurofisioneurología</span>
+                <span class="tracer-indications">Mapeo del foco epileptógeno en epilepsia farmacorresistente prequirúrgica coordinado con registro Video-EEG neurofisiológico.</span>
+              </label>
+
+              <!-- 10. 18F-PSMA -->
+              <label class="tally-pet-card" id="card-tally-f18-psma" onclick="selectTallyPetType('18F-PSMA')">
+                <input type="radio" name="tally-pet-type" value="18F-PSMA">
+                <span class="tracer-badge psma-f18">18F-PSMA</span>
+                <span class="tracer-name">10. 18F-PSMA (F PSMA)</span>
+                <span class="tracer-indications">Trazador fluorado de PSMA (18F-DCFPyL / PSMA-1007) para adenocarcinoma de próstata con alta resolución espacial.</span>
+              </label>
+            </div>
+
+            <!-- ================================================================
+                 Criterios Clínicos Dinámicos Condicionales para cada Tipo de PET
+                 ================================================================ -->
+
+            <!-- Condicional 1: FDG Oncológico / Inflamatorio -->
+            <div id="criteria-box-fdg" class="tally-criteria-container">
+              <div class="tally-criteria-title">
+                <span>🎯 Criterios Clínicos para 1. FDG Oncológico / Inflamatorio</span>
+              </div>
+              <div class="form-grid-3">
+                <div class="form-group col-span-2">
+                  <label for="fdg-diagnosis">Diagnóstico Oncológico / Inflamatorio y Estadio actual <span class="required">*</span></label>
+                  <input type="text" id="fdg-diagnosis" placeholder="Especifique diagnóstico y estadio (Ej: CPNCP Estadio IIIA, Linfoma B difuso)...">
+                </div>
+                <div class="form-group">
+                  <label for="fdg-reason">Motivo de la Petición <span class="required">*</span></label>
+                  <select id="fdg-reason">
+                    <option value="Estadificación">Estadificación inicial</option>
+                    <option value="Diagnóstico">Diagnóstico / Caracterización</option>
+                    <option value="Sospecha de Recidiva">Sospecha de Recidiva</option>
+                    <option value="Monitorización de Respuesta">Monitorización de Respuesta</option>
+                    <option value="Proceso Inflamatorio / FOD">Proceso Inflamatorio / FOD</option>
+                    <option value="Otros (especificar)">Otros (especificar)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Condicional 2: FDG con Contraste Iodado -->
+            <div id="criteria-box-fdg-contraste" class="tally-criteria-container hidden">
+              <div class="tally-criteria-title">
+                <span>🎯 Criterios Clínicos para 2. FDG con Contraste Iodado (TC Diagnóstica)</span>
+              </div>
+              <div class="form-grid-3">
+                <div class="form-group col-span-2">
+                  <label for="fdg-contraste-diagnosis">Diagnóstico y Justificación TC con Contraste <span class="required">*</span></label>
+                  <input type="text" id="fdg-contraste-diagnosis" placeholder="Diagnóstico oncológico e indicación de TC con contraste IV...">
+                </div>
+                <div class="form-group">
+                  <label for="fdg-contraste-reason">Motivo de la Petición <span class="required">*</span></label>
+                  <select id="fdg-contraste-reason">
+                    <option value="Estadificación con Contraste IV">Estadificación con Contraste IV</option>
+                    <option value="Reestadificación / Recidiva vascular">Reestadificación / Recidiva vascular</option>
+                    <option value="Planificación Quirúrgica">Planificación Quirúrgica</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="fdg-contraste-creatinine">Creatinina Sérica (mg/dL) <span class="required">*</span></label>
+                  <input type="number" id="fdg-contraste-creatinine" step="0.01" placeholder="Ej: 0.95">
+                </div>
+                <div class="form-group">
+                  <label for="fdg-contraste-egfr">Filtrado Glomerular eGFR (mL/min/1.73m²) <span class="required">*</span></label>
+                  <input type="number" id="fdg-contraste-egfr" placeholder="Ej: 85">
+                </div>
+                <div class="form-group">
+                  <label for="fdg-contraste-allergy">Alergia a Contrastes Iodados <span class="required">*</span></label>
+                  <select id="fdg-contraste-allergy">
+                    <option value="No conocida">No conocida (Tolera contraste)</option>
+                    <option value="Premedicación Pautada">Alergia leve - Premedicación pautada</option>
+                    <option value="Contraindicación Absoluta">Contraindicación absoluta (Reevaluar)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Condicional 3: FDG con Endocarditis + Protocolo HEP -->
+            <div id="criteria-box-fdg-hep" class="tally-criteria-container hidden">
+              <div class="tally-criteria-title">
+                <span>🎯 Criterios Clínicos para 3. FDG con Endocarditis + Protocolo HEP</span>
+              </div>
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label for="fdg-hep-suspicion">Tipo de Sospecha Infecciosa Cardíaca <span class="required">*</span></label>
+                  <select id="fdg-hep-suspicion">
+                    <option value="Endocarditis válvula protésica">Endocarditis sobre prótesis valvular (mecánica/biológica)</option>
+                    <option value="Endocarditis válvula nativa">Endocarditis sobre válvula nativa</option>
+                    <option value="Infección Marcapasos / DAI">Infección de dispositivo intracardíaco (Marcapasos/DAI/Cables)</option>
+                    <option value="Infección Prótesis Vascular">Infección de prótesis vascular / Injerto aórtico</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="fdg-hep-bloodculture">Hemocultivos <span class="required">*</span></label>
+                  <input type="text" id="fdg-hep-bloodculture" placeholder="Ej: Positivos (S. aureus), o Negativos">
+                </div>
+                <div class="form-group">
+                  <label for="fdg-hep-prep">Protocolo de Supresión Miocárdica HEP <span class="required">*</span></label>
+                  <select id="fdg-hep-prep">
+                    <option value="Confirmada preparación dietética HEP (>18h rica en grasa, cero CH)">Confirmada dieta HEP (>18h alta en grasas/cero CH)</option>
+                    <option value="Pendiente de pautar protocolo en planta">Pendiente de pautar protocolo en planta</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Condicional 4 y 10: Próstata (68Ga-PSMA y 18F-PSMA) -->
+            <div id="criteria-box-psma" class="tally-criteria-container hidden">
+              <div class="tally-criteria-title">
+                <span>🎯 Criterios Clínicos para PSMA (4. 68Ga-PSMA / 10. 18F-PSMA)</span>
+              </div>
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label for="psma-situation">Situación Clínica en Cáncer de Próstata <span class="required">*</span></label>
+                  <select id="psma-situation">
+                    <option value="Recidiva / Fallo bioquímico">Recidiva / Fallo bioquímico post-tratamiento</option>
+                    <option value="Recidiva con incremento rápido PSA">Recidiva con incremento rápido de PSA (PSADT &lt; 6m)</option>
+                    <option value="Estudio de extensión inicial (Alto riesgo)">Estudio de extensión inicial (Alto riesgo / Estadio III-IV)</option>
+                    <option value="Selección terapia radioligandos 177Lu-PSMA">Selección previa a terapia radioligandos (177Lu-PSMA)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="psma-values">Valor de PSA actual y Gleason <span class="required">*</span></label>
+                  <input type="text" id="psma-values" placeholder="Indique valores (Ej. PSA: 0.85 ng/mL, Gleason 4+3)">
+                </div>
+                <div class="form-group">
+                  <label for="psma-kinetics">Tiempo de Duplicación (PSADT) / Tratamiento</label>
+                  <input type="text" id="psma-kinetics" placeholder="Ej. PSADT: 4.2 meses, Análogo LHRH activo">
+                </div>
+              </div>
+            </div>
+
+            <!-- Condicional 5: Tumores Neuroendocrinos (68Ga-DOTATOC) -->
+            <div id="criteria-box-ga68" class="tally-criteria-container hidden">
+              <div class="tally-criteria-title">
+                <span>🎯 Criterios Clínicos para 5. 68Ga-DOTATOC Tumores Neuroendocrinos</span>
+              </div>
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label for="ga68-indication">Indicación Clínica SSTR <span class="required">*</span></label>
+                  <select id="ga68-indication">
+                    <option value="Estadificación inicial TNE">Estadificación inicial TNE</option>
+                    <option value="Localización tumor primario desconocido">Localización tumor primario desconocido</option>
+                    <option value="Evaluación densidad receptores somatostatina">Evaluación densidad receptores somatostatina</option>
+                    <option value="Sospecha de recidiva o progresión">Sospecha de recidiva o progresión</option>
+                    <option value="Selección PRRT con 177Lu-DOTATATE">Selección terapia PRRT con 177Lu-DOTATATE</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="ga68-grade">Grado tumoral e índice Ki-67 <span class="required">*</span></label>
+                  <input type="text" id="ga68-grade" placeholder="Especifique datos (Ej. G1/G2, Ki-67: 3%)">
+                </div>
+                <div class="form-group">
+                  <label for="ga68-somatostatin-therapy">Tratamiento con Análogos Somatostatina</label>
+                  <input type="text" id="ga68-somatostatin-therapy" placeholder="Ej. Somatuline / Sandostatin (última dosis hace 4 semanas)">
+                </div>
+              </div>
+            </div>
+
+            <!-- Condicional 6: 18F-Colina -->
+            <div id="criteria-box-colina" class="tally-criteria-container hidden">
+              <div class="tally-criteria-title">
+                <span>🎯 Criterios Clínicos para 6. 18F-Colina</span>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="colina-indication">Indicación Clínica de 18F-Colina <span class="required">*</span></label>
+                  <select id="colina-indication">
+                    <option value="Adenocarcinoma Próstata - Recidiva Bioquímica">Adenocarcinoma Próstata - Recidiva Bioquímica</option>
+                    <option value="Hepatocarcinoma / Tumor Hepático">Hepatocarcinoma / Tumor Hepático</option>
+                    <option value="Otros procesos tumorales de membrana">Otros procesos tumorales de membrana</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="colina-values">Valores de PSA o Marcadores Tumorales <span class="required">*</span></label>
+                  <input type="text" id="colina-values" placeholder="Indique valores (Ej. PSA: 2.4 ng/mL, o AFP: 120 ng/mL)">
+                </div>
+              </div>
+            </div>
+
+            <!-- Condicional 7: 18F-Paratiroides -->
+            <div id="criteria-box-paratiroides" class="tally-criteria-container hidden">
+              <div class="tally-criteria-title">
+                <span>🎯 Criterios Clínicos para 7. 18F-Paratiroides (Hiperparatiroidismo)</span>
+              </div>
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label for="paratiroides-pth">PTH Intacta Sérica (pg/mL) <span class="required">*</span></label>
+                  <input type="number" id="paratiroides-pth" placeholder="Ej: 145">
+                </div>
+                <div class="form-group">
+                  <label for="paratiroides-calcium">Calcio Sérico Corregido (mg/dL) <span class="required">*</span></label>
+                  <input type="number" step="0.1" id="paratiroides-calcium" placeholder="Ej: 10.8">
+                </div>
+                <div class="form-group">
+                  <label for="paratiroides-surgery">Cirugía Cervical Previa <span class="required">*</span></label>
+                  <select id="paratiroides-surgery">
+                    <option value="Sin cirugías previas">Sin cirugías previas</option>
+                    <option value="Paratiroidectomía previa (Recidiva/Persistencia)">Paratiroidectomía previa (Recidiva/Persistencia)</option>
+                    <option value="Tiroidectomía previa">Tiroidectomía previa</option>
+                  </select>
+                </div>
+                <div class="form-group col-span-3">
+                  <label for="paratiroides-previous-tests">Pruebas Previas (Ecografía cervical / Gammagrafía Sestamibi)</label>
+                  <input type="text" id="paratiroides-previous-tests" placeholder="Ej. Ecografía negativa, Gammagrafía 99mTc-MIBI dudosa en polo inferior izquierdo...">
+                </div>
+              </div>
+            </div>
+
+            <!-- Condicional 8: FDG Neurológico Normal -->
+            <div id="criteria-box-neuro" class="tally-criteria-container hidden">
+              <div class="tally-criteria-title">
+                <span>🎯 Criterios Clínicos para 8. FDG Neurológico Normal (Deterioro Cognitivo / Demencias)</span>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="neuro-indication">Indicación Diagnóstica <span class="required">*</span></label>
+                  <select id="neuro-indication">
+                    <optgroup label="Demencias & Deterioro Cognitivo">
+                      <option value="Demencia: Deterioro cognitivo leve">Demencia: Deterioro cognitivo leve (DCL)</option>
+                      <option value="Demencia: Inicio precoz (< 65 años)">Demencia: Inicio precoz (&lt; 65 años)</option>
+                      <option value="Demencia: Alzheimer (variante frontal, atípica, posterior)">Demencia: Alzheimer (variante frontal, atípica, posterior)</option>
+                      <option value="Demencia: Demencia frontotemporal">Demencia: Demencia frontotemporal (DFT)</option>
+                      <option value="Demencia: Cuerpos de Lewy">Demencia: Cuerpos de Lewy / Parkinsonismos atípicos</option>
+                    </optgroup>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="neuro-details">Puntuación Test Cognitivo / MMSE</label>
+                  <input type="text" id="neuro-details" placeholder="Ej. MMSE: 22/30, MoCA: 19/30, evolución de 14 meses...">
+                </div>
+              </div>
+            </div>
+
+            <!-- Condicional 9: FDG Neurológico + Neurofisioneurología -->
+            <div id="criteria-box-neuro-eeg" class="tally-criteria-container hidden">
+              <div class="tally-criteria-title">
+                <span>🎯 Criterios Clínicos para 9. FDG Neurológico + Neurofisioneurología (Epilepsia)</span>
+              </div>
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label for="neuro-eeg-type">Sospecha de Foco Epileptógeno <span class="required">*</span></label>
+                  <select id="neuro-eeg-type">
+                    <option value="Epilepsia: Mesial temporal">Epilepsia temporal mesial</option>
+                    <option value="Epilepsia: Extratemporal">Epilepsia extratemporal (frontal, parietal, occipital)</option>
+                    <option value="Epilepsia: RM no lesional">Epilepsia no lesional (RM normal)</option>
+                    <option value="Epilepsia: Discordancia video EEG y RM">Discordancia entre Video-EEG y RM cerebral</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="neuro-eeg-protocol">Protocolo Neurofisiológico Video-EEG <span class="required">*</span></label>
+                  <select id="neuro-eeg-protocol">
+                    <option value="Monitorización Video-EEG simultánea programada">Monitorización Video-EEG simultánea programada</option>
+                    <option value="Registro interictal con electrodos de superficie">Registro interictal con electrodos de superficie</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="neuro-eeg-details">Detalles de Crisis / Fármacos</label>
+                  <input type="text" id="neuro-eeg-details" placeholder="Ej. Fármacos refractarios: Levetiracetam + Lamotrigina, 3 crisis/semana">
+                </div>
+              </div>
+            </div>
+
+            <!-- Fecha de la próxima consulta (común en Tally) -->
+            <div class="form-group" style="margin-top: 1rem;">
+              <label for="pet-next-visit">Fecha de la próxima consulta médica presencial o comité <span class="required">*</span></label>
+              <input type="text" id="pet-next-visit" placeholder="Ej. 24/10/2026 o 'en dos semanas'" required>
+            </div>
+          </div>
+
+          <!-- Sección 3: Diabetes Mellitus (Protocolo Glucosa Tally) -->
+          <div class="form-section">
+            <div class="form-section-header">
+              <span class="section-number">3</span>
+              <h3 class="section-title">Control de Diabetes Mellitus</h3>
+              <span class="section-hint">Parámetro crítico para preparación</span>
+            </div>
+
+            <div class="tally-yn-row">
+              <div class="tally-yn-label">
+                <span>🍬 ¿El paciente tiene Diabetes Mellitus?</span>
+              </div>
+              <div class="tally-yn-buttons">
+                <button type="button" class="tally-yn-btn selected-no" id="btn-diabetes-no" onclick="setDiabetesChoice('No')">No</button>
+                <button type="button" class="tally-yn-btn" id="btn-diabetes-yes" onclick="setDiabetesChoice('Sí')">Sí</button>
+              </div>
+              <input type="hidden" id="pet-diabetes" value="No">
+            </div>
+
+            <div id="pet-diabetes-subfields" class="tally-criteria-container hidden" style="margin-top: 0.5rem;">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="pet-diabetes-type">Tipo de Diabetes <span class="required">*</span></label>
+                  <select id="pet-diabetes-type">
+                    <option value="Tipo 2">Tipo 2</option>
+                    <option value="Tipo 1">Tipo 1</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="pet-diabetes-treatment">Tratamiento habitual <span class="required">*</span></label>
+                  <select id="pet-diabetes-treatment">
+                    <option value="Antidiabéticos Orales (ADO)">Antidiabéticos Orales (ADO)</option>
+                    <option value="Insulina">Insulina</option>
+                    <option value="Dieta">Dieta</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sección 4: Antecedentes Médicos y Factores de Riesgo (Tally Exacto) -->
+          <div class="form-section">
+            <div class="form-section-header">
+              <span class="section-number">4</span>
+              <h3 class="section-title">Antecedentes Médicos y Factores de Riesgo del Paciente</h3>
+              <span class="section-hint">Seguridad y contraindicaciones</span>
+            </div>
+
+            <!-- Movilidad del Paciente -->
+            <div class="form-group" style="margin-bottom: 1.1rem;">
+              <label for="pet-patient-mobility">Movilidad del Paciente <span class="required">*</span></label>
+              <select id="pet-patient-mobility" required>
+                <option value="Autónomo">Autónomo</option>
+                <option value="Movilidad reducida">Movilidad reducida</option>
+                <option value="Encamado">Encamado</option>
+              </select>
+            </div>
+
+            <!-- Listado de Factores de Riesgo (Tally) -->
+            <div class="form-grid-2">
+              <div>
+                <!-- Alergias -->
+                <div class="tally-yn-row">
+                  <span class="tally-yn-label">⚠️ Alergias Conocidas</span>
+                  <div class="tally-yn-buttons">
+                    <button type="button" class="tally-yn-btn selected-no" id="btn-allergies-no" onclick="toggleRiskField('allergies', false)">No</button>
+                    <button type="button" class="tally-yn-btn" id="btn-allergies-yes" onclick="toggleRiskField('allergies', true)">Sí</button>
+                  </div>
+                </div>
+                <div id="sub-allergies" class="tally-subfield hidden">
+                  <input type="text" id="input-allergies" placeholder="Especifique el tipo de alergia (ej. Yodo, Penicilina)...">
+                </div>
+
+                <!-- Insuficiencia Cardíaca -->
+                <div class="tally-yn-row">
+                  <span class="tally-yn-label">❤️ Insuficiencia Cardíaca</span>
+                  <div class="tally-yn-buttons">
+                    <button type="button" class="tally-yn-btn selected-no" id="btn-cardiac-no" onclick="toggleRiskField('cardiac', false)">No</button>
+                    <button type="button" class="tally-yn-btn" id="btn-cardiac-yes" onclick="toggleRiskField('cardiac', true)">Sí</button>
+                  </div>
+                </div>
+
+                <!-- Insuficiencia Renal -->
+                <div class="tally-yn-row">
+                  <span class="tally-yn-label">🫘 Insuficiencia Renal</span>
+                  <div class="tally-yn-buttons">
+                    <button type="button" class="tally-yn-btn selected-no" id="btn-renal-no" onclick="toggleRiskField('renal', false)">No</button>
+                    <button type="button" class="tally-yn-btn" id="btn-renal-yes" onclick="toggleRiskField('renal', true)">Sí</button>
+                  </div>
+                </div>
+
+                <!-- Insuficiencia Respiratoria Severa -->
+                <div class="tally-yn-row">
+                  <span class="tally-yn-label">🫁 Insuficiencia Respiratoria Severa</span>
+                  <div class="tally-yn-buttons">
+                    <button type="button" class="tally-yn-btn selected-no" id="btn-resp-no" onclick="toggleRiskField('resp', false)">No</button>
+                    <button type="button" class="tally-yn-btn" id="btn-resp-yes" onclick="toggleRiskField('resp', true)">Sí</button>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <!-- Contraindicación Contrastes -->
+                <div class="tally-yn-row">
+                  <span class="tally-yn-label">🚫 Contraindicación Contrastes Radiológicos</span>
+                  <div class="tally-yn-buttons">
+                    <button type="button" class="tally-yn-btn selected-no" id="btn-contrast-no" onclick="toggleRiskField('contrast', false)">No</button>
+                    <button type="button" class="tally-yn-btn" id="btn-contrast-yes" onclick="toggleRiskField('contrast', true)">Sí</button>
+                  </div>
+                </div>
+
+                <!-- Portador de Objetos Metálicos -->
+                <div class="tally-yn-row">
+                  <span class="tally-yn-label">🔩 Portador de Objetos Metálicos / Marcapasos</span>
+                  <div class="tally-yn-buttons">
+                    <button type="button" class="tally-yn-btn selected-no" id="btn-metal-no" onclick="toggleRiskField('metal', false)">No</button>
+                    <button type="button" class="tally-yn-btn" id="btn-metal-yes" onclick="toggleRiskField('metal', true)">Sí</button>
+                  </div>
+                </div>
+                <div id="sub-metal" class="tally-subfield hidden">
+                  <input type="text" id="input-metal" placeholder="Especifique (Prótesis de cadera, marcapasos, clips)...">
+                </div>
+
+                <!-- Infección o Inflamación activa -->
+                <div class="tally-yn-row">
+                  <span class="tally-yn-label">🔥 Proceso Infeccioso / Inflamatorio Activo</span>
+                  <div class="tally-yn-buttons">
+                    <button type="button" class="tally-yn-btn selected-no" id="btn-infection-no" onclick="toggleRiskField('infection', false)">No</button>
+                    <button type="button" class="tally-yn-btn" id="btn-infection-yes" onclick="toggleRiskField('infection', true)">Sí</button>
+                  </div>
+                </div>
+                <div id="sub-infection" class="tally-subfield hidden">
+                  <input type="text" id="input-infection" placeholder="Especifique foco infeccioso o inflamatorio...">
+                </div>
+
+                <!-- Alcoholismo / Toxicomanía -->
+                <div class="tally-yn-row">
+                  <span class="tally-yn-label">🍷 Alcoholismo o Toxicomanía</span>
+                  <div class="tally-yn-buttons">
+                    <button type="button" class="tally-yn-btn selected-no" id="btn-alcohol-no" onclick="toggleRiskField('alcohol', false)">No</button>
+                    <button type="button" class="tally-yn-btn" id="btn-alcohol-yes" onclick="toggleRiskField('alcohol', true)">Sí</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contraindicaciones para Uso de Benzodiacepinas -->
+            <div style="margin-top: 1rem; padding-top: 0.8rem; border-top: 1px dashed var(--border-color);">
+              <h4 style="font-size: 0.85rem; color: var(--blue-corporate); margin-bottom: 0.6rem;">
+                💊 Contraindicaciones para Uso de Benzodiacepinas (en caso de sedación):
+              </h4>
+              <div class="form-grid-2">
+                <div class="tally-yn-row">
+                  <span class="tally-yn-label">Miastenia Gravis</span>
+                  <div class="tally-yn-buttons">
+                    <button type="button" class="tally-yn-btn selected-no" id="btn-myasthenia-no" onclick="toggleRiskField('myasthenia', false)">No</button>
+                    <button type="button" class="tally-yn-btn" id="btn-myasthenia-yes" onclick="toggleRiskField('myasthenia', true)">Sí</button>
+                  </div>
+                </div>
+                <div class="tally-yn-row">
+                  <span class="tally-yn-label">Glaucoma de Ángulo Estrecho</span>
+                  <div class="tally-yn-buttons">
+                    <button type="button" class="tally-yn-btn selected-no" id="btn-glaucoma-no" onclick="toggleRiskField('glaucoma', false)">No</button>
+                    <button type="button" class="tally-yn-btn" id="btn-glaucoma-yes" onclick="toggleRiskField('glaucoma', true)">Sí</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Intervenciones y Tratamientos Previos -->
+            <div style="margin-top: 1rem; padding-top: 0.8rem; border-top: 1px dashed var(--border-color);">
+              <h4 style="font-size: 0.85rem; color: var(--blue-corporate); margin-bottom: 0.6rem;">
+                ⏳ Intervenciones y Tratamientos Oncológicos Previos:
+              </h4>
+              <div class="form-grid-2">
+                <div>
+                  <div class="tally-yn-row">
+                    <span class="tally-yn-label">Biopsia Previa</span>
+                    <div class="tally-yn-buttons">
+                      <button type="button" class="tally-yn-btn selected-no" id="btn-biopsy-no" onclick="toggleRiskField('biopsy', false)">No</button>
+                      <button type="button" class="tally-yn-btn" id="btn-biopsy-yes" onclick="toggleRiskField('biopsy', true)">Sí</button>
+                    </div>
+                  </div>
+                  <div id="sub-biopsy" class="tally-subfield hidden">
+                    <input type="text" id="input-biopsy" placeholder="Fecha y localización...">
+                  </div>
+
+                  <div class="tally-yn-row">
+                    <span class="tally-yn-label">Cirugía Previa</span>
+                    <div class="tally-yn-buttons">
+                      <button type="button" class="tally-yn-btn selected-no" id="btn-surgery-no" onclick="toggleRiskField('surgery', false)">No</button>
+                      <button type="button" class="tally-yn-btn" id="btn-surgery-yes" onclick="toggleRiskField('surgery', true)">Sí</button>
+                    </div>
+                  </div>
+                  <div id="sub-surgery" class="tally-subfield hidden">
+                    <input type="text" id="input-surgery" placeholder="Fecha y tipo de intervención...">
+                  </div>
+                </div>
+
+                <div>
+                  <div class="tally-yn-row">
+                    <span class="tally-yn-label">Tratamiento Quimioterápico</span>
+                    <div class="tally-yn-buttons">
+                      <button type="button" class="tally-yn-btn selected-no" id="btn-chemo-no" onclick="toggleRiskField('chemo', false)">No</button>
+                      <button type="button" class="tally-yn-btn" id="btn-chemo-yes" onclick="toggleRiskField('chemo', true)">Sí</button>
+                    </div>
+                  </div>
+                  <div id="sub-chemo" class="tally-subfield hidden">
+                    <input type="text" id="input-chemo" placeholder="Ciclos y fecha último ciclo...">
+                  </div>
+
+                  <div class="tally-yn-row">
+                    <span class="tally-yn-label">Tratamiento Radioterápico</span>
+                    <div class="tally-yn-buttons">
+                      <button type="button" class="tally-yn-btn selected-no" id="btn-radio-no" onclick="toggleRiskField('radio', false)">No</button>
+                      <button type="button" class="tally-yn-btn" id="btn-radio-yes" onclick="toggleRiskField('radio', true)">Sí</button>
+                    </div>
+                  </div>
+                  <div id="sub-radio" class="tally-subfield hidden">
+                    <input type="text" id="input-radio" placeholder="Fecha fin y localización radiada...">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Resumen de Historia Clínica -->
+            <div class="form-group" style="margin-top: 1rem;">
+              <label for="pet-summary">Resumen de la Historia Clínica y Antecedentes <span class="required">*</span></label>
+              <textarea id="pet-summary" rows="3" placeholder="Resumen clínico relevante y motivos de la exploración..." required></textarea>
+            </div>
+          </div>
+
+          <!-- Sección 5: Carácter de la Petición y Priorización (Tally Punto 5) -->
+          <div class="form-section">
+            <div class="form-section-header">
+              <span class="section-number">5</span>
+              <h3 class="section-title">5. Carácter de la Petición y Priorización</h3>
+              <span class="section-hint">Clasificación asistencial oficial</span>
+            </div>
+
+            <div class="priority-selector-grid">
+              <!-- Urgente -->
+              <label class="priority-option-card p1" id="card-p1" onclick="selectPetPriority('Urgente')">
+                <input type="radio" name="pet-priority" value="Urgente" required>
+                <span class="priority-title" style="color: var(--p1-text);">🔴 Urgente</span>
+                <span class="priority-desc">Cirugía inmediata, inicio inminente de tratamiento curativo o compresión de estructuras vitales.</span>
+                <span class="priority-window">Ventana clínica: ≤ 7 días hábiles</span>
+              </label>
+
+              <!-- Preferente -->
+              <label class="priority-option-card p2 selected" id="card-p2" onclick="selectPetPriority('Preferente')">
+                <input type="radio" name="pet-priority" value="Preferente" checked>
+                <span class="priority-title" style="color: var(--p2-text);">🟡 Preferente</span>
+                <span class="priority-desc">Estadificación inicial, evaluación de respuesta reglada post-quimioterapia o sospecha de recidiva.</span>
+                <span class="priority-window">Ventana clínica: ≤ 14 días hábiles</span>
+              </label>
+
+              <!-- Ordinaria -->
+              <label class="priority-option-card p3" id="card-p3" onclick="selectPetPriority('Ordinaria')">
+                <input type="radio" name="pet-priority" value="Ordinaria">
+                <span class="priority-title" style="color: var(--p3-text);">🟢 Ordinaria</span>
+                <span class="priority-desc">Seguimiento anual, controles de lesiones crónicas estables o revisiones programadas sin cambio clínico.</span>
+                <span class="priority-window">Ventana clínica: ≤ 30 días hábiles</span>
+              </label>
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem;">
+              <label for="pet-priority-just">Justificación de la Prioridad / Plazo Deseado <span class="required">*</span></label>
+              <input type="text" id="pet-priority-just" placeholder="Indique la justificación clínica del carácter solicitado..." required>
+            </div>
+          </div>
+
+          <!-- Barra de Acciones del Formulario PET -->
+          <div class="form-actions-row">
+            <div>
+              <button type="button" class="btn btn-secondary" onclick="previewOfficialSheet('pet')">
+                👁️ Vista Previa Volante PET
+              </button>
+            </div>
+            <div style="display: flex; gap: 0.8rem;">
+              <button type="button" class="btn btn-secondary" onclick="saveAsDraft('pet')">
+                💾 Guardar Borrador
+              </button>
+              <button type="submit" class="btn btn-primary" style="font-weight: 700; background: var(--sergas-blue);">
+                📋 Revisar Volante e Iniciar Doble Confirmación
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </section>
+    </div>
+
+    <!-- ======================================================================
+         PESTAÑA 2: Formulario de Medicina Nuclear Convencional
+         ====================================================================== -->
+    <div class="nav-content hidden" id="tab-conv-request">
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <h2>⚛️ Solicitud de Pruebas de Medicina Nuclear Convencional (Gammagrafías & SPECT)</h2>
+            <p class="card-subtitle">Prescripción de estudios gammagráficos, renogramas, ganglio centinela y terapia metabólica</p>
+          </div>
+          <div style="display: flex; gap: 0.6rem;">
+            <button type="button" class="btn btn-secondary" onclick="loadSampleConvData()">
+              🪄 Cargar Caso Convencional Ejemplo
+            </button>
+            <button type="button" class="btn btn-secondary" onclick="resetConvForm()">
+              🧹 Limpiar Formulario
+            </button>
+          </div>
+        </div>
+
+        <form id="conv-request-form" onsubmit="handleConvSubmit(event)">
+
+          <!-- Sección 1: Datos Paciente y Solicitante -->
+          <div class="form-section">
+            <div class="form-section-header">
+              <span class="section-number">1</span>
+              <h3 class="section-title">Datos del Paciente & Servicio Solicitante</h3>
+              <span class="section-hint">Identificación clínica</span>
+            </div>
+
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label for="conv-service">Servicio Solicitante <span class="required">*</span></label>
+                <select id="conv-service" required>
+                  <option value="Traumatología y Cirugía Ortopédica">Traumatología y Cirugía Ortopédica</option>
+                  <option value="Urología">Urología</option>
+                  <option value="Endocrinología">Endocrinología</option>
+                  <option value="Oncología Médica">Oncología Médica</option>
+                  <option value="Cirugía General">Cirugía General</option>
+                  <option value="Cardiología">Cardiología</option>
+                  <option value="Neumología">Neumología</option>
+                  <option value="Medicina Interna">Medicina Interna</option>
+                  <option value="Reumatología">Reumatología</option>
+                  <option value="Neurología">Neurología</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="conv-doc-name">Médico Solicitante <span class="required">*</span></label>
+                <input type="text" id="conv-doc-name" value="Dr. Carlos Rodríguez" placeholder="Nombre y Apellidos" required readonly style="background: #F8FAFC;">
+              </div>
+
+              <div class="form-group">
+                <label for="conv-patient-name">Nombre del Paciente <span class="required">*</span></label>
+                <input type="text" id="conv-patient-name" placeholder="Nombre y Apellidos" required>
+              </div>
+
+              <div class="form-group">
+                <label for="conv-nhc">Número de Historia Clínica (NHC) <span class="required">*</span></label>
+                <input type="text" id="conv-nhc" placeholder="Ej. NHC-338821" required>
+              </div>
+
+              <div class="form-group">
+                <label for="conv-weight">Peso (kg) <span class="required">*</span></label>
+                <input type="number" id="conv-weight" step="0.5" min="20" max="250" placeholder="Ej. 72" required>
+              </div>
+
+              <div class="form-group">
+                <label for="conv-mobility">Movilidad / Traslado <span class="required">*</span></label>
+                <select id="conv-mobility" required>
+                  <option value="Autónomo">Autónomo</option>
+                  <option value="Silla de ruedas">Silla de ruedas</option>
+                  <option value="Encamado / Camilla">Encamado / Camilla</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sección 2: Selección de Estudio de Medicina Nuclear Convencional -->
+          <div class="form-section">
+            <div class="form-section-header">
+              <span class="section-number">2</span>
+              <h3 class="section-title">Estudio Convencional Solicitado</h3>
+              <span class="section-hint">Catálogo de exploraciones gammagráficas</span>
+            </div>
+
+            <div class="conventional-grid">
+              <!-- Ósea -->
+              <label class="conv-card selected" id="card-conv-osea" onclick="selectConvStudy('Gammagrafía Ósea / SPECT-CT')">
+                <input type="radio" name="conv-study-type" value="Gammagrafía Ósea / SPECT-CT" checked required>
+                <span class="conv-title">🦴 Gammagrafía Ósea / SPECT-CT</span>
+                <span class="conv-desc">99mTc-HDP/MDP. Metástasis óseas, aflojamiento de prótesis, osteomielitis, fracturas de estrés y dolor óseo.</span>
+              </label>
+
+              <!-- Renal -->
+              <label class="conv-card" id="card-conv-renal" onclick="selectConvStudy('Renograma MAG3 / Gammagrafía DMSA')">
+                <input type="radio" name="conv-study-type" value="Renograma MAG3 / Gammagrafía DMSA">
+                <span class="conv-title">🫘 Renograma / Gammagrafía Renal</span>
+                <span class="conv-desc">99mTc-MAG3 / DMSA. Función renal diferencial, uropatía obstructiva con furosemida y cicatrices pielonefríticas.</span>
+              </label>
+
+              <!-- Tiroides / Paratiroides -->
+              <label class="conv-card" id="card-conv-tiroides" onclick="selectConvStudy('Gammagrafía Tiroidea / Paratiroidea')">
+                <input type="radio" name="conv-study-type" value="Gammagrafía Tiroidea / Paratiroidea">
+                <span class="conv-title">🦋 Tiroides / Paratiroides</span>
+                <span class="conv-desc">99mTc-Pertecnetato / 99mTc-MIBI. Bocio multinodular, nódulo hiperfuncionante, adenoma de paratiroides.</span>
+              </label>
+
+              <!-- Ganglio Centinela -->
+              <label class="conv-card" id="card-conv-centinela" onclick="selectConvStudy('Biopsia Selectiva Ganglio Centinela (BSGC)')">
+                <input type="radio" name="conv-study-type" value="Biopsia Selectiva Ganglio Centinela (BSGC)">
+                <span class="conv-title">🎯 Biopsia Ganglio Centinela (BSGC)</span>
+                <span class="conv-desc">99mTc-Nanocoloides. Cirugía radioguiada en cáncer de mama, melanoma cutáneo y ginecología.</span>
+              </label>
+
+              <!-- V/Q Pulmonar -->
+              <label class="conv-card" id="card-conv-pulmonar" onclick="selectConvStudy('Gammagrafía Ventilación/Perfusión Pulmonar (V/Q)')">
+                <input type="radio" name="conv-study-type" value="Gammagrafía Ventilación/Perfusión Pulmonar (V/Q)">
+                <span class="conv-title">🫁 Ventilación / Perfusión (V/Q)</span>
+                <span class="conv-desc">99mTc-MAA / Technegas. Descarte de TEP en pacientes con insuficiencia renal grave o alergia al yodo.</span>
+              </label>
+
+              <!-- Perfusión Miocárdica -->
+              <label class="conv-card" id="card-conv-cardio" onclick="selectConvStudy('SPECT Perfusión Miocárdica (Esfuerzo/Dipiridamol)')">
+                <input type="radio" name="conv-study-type" value="SPECT Perfusión Miocárdica (Esfuerzo/Dipiridamol)">
+                <span class="conv-title">❤️ SPECT Perfusión Miocárdica</span>
+                <span class="conv-desc">99mTc-MIBI / Tetrofosmina. Cardiopatía isquémica, viabilidad miocárdica y estratificación de riesgo coronario.</span>
+              </label>
+
+              <!-- Leucocitos Marcados -->
+              <label class="conv-card" id="card-conv-leucos" onclick="selectConvStudy('Gammagrafía Leucocitos Marcados (99mTc-HMPAO)')">
+                <input type="radio" name="conv-study-type" value="Gammagrafía Leucocitos Marcados (99mTc-HMPAO)">
+                <span class="conv-title">🦠 Leucocitos Marcados Infección</span>
+                <span class="conv-desc">99mTc-HMPAO. Diagnóstico de infección articular periprotésica, osteomielitis y pie diabético complicado.</span>
+              </label>
+
+              <!-- DaTscan -->
+              <label class="conv-card" id="card-conv-datscan" onclick="selectConvStudy('SPECT Cerebral DaTscan (123I-Ioflupano)')">
+                <input type="radio" name="conv-study-type" value="SPECT Cerebral DaTscan (123I-Ioflupano)">
+                <span class="conv-title">🧠 SPECT DaTscan (123I-Ioflupano)</span>
+                <span class="conv-desc">Transportador de dopamina estriatal. Diagnóstico diferencial temblor esencial vs enfermedad de Parkinson.</span>
+              </label>
+
+              <!-- Terapia Radioyodo -->
+              <label class="conv-card" id="card-conv-yodo" onclick="selectConvStudy('Terapia Metabólica Radioyodo (I-131)')">
+                <input type="radio" name="conv-study-type" value="Terapia Metabólica Radioyodo (I-131)">
+                <span class="conv-title">☢️ Terapia Radioyodo (I-131)</span>
+                <span class="conv-desc">Tratamiento ablativo de hipertiroidismo (Graves / Adenoma tóxico) y carcinoma diferenciado de tiroides.</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Sección 3: Indicación y Motivo Clínico -->
+          <div class="form-section">
+            <div class="form-section-header">
+              <span class="section-number">3</span>
+              <h3 class="section-title">Motivo Clínico & Pregunta Concreta</h3>
+              <span class="section-hint">Justificación diagnóstica</span>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="conv-diagnosis">Sospecha Diagnóstica Principal <span class="required">*</span></label>
+                <input type="text" id="conv-diagnosis" placeholder="Ej: Dolor persistente post-artroplastia total de rodilla derecha / Sospecha aflojamiento" required>
+              </div>
+
+              <div class="form-group">
+                <label for="conv-urgency-date">Fecha Deseada / Próxima Consulta <span class="required">*</span></label>
+                <input type="text" id="conv-urgency-date" placeholder="Ej: Antes del 28/10 para consulta de revisión" required>
+              </div>
+
+              <div class="form-group col-span-2">
+                <label for="conv-summary">Resumen Clínico y Pregunta Específica a Medicina Nuclear <span class="required">*</span></label>
+                <textarea id="conv-summary" rows="3" placeholder="Describa antecedentes y la duda diagnóstica a resolver..." required></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sección 4: Prioridad Convencional -->
+          <div class="form-section">
+            <div class="form-section-header">
+              <span class="section-number">4</span>
+              <h3 class="section-title">Carácter de la Petición</h3>
+              <span class="section-hint">Prioridad del examen</span>
+            </div>
+
+            <div class="priority-selector-grid">
+              <label class="priority-option-card p1" id="card-conv-p1" onclick="selectConvPriority('Urgente')">
+                <input type="radio" name="conv-priority" value="Urgente" required>
+                <span class="priority-title" style="color: var(--p1-text);">🔴 Urgente (&le; 7 días)</span>
+                <span class="priority-desc">Cirugía inmediata, sospecha de TEP o ganglio centinela programado.</span>
+              </label>
+
+              <label class="priority-option-card p2 selected" id="card-conv-p2" onclick="selectConvPriority('Preferente')">
+                <input type="radio" name="conv-priority" value="Preferente" checked>
+                <span class="priority-title" style="color: var(--p2-text);">🟡 Preferente (&le; 15 días)</span>
+                <span class="priority-desc">Decisión terapéutica próxima, dolor relevante o estudio prequirúrgico reglado.</span>
+              </label>
+
+              <label class="priority-option-card p3" id="card-conv-p3" onclick="selectConvPriority('Ordinaria')">
+                <input type="radio" name="conv-priority" value="Ordinaria">
+                <span class="priority-title" style="color: var(--p3-text);">🟢 Ordinaria (&le; 30 días)</span>
+                <span class="priority-desc">Control evolutivo, revisiones anuales o lesiones estables.</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Barra de Acciones Medicina Nuclear Convencional -->
+          <div class="form-actions-row">
+            <div>
+              <button type="button" class="btn btn-secondary" onclick="previewOfficialSheet('conv')">
+                👁️ Vista Previa Volante
+              </button>
+            </div>
+            <div style="display: flex; gap: 0.8rem;">
+              <button type="button" class="btn btn-secondary" onclick="saveAsDraft('conv')">
+                💾 Guardar Borrador
+              </button>
+              <button type="submit" class="btn btn-primary" style="font-weight: 700; background: var(--sergas-navy);">
+                📋 Revisar Volante e Iniciar Doble Confirmación
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </section>
+    </div>
+
+    <!-- ======================================================================
+         PESTAÑA 3: Mis Peticiones Registradas
+         ====================================================================== -->
+    <div class="nav-content hidden" id="tab-my-requests">
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <h2>📋 Mis Peticiones Clínicas <span id="my-requests-doctor-badge" class="badge" style="background:#E0F2FE; color:#0369A1; font-weight:700; margin-left:0.5rem; font-size:0.82rem; padding:0.25rem 0.65rem; border-radius:6px;">Dr. Carlos Rodríguez</span></h2>
+            <p class="card-subtitle">Listado confidencial exclusivo de los pacientes y solicitudes prescritas por su usuario facultativo</p>
+          </div>
+          <div style="display: flex; gap: 0.6rem;">
+            <button class="btn btn-secondary" onclick="exportMyPetitionsToJson()">
+              📥 Exportar Mis Peticiones (JSON)
+            </button>
+            <button class="btn btn-primary" onclick="switchTab('tab-pet-request')">
+              ➕ Nueva Solicitud
+            </button>
+          </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="table-filter-bar">
+          <div class="search-input-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="filter-search-input" placeholder="Buscar por Paciente, NHC o Diagnóstico..." oninput="renderPetitionsTable()">
+          </div>
+
+          <select id="filter-modality-select" class="filter-select" onchange="renderPetitionsTable()">
+            <option value="TODOS">Todas las Modalidades (PET & Med. Nuclear)</option>
+            <option value="PET">Solo PET / CT</option>
+            <option value="CONVENCIONAL">Solo Medicina Nuclear Convencional</option>
+          </select>
+
+          <select id="filter-status-select" class="filter-select" onchange="renderPetitionsTable()">
+            <option value="TODOS">Todos los Estados</option>
+            <option value="Pendiente de Triaje">⏳ Pendiente de Triaje</option>
+            <option value="Cita Asignada">📅 Con Cita Asignada</option>
+            <option value="Realizado">✅ Realizado</option>
+          </select>
+        </div>
+
+        <!-- Data Table -->
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID Solicitud</th>
+                <th>Modalidad</th>
+                <th>Fecha Emisión</th>
+                <th>NHC</th>
+                <th>Paciente</th>
+                <th>Estudio / Radiofármaco</th>
+                <th>Prioridad</th>
+                <th>Estado Triaje</th>
+                <th>Fecha Cita</th>
+                <th style="text-align: right;">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="petitions-table-body">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <!-- ======================================================================
+         PESTAÑA 4: Protocolos & Guías EANM
+         ====================================================================== -->
+    <div class="nav-content hidden" id="tab-protocols-guide">
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <h2>📘 Guía Rápida de Indicaciones & Tiempos Óptimos (Guías EANM / SEMNIM)</h2>
+            <p class="card-subtitle">Criterios de uso apropiado para exploraciones PET y de Medicina Nuclear Convencional</p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;">
+          <!-- 18F-FDG -->
+          <div style="background: white; border: 1px solid var(--border-color); border-left: 6px solid var(--fdg-color); border-radius: 14px; padding: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+              <h3 style="color: var(--fdg-color); font-size: 1.1rem; font-weight: 700;">18F-FDG (Oncológico / Inflamatorio)</h3>
+              <span class="tracer-badge fdg">PET/CT</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #334155; margin-bottom: 0.75rem;">
+              Metabolismo de glucosa incrementado (Efecto Warburg). Tumores sólidos, linfomas, procesos infecciosos y fiebre de origen desconocido.
+            </p>
+            <ul style="font-size: 0.82rem; color: #475569; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.35rem;">
+              <li><strong>Preparación:</strong> Ayuno mínimo de 6 horas. Glucemia &lt; 180 mg/dL.</li>
+              <li><strong>Ventana post-QT:</strong> Esperar &ge; 10-14 días tras el último ciclo.</li>
+              <li><strong>Ventana post-RT:</strong> Esperar &ge; 8-12 semanas tras irradiación.</li>
+            </ul>
+          </div>
+
+          <!-- PSMA / Colina -->
+          <div style="background: white; border: 1px solid var(--border-color); border-left: 6px solid var(--psma-color); border-radius: 14px; padding: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+              <h3 style="color: var(--psma-color); font-size: 1.1rem; font-weight: 700;">18F-Fluorurocolina / 68Ga-PSMA (Próstata)</h3>
+              <span class="tracer-badge psma">PET/CT</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #334155; margin-bottom: 0.75rem;">
+              Detección de sobreexpresión de PSMA y recambio de membrana fosfolipídica en adenocarcinoma de próstata.
+            </p>
+            <ul style="font-size: 0.82rem; color: #475569; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.35rem;">
+              <li><strong>Recidiva bioquímica:</strong> PSA &gt; 0.2 ng/mL tras prostatectomía o nadir + 2 ng/mL tras RT.</li>
+              <li><strong>Extensión inicial:</strong> Indicado en riesgo intermedio desfavorable y alto riesgo (Gleason &ge; 8).</li>
+            </ul>
+          </div>
+
+          <!-- 68Ga-DOTATOC/TATE -->
+          <div style="background: white; border: 1px solid var(--border-color); border-left: 6px solid var(--ga68-color); border-radius: 14px; padding: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+              <h3 style="color: var(--ga68-color); font-size: 1.1rem; font-weight: 700;">68Ga-DOTATOC / DOTATATE (TNE)</h3>
+              <span class="tracer-badge ga68">PET/CT</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #334155; margin-bottom: 0.75rem;">
+              Receptores de somatostatina (SSTR2). Tumores neuroendocrinos gastroenteropancreáticos (GEP-NET) bien diferenciados.
+            </p>
+            <ul style="font-size: 0.82rem; color: #475569; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.35rem;">
+              <li><strong>Indicación:</strong> Localización de primario, estadificación y evaluación para terapia con radionúclidos (PRRT).</li>
+            </ul>
+          </div>
+
+          <!-- PET Neurológico -->
+          <div style="background: white; border: 1px solid var(--border-color); border-left: 6px solid var(--neuro-color); border-radius: 14px; padding: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+              <h3 style="color: var(--neuro-color); font-size: 1.1rem; font-weight: 700;">PET Neurológico / Neurooncología</h3>
+              <span class="tracer-badge neuro">PET Cerebral</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #334155; margin-bottom: 0.75rem;">
+              Metabolismo de glucosa cortical en deterioro cognitivo leve, variantes atípicas de Alzheimer, FTD y epilepsia refractaria.
+            </p>
+            <ul style="font-size: 0.82rem; color: #475569; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.35rem;">
+              <li><strong>Epilepsia:</strong> Detección de foco epileptógeno interictal (hipometabolismo regional).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ======================================================================
+         PESTAÑA 5: Base de Datos de Solicitudes (Esquema Triaje PET)
+         ====================================================================== -->
+    <div class="nav-content hidden" id="tab-database">
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <h2>🗄️ Base de Datos Maestra de Solicitudes Hospitalarias</h2>
+            <p class="card-subtitle">Estructura y columnas 100% compatibles con la suite <code>pet_ct_triage</code> (<code>pacientes_pet_ct_250.json</code>) y Google Sheets</p>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center;">
+            <span class="status-badge live" style="font-size: 0.78rem;">
+              ● Almacenamiento Persistente Conectado
+            </span>
+          </div>
+        </div>
+
+        <!-- Métricas de la Base de Datos -->
+        <div class="db-header-stats">
+          <div class="db-stat-pill">
+            <span>📁 Archivo Maestro:</span>
+            <span class="val">database/peticiones_db.json</span>
+          </div>
+          <div class="db-stat-pill">
+            <span>📊 Total Registros:</span>
+            <span class="val" id="db-stat-total">0</span>
+          </div>
+          <div class="db-stat-pill">
+            <span>☢️ Estudios PET:</span>
+            <span class="val" id="db-stat-pet">0</span>
+          </div>
+          <div class="db-stat-pill">
+            <span>⚛️ Med. Nuclear Conv.:</span>
+            <span class="val" id="db-stat-conv">0</span>
+          </div>
+          <div class="db-stat-pill">
+            <span>🕒 Última Escritura:</span>
+            <span class="val" id="db-stat-updated">Hoy</span>
+          </div>
+        </div>
+
+        <!-- Barra de Acciones de Base de Datos -->
+        <div class="db-actions-bar">
+          <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+            <div class="search-input-box" style="min-width: 280px;">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="db-search-input" placeholder="Buscar en base de datos (NHC, paciente, diagnóstico)..." oninput="renderDatabaseView()">
+            </div>
+            <select id="db-filter-modality" class="filter-select" onchange="renderDatabaseView()">
+              <option value="TODOS">Todas las Modalidades</option>
+              <option value="PET">Solo PET / CT</option>
+              <option value="CONVENCIONAL">Solo Medicina Nuclear</option>
+            </select>
+          </div>
+
+          <div class="db-buttons-group">
+            <button class="btn btn-primary" onclick="syncWithBackendServer()" style="background:#0284c7; border-color:#0284c7;" title="Sincronizar en tiempo real con servidor y software de triaje">
+              🔄 Sincronizar con Triaje PET/CT
+            </button>
+            <button class="btn btn-secondary" onclick="downloadDatabaseJson()" title="Descargar peticiones_db.json">
+              📥 Descargar JSON
+            </button>
+            <button class="btn btn-secondary" onclick="downloadDatabaseCsv()" title="Descargar peticiones_db.csv para Excel/Sheets">
+              📊 Descargar CSV
+            </button>
+            <label class="btn btn-secondary" style="cursor: pointer; margin: 0;" title="Importar o restaurar copia de seguridad en JSON">
+              📤 Importar JSON
+              <input type="file" id="db-file-import" accept=".json" style="display: none;" onchange="importDatabaseFromFile(event)">
+            </label>
+            <button class="btn btn-secondary" onclick="resetDatabaseToFactory()" title="Restablecer a los casos hospitalarios iniciales">
+              🔄 Restablecer
+            </button>
+          </div>
+        </div>
+
+        <!-- Tabla Completa de la Base de Datos -->
+        <div class="table-responsive" style="max-height: 480px;">
+          <table class="data-table" id="db-master-table">
+            <thead>
+              <tr>
+                <th>Submission ID</th>
+                <th>Modalidad</th>
+                <th>Fecha Solicitud</th>
+                <th>NHC</th>
+                <th>Paciente</th>
+                <th>Servicio</th>
+                <th>Médico Solicitante</th>
+                <th>Diagnóstico Clínico</th>
+                <th>Estudio Solicitado</th>
+                <th>Carácter</th>
+                <th>Prioridad</th>
+                <th>Fecha Próx. Consulta</th>
+                <th>Cita Asignada</th>
+                <th>Ingresado</th>
+                <th>Diabetes</th>
+                <th>Alergias</th>
+                <th>Alertas Técnicas</th>
+              </tr>
+            </thead>
+            <tbody id="db-table-body">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Visor de Datos Crudos JSON (Inspector para Integraciones) -->
+        <div style="margin-top: 1.5rem;">
+          <div class="db-raw-header">
+            <span>💻 Visor de Datos JSON en Tiempo Real (Compatible con <code>pacientes_pet_ct_250.json</code>)</span>
+            <button class="btn btn-secondary" style="padding: 0.25rem 0.65rem; font-size: 0.74rem;" onclick="copyRawJsonToClipboard()">
+              📋 Copiar JSON al Portapapeles
+            </button>
+          </div>
+          <pre class="db-raw-container" id="db-json-raw-display">// Cargando datos...</pre>
+        </div>
+      </section>
+    </div>
+
+    <!-- FOOTER INSTITUCIONAL GALARIA / SERGAS -->
+    <footer style="background-color: #ffffff; border: 1px solid var(--border-color); border-top: 3px solid var(--sergas-blue); border-radius: 14px; padding: 1.5rem; margin-top: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; box-shadow: var(--shadow-sm);">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+        <img src="galaria_logo.jpg" alt="Galaria Empresa Pública de Servizos Sanitarios" style="height: 38px; width: auto; object-fit: contain;">
+        <p style="font-weight: 700; color: var(--sergas-navy); margin: 0; font-size: 0.95rem;">
+          © Galaria - Empresa Pública de Servizos Sanitarios, S.A. | Servizo Galego de Saúde (SERGAS)
+        </p>
+        <p style="margin: 0; font-size: 0.82rem; color: var(--text-secondary);">
+          Unidade de Medicina Nuclear e Diagnóstico Molecular PET/CT · Red Hospitalaria Pública de Galicia
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 1: Volante Oficial Imprimible (PET o Convencional) con Doble Confirmación
+       ======================================================================== -->
+  <div id="modal-official-sheet" class="modal-overlay hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="sheet-modal-header-title">📄 Revisión y Doble Confirmación de la Solicitud</h3>
+        <button class="modal-close" onclick="closeModal('modal-official-sheet')">&times;</button>
+      </div>
+
+      <div class="modal-body" id="printable-sheet-container">
+
+        <!-- Banner de Doble Confirmación / Estado Oficial -->
+        <div id="sheet-double-confirm-banner" style="background: #FEF3C7; border: 1px solid #F59E0B; border-radius: 12px; padding: 0.9rem 1.25rem; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 0.85rem;">
+            <span style="font-size: 1.6rem;" id="sheet-banner-icon">⚠️</span>
+            <div>
+              <div style="font-weight: 800; color: #92400E; font-size: 0.96rem;" id="sheet-banner-title">Paso 2 de 2: Doble Confirmación de la Petición</div>
+              <div style="font-size: 0.84rem; color: #B45309;" id="sheet-banner-desc">Por favor, revise minuciosamente los datos clínicos. Puede imprimir el PDF oficial o guardarlo antes de confirmar el registro definitivo.</div>
+            </div>
+          </div>
+          <span class="badge" id="sheet-banner-badge" style="background: #F59E0B; color: white; font-weight: 800; padding: 0.4rem 0.75rem; border-radius: 8px; font-size: 0.78rem; white-space: nowrap;">PENDIENTE DE CONFIRMAR</span>
+        </div>
+
+        <div class="official-sheet">
+          <div class="sheet-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--sergas-blue); padding-bottom: 0.8rem; margin-bottom: 1rem;">
+            <div class="sheet-hospital-info" style="display: flex; align-items: center; gap: 1rem;">
+              <img src="galaria_logo.jpg" alt="Galaria" style="height: 46px; width: auto; object-fit: contain;">
+              <div>
+                <h2 style="font-size: 1.1rem; color: var(--sergas-navy); margin: 0; font-weight: 800;">GALARIA · EMPRESA PÚBLICA DE SERVIZOS SANITARIOS</h2>
+                <p style="margin: 0; font-size: 0.82rem; color: var(--text-secondary);">Unidade de Medicina Nuclear & Diagnóstico Molecular PET/CT · SERGAS</p>
+                <p style="font-weight: 700; color: var(--sergas-blue); margin-top: 0.25rem; font-size: 0.85rem;" id="sheet-header-doc-title">
+                  VOLANTE OFICIAL DE SOLICITUDE CLÍNICA HOSPITALARIA
+                </p>
+              </div>
+            </div>
+            <div class="sheet-barcode-box">
+              <div class="barcode-sim" id="sheet-barcode-text">||| | |||| || |||</div>
+              <div class="sheet-code" id="sheet-sub-id">REQ-2026-0001</div>
+              <div style="font-size: 0.72rem; color: #64748B;" id="sheet-timestamp">Fecha: 13/10/2026</div>
+            </div>
+          </div>
+
+          <!-- Section A: Paciente -->
+          <div class="sheet-section">
+            <div class="sheet-section-title">A. Datos de Filiación del Paciente</div>
+            <div class="sheet-grid-3">
+              <div class="sheet-field"><label>NHC:</label> <span id="sheet-nhc">--</span></div>
+              <div class="sheet-field"><label>Nombre y Apellidos:</label> <span id="sheet-name">--</span></div>
+              <div class="sheet-field"><label>Peso / Talla / IMC:</label> <span id="sheet-weight-height">--</span></div>
+              <div class="sheet-field"><label>Ubicación / Régimen:</label> <span id="sheet-regime-mobility">--</span></div>
+              <div class="sheet-field"><label>¿Precisa Sedación?:</label> <span id="sheet-sedation">--</span></div>
+              <div class="sheet-field"><label>Diabetes Mellitus:</label> <span id="sheet-diabetes">--</span></div>
+            </div>
+          </div>
+
+          <!-- Section B: Solicitante -->
+          <div class="sheet-section">
+            <div class="sheet-section-title">B. Facultativo & Servicio Solicitante</div>
+            <div class="sheet-grid-3">
+              <div class="sheet-field"><label>Médico Prescriptor:</label> <span id="sheet-doc-name">--</span></div>
+              <div class="sheet-field"><label>Servicio Clínico:</label> <span id="sheet-doc-service">--</span></div>
+              <div class="sheet-field"><label>Fecha Próxima Consulta:</label> <span id="sheet-next-visit">--</span></div>
+            </div>
+          </div>
+
+          <!-- Section C: Estudio Solicitado -->
+          <div class="sheet-section">
+            <div class="sheet-section-title">C. Estudio Solicitado & Parámetros Clínicos</div>
+            <div class="sheet-grid-3" style="grid-template-columns: 1fr 1fr;">
+              <div class="sheet-field"><label>Estudio / Tipo:</label> <span id="sheet-study-type" style="color: var(--blue-corporate); font-weight: 700;">--</span></div>
+              <div class="sheet-field"><label>Carácter / Prioridad:</label> <span id="sheet-priority">--</span></div>
+            </div>
+            <div class="sheet-field" style="margin-top: 0.4rem;">
+              <label>Sospecha Diagnóstica & Indicación Concreta:</label>
+              <span id="sheet-diag" style="font-weight: 600; display: block; margin-top: 0.15rem;">--</span>
+            </div>
+            <div class="sheet-field" style="margin-top: 0.4rem;">
+              <label>Resumen Clínico / Antecedentes:</label>
+              <span id="sheet-summary" style="font-weight: 400; font-style: italic; display: block; margin-top: 0.15rem;">--</span>
+            </div>
+          </div>
+
+          <!-- Section D: Factores de Seguridad -->
+          <div class="sheet-section">
+            <div class="sheet-section-title">D. Factores de Seguridad & Alertas</div>
+            <div class="sheet-grid-3">
+              <div class="sheet-field"><label>Alergias:</label> <span id="sheet-allergies">--</span></div>
+              <div class="sheet-field"><label>Contraindicación Contraste:</label> <span id="sheet-contrast">--</span></div>
+              <div class="sheet-field"><label>Metales / Marcapasos:</label> <span id="sheet-metal">--</span></div>
+            </div>
+          </div>
+
+          <!-- Firmas -->
+          <div class="sheet-signature-row">
+            <div class="signature-box">
+              <p>Firma y Sello del Médico Facultativo Prescriptor</p>
+              <p style="font-weight: 700; color: #1E293B; margin-top: 0.6rem;" id="sheet-sign-doc">Dr. Prescriptor</p>
+              <p style="font-size: 0.72rem; color: #64748B;">Validación Electrónica Hospitalaria</p>
+            </div>
+            <div class="signature-box">
+              <p>Recepción & Triaje Unidad Medicina Nuclear</p>
+              <p style="font-weight: 700; color: #1E293B; margin-top: 0.6rem;">Admisión y Asignación de Turno</p>
+              <p style="font-size: 0.72rem; color: #64748B;">Sello de Entrada Oficial</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" id="sheet-modal-footer">
+        <button type="button" class="btn btn-secondary" id="btn-sheet-cancel" onclick="closeModal('modal-official-sheet')">
+          ✏️ Modificar Datos / Volver
+        </button>
+        <button type="button" class="btn btn-primary" id="btn-sheet-print" onclick="window.print()" style="background:#0284c7; border-color:#0284c7; font-weight:700;">
+          🖨️ Imprimir Volante / Guardar PDF
+        </button>
+        <button type="button" class="btn btn-success" id="btn-final-confirm-petition" onclick="executeFinalConfirmation()" style="background:#059669; border-color:#059669; color:white; font-weight:800; padding:0.65rem 1.35rem; font-size:0.95rem; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.3);">
+          ✅ Confirmar Solicitud Definitiva
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
